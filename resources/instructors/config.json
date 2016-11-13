@@ -1,0 +1,77 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 0
+		},
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 1
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 2
+		},
+		"email": {
+			"name": "email",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "email",
+			"order": 3
+		},
+		"phone": {
+			"name": "phone",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "phone",
+			"order": 4
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 5
+		},
+		"facebook": {
+			"name": "facebook",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "facebook",
+			"order": 6
+		},
+		"twitter": {
+			"name": "twitter",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "twitter",
+			"order": 7
+		},
+		"linkedin": {
+			"name": "linkedin",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "linkedin",
+			"order": 8
+		}
+	}
+}

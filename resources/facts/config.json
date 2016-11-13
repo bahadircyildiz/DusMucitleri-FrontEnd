@@ -1,0 +1,21 @@
+{
+	"type": "Collection",
+	"properties": {
+		"number": {
+			"name": "number",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "number",
+			"order": 0
+		},
+		"desctipion": {
+			"name": "desctipion",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "desctipion",
+			"order": 1
+		}
+	}
+}

@@ -1,0 +1,45 @@
+{
+	"type": "Collection",
+	"properties": {
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 0
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "description",
+			"order": 1
+		},
+		"price": {
+			"name": "price",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "price",
+			"order": 2
+		},
+		"tag": {
+			"name": "tag",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "tag",
+			"order": 3
+		},
+		"instructor": {
+			"name": "instructor",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "instructor",
+			"order": 4
+		}
+	}
+}

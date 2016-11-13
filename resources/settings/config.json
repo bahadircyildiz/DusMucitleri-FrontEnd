@@ -1,0 +1,93 @@
+{
+	"type": "Collection",
+	"properties": {
+		"siteTitle": {
+			"name": "siteTitle",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "siteTitle",
+			"order": 0
+		},
+		"siteActive": {
+			"name": "siteActive",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "siteActive",
+			"order": 1
+		},
+		"facebook": {
+			"name": "facebook",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "facebook",
+			"order": 2
+		},
+		"twitter": {
+			"name": "twitter",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "twitter",
+			"order": 3
+		},
+		"google": {
+			"name": "google",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "google",
+			"order": 4
+		},
+		"linkedIn": {
+			"name": "linkedIn",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "linkedIn",
+			"order": 5
+		},
+		"phones": {
+			"name": "phones",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "phones",
+			"order": 6
+		},
+		"emails": {
+			"name": "emails",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "emails",
+			"order": 7
+		},
+		"addresses": {
+			"name": "addresses",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "addresses",
+			"order": 8
+		},
+		"location": {
+			"name": "location",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "location",
+			"order": 9
+		},
+		"hours": {
+			"name": "hours",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "hours",
+			"order": 10
+		}
+	}
+}
