@@ -2,12 +2,11 @@ var app = require('express')();
 var exphbs  = require('express-handlebars');
 
 var io = require('socket.io').listen(server, {'log level': 0});
-var ExpressPORT = 8080;
-var DeploydPORT = 3000;
+var config = require("./../config.js");
 
 // Deployd Actions
 var server = require('deployd')({
-        port: DeploydPORT,
+        port: config.dpdPort,
         env:"development"
     })
     server.listen()
@@ -16,6 +15,9 @@ var internalClient = require('deployd/lib/internal-client')
 var dpd;
 process.server.on('listening', function() {
     dpd = internalClient.build(process.server);
+    
+    // Bind routes after Deployd server is ready
+    require("./routes.js")(app,dpd);
 
 });
 // Deployd ENDS
@@ -28,18 +30,6 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.get('/', function (req, res) {
-    res.render('pages/index',{a:"naber",username:"TOLGA"});
-    // res.send("Hello")
-});
-
-app.get("/dpd",function(req,res){
-    dpd.navigation.get(function(results, err) {
-        console.log("DATA:",results)
-        res.send(results)
-    });
-})
 
 
-
-app.listen(ExpressPORT);
+app.listen(config.expressPort);
