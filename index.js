@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require("express");
+var app = express();
 var exphbs  = require('express-handlebars');
 
 var io = require('socket.io').listen(server, {'log level': 0});
@@ -17,7 +18,7 @@ process.server.on('listening', function() {
     dpd = internalClient.build(process.server);
     
     // Bind routes after Deployd server is ready
-    require("./routes.js")(app,dpd);
+    require("./routes.js")(app,dpd,express);
 
 });
 // Deployd ENDS
