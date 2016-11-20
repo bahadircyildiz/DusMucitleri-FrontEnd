@@ -2,11 +2,26 @@
 <html lang="en">
 {{>head}}
 <body>
-    
-    {{>components/menu}}
-    <br>
-    <a href="#/ehe">{{title}} - {{link}} </a>
-
+    <!--gt Wrapper Start-->  
+    <div class="gt_wrapper">
+        {{>components/header}}
+        {{>components/banner}}
+        <!--Main Content Wrap Start-->
+        <div class="gt_main_content_wrap">
+            {{>components/aboutus}}
+            {{>components/offer}}
+            {{>components/facts}}
+            {{>components/courses}}
+            {{>components/gallery}}
+            {{>components/teacher}}
+            {{>components/testimonial}}
+            {{>components/blog}}
+            {{>components/contactus}}
+            
+        </div>
+        <!--Main Content Wrap End-->
+    </div>
+    <!--gt Wrapper End-->
     {{>footer}}
 </body>
 </html>

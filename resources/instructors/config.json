@@ -49,29 +49,13 @@
 			"id": "image",
 			"order": 5
 		},
-		"facebook": {
-			"name": "facebook",
-			"type": "string",
-			"typeLabel": "string",
-			"required": false,
-			"id": "facebook",
-			"order": 6
-		},
-		"twitter": {
-			"name": "twitter",
-			"type": "string",
-			"typeLabel": "string",
-			"required": false,
-			"id": "twitter",
-			"order": 7
-		},
 		"linkedin": {
 			"name": "linkedin",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "linkedin",
-			"order": 8
+			"order": 6
 		}
 	}
 }

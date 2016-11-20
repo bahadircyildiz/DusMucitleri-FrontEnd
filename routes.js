@@ -3,7 +3,12 @@ var Routes = function(app,dpd,express){
     app.use('/static', express.static('./static'));
     
     app.get('/', function (req, res) {
-        res.render('pages/index',{a:"naber",username:"TOLGA"});
+        //Get entities by using dpd param. List all dpd entities @test/dpd
+        var data = {};
+        dpd.settings.get({$limit: 1}, function(results, err){
+            data.settings = results;
+        });
+        res.render('pages/index',data);
         // res.send("Hello")
     });
     
