@@ -9,13 +9,37 @@
 			"id": "siteTitle",
 			"order": 0
 		},
+		"siteSubtitle": {
+			"name": "siteSubtitle",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "siteSubtitle",
+			"order": 1
+		},
+		"siteDesc": {
+			"name": "siteDesc",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "siteDesc",
+			"order": 2
+		},
+		"siteKeywords": {
+			"name": "siteKeywords",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "siteKeywords",
+			"order": 3
+		},
 		"siteActive": {
 			"name": "siteActive",
 			"type": "boolean",
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "siteActive",
-			"order": 1
+			"order": 4
 		},
 		"facebook": {
 			"name": "facebook",
@@ -23,7 +47,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "facebook",
-			"order": 2
+			"order": 5
 		},
 		"twitter": {
 			"name": "twitter",
@@ -31,7 +55,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "twitter",
-			"order": 3
+			"order": 6
 		},
 		"google": {
 			"name": "google",
@@ -39,7 +63,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "google",
-			"order": 4
+			"order": 7
 		},
 		"linkedIn": {
 			"name": "linkedIn",
@@ -47,7 +71,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "linkedIn",
-			"order": 5
+			"order": 8
 		},
 		"phones": {
 			"name": "phones",
@@ -55,7 +79,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "phones",
-			"order": 6
+			"order": 9
 		},
 		"emails": {
 			"name": "emails",
@@ -63,7 +87,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "emails",
-			"order": 7
+			"order": 10
 		},
 		"addresses": {
 			"name": "addresses",
@@ -71,7 +95,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "addresses",
-			"order": 8
+			"order": 11
 		},
 		"location": {
 			"name": "location",
@@ -79,7 +103,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "location",
-			"order": 9
+			"order": 12
 		},
 		"hours": {
 			"name": "hours",
@@ -87,7 +111,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "hours",
-			"order": 10
+			"order": 13
 		}
 	}
 }
