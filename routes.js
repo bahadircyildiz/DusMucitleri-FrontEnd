@@ -4,7 +4,7 @@ var Routes = function(app,dpd,express,Q){
     
     app.get('/', function (req, res) {
         
-        //Get entities by using dpd param.
+        //Get entries by using dpd param.
         var data = {}, calls = [];
         
         //Database calling parameters
@@ -14,10 +14,26 @@ var Routes = function(app,dpd,express,Q){
             blog: {$limit: 9}
         };
         
+        //Additional functions for tables if needed.
+        var extras = {
+            settings: function(res){
+                if(res[0].siteKeywords){
+                    var arr = res[0].siteKeywords, kw = "";
+                    arr.forEach(function(key, index){
+                        kw += key;
+                        if(arr.length - 1 != index) kw += ",";
+                    });
+                    res[0].siteKeywords = kw;
+                }
+                return res[0];
+            }
+        };
+        
         //Create async fuctions by the params in tables & queries
         tables.forEach(function(val){
             calls.push( 
                 dpd[val].get(queries[val], function(results, err){
+                    if(extras[val]) results = extras[val](results);
                     data[val] = results;
                 })
             );
