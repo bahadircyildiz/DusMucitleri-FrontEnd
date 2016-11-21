@@ -14,11 +14,12 @@ var server = require('deployd')({
 var internalClient = require('deployd/lib/internal-client')
 
 var dpd;
+var Q = require("q");
 process.server.on('listening', function() {
     dpd = internalClient.build(process.server);
     
     // Bind routes after Deployd server is ready
-    require("./routes.js")(app,dpd,express);
+    require("./routes.js")(app,dpd,express,Q);
 
 });
 // Deployd ENDS
