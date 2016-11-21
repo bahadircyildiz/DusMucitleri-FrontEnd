@@ -3,25 +3,33 @@ var Routes = function(app,dpd,express,Q){
     app.use('/static', express.static('./static'));
     
     app.get('/', function (req, res) {
-        //Get entities by using dpd param. List all dpd entities @test/dpd
-        var data = {};
-        console.log("Burdayim");
-        var calls = [
-            //Get Settings
-            dpd.settings.get({$limit: 1}, function(results, err){
-                data.settings = results[0];
-            }),
-            //Get Blog Content
-            dpd.blog.get({$limit:9}, function (results, err){
-                data.blog = results;
-            }),
-        ];
         
+        //Get entities by using dpd param.
+        var data = {}, calls = [];
+        
+        //Database calling parameters
+        var tables = ["blog","courses","facts","features","instructors","navigation","offers","settings","slider", "testimonials"];
+        var queries = {
+            settings: {$limit: 1},
+            blog: {$limit: 9}
+        };
+        
+        //Create async fuctions by the params in tables & queries
+        tables.forEach(function(val){
+            calls.push( 
+                dpd[val].get(queries[val], function(results, err){
+                    data[val] = results;
+                })
+            );
+        });
+        
+        //Async call handler that activates after all tasks are finished.
         Q.all(calls).then(function(results, err){
             console.log("Data with all async calls completed", data);
+            //Send them bitchslaps
+            res.render('pages/index',data);
         });
-        res.render('pages/index',data);
-        // res.send("Hello")
+        
     });
     
     app.get("/dpd",function(req,res){
