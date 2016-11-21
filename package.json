@@ -13,6 +13,7 @@
     "deployd": "^0.8.9",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
+    "q": "^1.4.1",
     "socket.io": "^1.5.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
