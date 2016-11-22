@@ -27,8 +27,15 @@ process.server.on('listening', function() {
 
 var hbs = exphbs.create({
     layoutsDir:"views/",
-    partialsDir:"views/partials"
+    partialsDir:"views/partials",
+    helpers: {
+        if_eq: function(a, b, options){
+            if(a == b) return options.fn(this);
+            else return options.inverse(this);
+        }
+    }
 })
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

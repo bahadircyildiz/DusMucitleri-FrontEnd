@@ -4,14 +4,14 @@
             <div class="container">
                 <div class="gt_top3_scl_icon">
                     <ul class="gt_hdr3_scl_icon">
-                        <li><a href="{{facebook}}"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="{{instagram}}"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
                 <div class="gt_hdr_3_ui_element">
                     <ul>
-                        <li><i class="fa fa-phone"></i>{{phone}}</li>
-                        <li><i class="fa fa-envelope-o"></i><a href="#">{{mail}}</a></li>
+                        <li><i class="fa fa-phone"></i>{{settings.phone}}</li>
+                        <li><i class="fa fa-envelope-o"></i><a href="mailto:{{settings.mail}}">{{settings.mail}}</a></li>
                     </ul>
                 </div>
                 {{!--<div class="gt_hdr3_search">--}}
@@ -25,7 +25,7 @@
         <div class="gt_top3_menu default_width single-page">
             <div class="container">
                 <div class="gt-logo">
-                    <a href="#"><img src="{{logo.link}}" alt=""></a>
+                    <a href="#"><img src="{{settings.logo}}" alt="{{settings.siteTitle}} - {{settings.siteSubtitle}}"></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->
@@ -36,16 +36,12 @@
                     </a>   
                     <!-- Responsive Buttun -->
                     <ul class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        {{#each nav}}
-                        <li class="active"><a href="{{link}}">{{name}}</a></li>
+                        {{#each navigation}}
+                            {{#if_eq @index 0}}
+                            <li class="active">
+                            {{/if_eq}}
+                        <a href="{{this.link}}">{{this.title}}</a></li>
                         {{/each}}
-                        {{!--<li><a href="index.html#about-us">About Us</a></li>--}}
-                        {{!--<li><a href="index.html#services">Services</a></li>--}}
-                        {{!--<li><a href="index.html#courses">Courses</a></li></li>--}}
-                        {{!--<li><a href="index.html#gallery">Gallery</a></li>--}}
-                        {{!--<li><a href="index.html#team">Team</a></li>--}}
-                        {{!--<li><a href="index.html#news">News</a></li>--}}
-                        {{!--<li><a href="index.html#contact-us">Contact Us</a></li>--}}
                     </ul>
                 </nav>
             </div>

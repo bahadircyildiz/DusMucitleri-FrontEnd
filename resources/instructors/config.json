@@ -56,6 +56,14 @@
 			"required": false,
 			"id": "linkedin",
 			"order": 6
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 7
 		}
 	}
 }

@@ -8,7 +8,7 @@ var Routes = function(app,dpd,express,Q){
         var data = {}, calls = [];
         
         //Database calling parameters
-        var tables = ["blog","courses","facts","features","instructors","navigation","offers","settings","slider", "testimonials"];
+        var tables = ["blog","courses","facts","features","instructors","navigation","offers","settings","slider","testimonials"];
         var queries = {
             settings: {$limit: 1},
             blog: {$limit: 9}
@@ -31,8 +31,10 @@ var Routes = function(app,dpd,express,Q){
         
         //Create async fuctions by the params in tables & queries
         tables.forEach(function(val){
+            var query = queries[val] || {};
+            query.active = true;
             calls.push( 
-                dpd[val].get(queries[val], function(results, err){
+                dpd[val].get(query, function(results, err){
                     if(extras[val]) results = extras[val](results);
                     data[val] = results;
                 })

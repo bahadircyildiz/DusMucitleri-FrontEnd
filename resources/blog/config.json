@@ -40,6 +40,14 @@
 			"required": false,
 			"id": "timeStamp",
 			"order": 4
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 5
 		}
 	}
 }
