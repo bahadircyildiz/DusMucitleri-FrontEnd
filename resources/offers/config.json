@@ -24,6 +24,14 @@
 			"required": false,
 			"id": "description",
 			"order": 2
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 3
 		}
 	}
 }
