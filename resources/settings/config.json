@@ -112,6 +112,22 @@
 			"required": false,
 			"id": "hours",
 			"order": 13
+		},
+		"contents": {
+			"name": "contents",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "contents",
+			"order": 14
+		},
+		"flips": {
+			"name": "flips",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "flips",
+			"order": 15
 		}
 	}
 }

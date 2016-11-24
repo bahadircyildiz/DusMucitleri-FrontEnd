@@ -39,6 +39,8 @@
                         {{#each navigation}}
                             {{#if_eq @index 0}}
                             <li class="active">
+                            {{else}}
+                            <li>
                             {{/if_eq}}
                         <a href="{{this.link}}">{{this.title}}</a></li>
                         {{/each}}

@@ -26,6 +26,22 @@ var Routes = function(app,dpd,express,Q){
                     res[0].siteKeywords = kw;
                 }
                 return res[0];
+            },
+            slider: function(res){
+                var banner = [], gallery = []; 
+                res.forEach(function(val){
+                    if(val.isBanner) banner.push(val);
+                    else gallery.push(val);
+                });
+                return {banner: banner, gallery: gallery};
+            },
+            offers: function(res){
+                var left = [], right = [];
+                res.forEach(function(val, index){
+                    if(index%2==0) left.push(val);
+                    else right.push(val);
+                });
+                return {left: left, right: right};
             }
         };
         
