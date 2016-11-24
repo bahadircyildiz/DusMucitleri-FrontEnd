@@ -4,50 +4,20 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="gt_about_wrap">
-                            <h4 class="title">Welcome To Kids Center</h4>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi. odio. Sed non  mauris vitae erat consequat auctor eu in elit. </p>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris.  </p>
+                            {{settings.aboutus}}
                             <div class="row">
+                                {{#each settings.flips}}
                                 <div class="col-md-3 col-sm-3 flip_container">
                                     <div class="gt_flip_effect">
                                         <div class="gt_about_icon">
-                                            <i class="icon-avatar"></i>
+                                            <i class="{{this.icon}}"></i>
                                         </div>
                                         <div class="gt_icon_des bg_1">
-                                            <a href="#">School Bus</a>
+                                            <a href="#">{{this.title}}</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3 flip_container">
-                                    <div class="gt_flip_effect">
-                                        <div class="gt_about_icon">
-                                            <i class="icon-kindergarten"></i>
-                                        </div>
-                                        <div class="gt_icon_des bg_2">
-                                            <a href="#">School Bus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3 flip_container">
-                                    <div class="gt_flip_effect">
-                                        <div class="gt_about_icon">
-                                            <i class="icon-chocolate"></i>
-                                        </div>
-                                        <div class="gt_icon_des bg_3">
-                                            <a href="#">School Bus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3 flip_container">
-                                    <div class="gt_flip_effect">
-                                        <div class="gt_about_icon">
-                                            <i class="icon-computer-tool-for-education"></i>
-                                        </div>
-                                        <div class="gt_icon_des bg_4">
-                                            <a href="#">School Bus</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>

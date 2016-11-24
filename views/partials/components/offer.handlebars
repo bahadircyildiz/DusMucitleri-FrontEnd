@@ -1,76 +1,57 @@
-       <!--Offer Wrap start-->
-        <section class="gt_wht_offer_bg wow fadeInUp" id="services">
+<section class="gt_offer_bg">
             <div class="container">
-            	<div class="gt_hdg_1 wow zoomIn">
-                    <h3>WHAT WE OFFER</h3>
-                    <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec <span>tetuer adipis elit, aliquam eget nibh etlibura.</span>
-                    </p>
-                    <span><img src="images/hdg-01.png" alt=""></span>
+                <div class="gt_hdg_1">
+                    {{contents.offers}}
                 </div>
-                <!--What We Offer 2 Wrap Start-->
+                <!--What We Offer 1 Wrap Start-->
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-meat bg_1"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Healthy Food</a></h5>
-                                <span class="bg_offer_1"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="gt_offer_love_wrap default_width">
+                            <ul>
+                                {{#each offers.left}}
+                                <li>
+                                    <div class="gt_wht_offer_wrap mb">
+                                        <i class="{{this.icon}} bg_1"></i>
+                                        <div class="gt_wht_offer_des">
+                                            <h5><a href="#">{{this.title}}</a></h5>
+                                            <span class="bg_offer_1"></span>
+                                            {{this.description}}
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                                
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-pencil bg_2"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Painting Learning</a></h5>
-                                <span class="bg_offer_2"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
+                    
+                    <div class="col-md-4">
+                        <div class="gt_offer_img default_img">
+                            <img src="images/kids.png" alt="">
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-bus bg_3"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Bus Service</a></h5>
-                                <span class="bg_offer_3"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-translation bg_4"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Multi Language</a></h5>
-                                <span class="bg_offer_4"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-color bg_5"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Colour Match</a></h5>
-                                <span class="bg_offer_5"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="gt_wht_offer_wrap mb">
-                            <i class="icon-crayons bg_6"></i>
-                            <div class="gt_wht_offer_des">
-                                <h5><a href="#">Sketching</a></h5>
-                                <span class="bg_offer_6"></span>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet avida nibh vel velit auctor aliquet.</p>
-                            </div>
+                    
+                    <div class="col-md-4">
+                        <div class="default_width">
+                            <ul>
+                                {{#each offers.right}}
+                                <li>
+                                    <div class="gt_wht_offer_wrap mb">
+                                        <i class="{{this.icon}} bg_4"></i>
+                                        <div class="gt_wht_offer_des">
+                                            <h5><a href="#">{{this.title}}</a></h5>
+                                            <span class="bg_offer_4"></span>
+                                            {{this.description}}
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <!--What We Offer 2 Wrap End-->
+                <!--What We Offer 1 Wrap End-->
+                
             </div>
         </section>
         <!--offer Wrap End-->
