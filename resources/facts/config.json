@@ -9,12 +9,12 @@
 			"id": "number",
 			"order": 0
 		},
-		"desctipion": {
-			"name": "desctipion",
+		"description": {
+			"name": "description",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "desctipion",
+			"id": "description",
 			"order": 1
 		},
 		"active": {

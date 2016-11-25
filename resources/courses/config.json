@@ -25,20 +25,20 @@
 			"id": "price",
 			"order": 2
 		},
-		"tag": {
-			"name": "tag",
-			"type": "string",
-			"typeLabel": "string",
+		"tags": {
+			"name": "tags",
+			"type": "array",
+			"typeLabel": "array",
 			"required": false,
-			"id": "tag",
+			"id": "tags",
 			"order": 3
 		},
-		"instructor": {
-			"name": "instructor",
+		"instructorID": {
+			"name": "instructorID",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "instructor",
+			"id": "instructorID",
 			"order": 4
 		},
 		"active": {
@@ -48,6 +48,22 @@
 			"required": false,
 			"id": "active",
 			"order": 5
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 6
+		},
+		"ribbon": {
+			"name": "ribbon",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "ribbon",
+			"order": 7
 		}
 	}
 }

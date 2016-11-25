@@ -8,7 +8,7 @@ var Routes = function(app,dpd,express,Q){
         var data = {}, calls = [];
         
         //Database calling parameters
-        var tables = ["blog","courses","facts","features","instructors","navigation","offers","settings","slider","testimonials"];
+        var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials"];
         var queries = {
             settings: {$limit: 1},
             blog: {$limit: 9}
@@ -17,6 +17,7 @@ var Routes = function(app,dpd,express,Q){
         //Additional functions for tables if needed.
         var extras = {
             settings: function(res){
+                //Arranging keywords for further SEO optimizations
                 if(res[0].siteKeywords){
                     var arr = res[0].siteKeywords, kw = "";
                     arr.forEach(function(key, index){
@@ -59,7 +60,7 @@ var Routes = function(app,dpd,express,Q){
         
         //Async call handler that activates after all tasks are finished.
         Q.all(calls).then(function(results, err){
-            console.log("Data with all async calls completed", data);
+            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data);
         });

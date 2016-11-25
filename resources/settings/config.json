@@ -128,6 +128,14 @@
 			"required": false,
 			"id": "flips",
 			"order": 15
+		},
+		"allcoursetags": {
+			"name": "allcoursetags",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "allcoursetags",
+			"order": 16
 		}
 	}
 }
