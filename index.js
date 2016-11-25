@@ -32,6 +32,21 @@ var hbs = exphbs.create({
         if_eq: function(a, b, options){
             if(a == b) return options.fn(this);
             else return options.inverse(this);
+        },
+        coursetags: function (coursetags, options){
+            var index = "";
+            var allcoursetags = options.data.root.settings.allcoursetags;
+            coursetags.forEach(function(val){
+                index += allcoursetags.indexOf(val) + " ";
+            });
+            return index;
+        },
+        getInstructor: function(id, options){
+            var result;
+            options.data.root.instructors.forEach(function(val){
+                if(val.id == id) result = val;
+            });
+            return options.fn(result);
         }
     }
 })

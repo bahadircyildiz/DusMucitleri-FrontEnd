@@ -2,8 +2,7 @@
 <section id="courses" class="wow fadeInUp">
     <div class="container">
         <div class="gt_hdg_1 wow zoomIn">
-            <h3>Popular Courses</h3>
-            <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec <span>tetuer adipis elit, aliquam eget nibh etlibura.</span></p>
+            {{contents.courses}}
             <span><img src="images/hdg-01.png" alt=""></span>
         </div>
         
@@ -11,17 +10,19 @@
             <div class="col-md-8">
                 <div class="gt_course_tab_list default_width">
                     <ul id="filterable-item-filter-1">
-                        <li><a class="active" data-value="all" href="#">All</a></li>
-                        <li><a data-value="1" href="#">New Courses</a></li>
-                        <li><a data-value="2" href="#">Special Courses</a></li>
-                        <li><a data-value="3" href="#">Famouse Courses</a></li>
+                        <li><a class="active" data-value="all" href="#">Hepsi</a></li>
+                        {{#each settings.allcoursetags}}
+                        <li><a data-value="{{@index}}" href="#">{{this}}</a></li>
+                        {{/each}}
+                        {{!--<li><a data-value="2" href="#">Special Courses</a></li>--}}
+                        {{!--<li><a data-value="3" href="#">Famouse Courses</a></li>--}}
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="gt_course_search_bar default_width">
                     <form>
-                        <input class="c_ph" type="search" placeholder="Search for course here">
+                        <input class="c_ph" type="search" placeholder="Ders araması">
                         <label><input type="submit" value="Search"></label>
                     </form>
                 </div>
@@ -30,26 +31,29 @@
 
         <!--Popular Courses List Wrap Start-->
         <div id="filterable-item-holder-1">
-            <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
+            {{#each courses}}
+            <div class="filterable-item all {{coursetags this.tags}} col-md-4 col-sm-6 col-xs-12">
                 <div class="gt_latest_course2_wrap default_width">
                     <figure>
-                        <img src="extra-images/latest-course-01.jpg" alt="">
+                        <img src="{{this.pic}}" alt="">
                         <figcaption>
-                            <div class="course_price">$20</div>
-                            <div class="course_category bg_1">Technology</div>
+                            <div class="course_price">{{this.price}}&#8378;</div>
+                            <div class="course_category bg_1">{{this.category}}</div>
                         </figcaption>
                     </figure>
                     <div class="gt_latest_course_des default_width">
-                        <h5><a href="#">Ask for what you want</a></h5>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
+                        <h5><a href="#">{{this.title}}</a></h5>
+                        {{this.description}}
                         <div class="gt_latest_course_author">
+                            {{#getInstructor this.instructorID}}
                             <figure>
-                                <img src="extra-images/latest-course-author.png" alt="">
+                                <img src="{{{image}}}" alt="{{{name}}}">
                             </figure>
                             <div class="course_author_des">
-                                <h6>Jhon Smith</h6>
-                                <span>Phd in Software dev.</span>
+                                <h6>{{{name}}}</h6>
+                                <span>{{{title}}}</span>
                             </div>
+                            {{/getInstructor}}
                         </div>
                         <div class="gt_course_apply">
                             <a data-toggle="modal" data-target="#apply_form" href="#">Apply</a>
@@ -57,60 +61,7 @@
                     </div> 
                 </div>
             </div>
-            <div class="filterable-item all 2 1 3 col-md-4 col-sm-6 col-xs-12">
-                <div class="gt_latest_course2_wrap default_width">
-                    <figure>
-                        <img src="extra-images/latest-course-02.jpg" alt="">
-                        <figcaption>
-                            <div class="course_price">$20</div>
-                            <div class="course_category bg_2">Technology</div>
-                        </figcaption>
-                    </figure>
-                    <div class="gt_latest_course_des default_width">
-                        <h5><a href="#">Little Singer Courses</a></h5>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
-                        <div class="gt_latest_course_author">
-                            <figure>
-                                <img src="extra-images/latest-course-author.png" alt="">
-                            </figure>
-                            <div class="course_author_des">
-                                <h6>Stephem Johns</h6>
-                                <span>Phd in Software dev.</span>
-                            </div>
-                        </div>
-                        <div class="gt_course_apply">
-                            <a data-toggle="modal" data-target="#apply_form" href="#">Apply</a>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <div class="filterable-item all 3 2 col-md-4 col-sm-6 col-xs-12">
-                <div class="gt_latest_course2_wrap default_width">
-                    <figure>
-                        <img src="extra-images/latest-course-03.jpg" alt="">
-                        <figcaption>
-                            <div class="course_price">$20</div>
-                            <div class="course_category bg_5">Artificial</div>
-                        </figcaption>
-                    </figure>
-                    <div class="gt_latest_course_des default_width">
-                        <h5><a href="#">DESIGNING WITH TYPE</a></h5>
-                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
-                        <div class="gt_latest_course_author">
-                            <figure>
-                                <img src="extra-images/latest-course-author.png" alt="">
-                            </figure>
-                            <div class="course_author_des">
-                                <h6>James Stewart</h6>
-                                <span>Phd in Software dev.</span>
-                            </div>
-                        </div>
-                        <div class="gt_course_apply">
-                            <a data-toggle="modal" data-target="#apply_form" href="#">Apply</a>
-                        </div>
-                    </div> 
-                </div>
-            </div>
+            {{/each}}
         </div>
         <div class="gt_view_more default_width">
             <a href="#">Load More</a>
