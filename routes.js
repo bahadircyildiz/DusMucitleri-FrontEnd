@@ -1,3 +1,8 @@
+//Fake data generator
+// var faker = require("faker");
+//HTML stripping tool
+var striptags = require("striptags")
+
 var Routes = function(app,dpd,express,Q){
     // Serve static files
     app.use('/static', express.static('./static'));
@@ -11,7 +16,7 @@ var Routes = function(app,dpd,express,Q){
         var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials"];
         var queries = {
             settings: {$limit: 1},
-            blog: {$limit: 9}
+            blog: {$limit: 9, $sort: { timeStamp: 1 } }
         };
         
         //Additional functions for tables if needed.
@@ -21,7 +26,7 @@ var Routes = function(app,dpd,express,Q){
                 if(res[0].siteKeywords){
                     var arr = res[0].siteKeywords, kw = "";
                     arr.forEach(function(key, index){
-                        kw += key;
+                        kw += key.text;
                         if(arr.length - 1 != index) kw += ",";
                     });
                     res[0].siteKeywords = kw;
@@ -43,6 +48,12 @@ var Routes = function(app,dpd,express,Q){
                     else right.push(val);
                 });
                 return {left: left, right: right};
+            },
+            blog: function(res){
+                res.forEach(function(val){
+                    val.body = striptags(val.body).substring(0,50);
+                })
+                return res;
             }
         };
         
@@ -74,7 +85,7 @@ var Routes = function(app,dpd,express,Q){
         });
     })
 
-    app.get("/naber",function(req,res){
+    app.get("/faker",function(req,res){
         res.send("Iyidir senden bro ? ");
     })
 }

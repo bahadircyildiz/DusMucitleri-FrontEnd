@@ -3,106 +3,107 @@
             <div class="container">
                 <!--Main Heading Wrap Start-->
                 <div class="gt_hdg_1 wow zoomIn">
-                    <h3>Latest News and Blog</h3>
-                    <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consec <span>tetuer adipis elit, aliquam eget nibh etlibura.</span></p>
+                    {{settings.contents.blog}}
                     <span><img src="images/hdg-01.png" alt=""></span>
                 </div>
                 <!--Main Heading Wrap End-->
 
                 <!--Latest News Wrap Start-->
                 <div class="gt_news_slider" id="gt_news_slider">
+                    {{#each blog}}
                     <div class="item">
                         <div class="gt_blog_wrap">
                             <figure>
                                 <img src="extra-images/blog-01.jpg" alt="">
-                                <figcaption class="gt_blog_figcaption">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-search"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </figcaption>
+                                {{!--<figcaption class="gt_blog_figcaption">--}}
+                                {{!--    <ul>--}}
+                                {{!--        <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
+                                {{!--        <li><a href="#"><i class="fa fa-expand"></i></a></li>--}}
+                                {{!--    </ul>--}}
+                                {{!--</figcaption>--}}
                             </figure>
                             <div class="gt_blog_des_wrap">
-                                <ul class="gt_blog_meta">
-                                    <li><i class="fa fa-calendar"></i>15 Sep 2016</li>
-                                    <li><i class="fa fa-heart"></i>17</li>
-                                    <li><i class="fa fa-comments"></i>04</li>
-                                </ul>
+                                {{!--<ul class="gt_blog_meta">--}}
+                                {{!--    <li><i class="fa fa-calendar"></i>15 Sep 2016</li>--}}
+                                {{!--    <li><i class="fa fa-heart"></i>17</li>--}}
+                                {{!--    <li><i class="fa fa-comments"></i>04</li>--}}
+                                {{!--</ul>--}}
                                 <h5><a href="#">How kids think about earth</a></h5>
                                 <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>
                                 <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="gt_blog_wrap">
-                            <figure>
-                                <img src="extra-images/blog-02.jpg" alt="">
-                                <figcaption class="gt_blog_figcaption">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-search"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </figcaption>
-                            </figure>
-                            <div class="gt_blog_des_wrap">
-                                <ul class="gt_blog_meta">
-                                    <li><i class="fa fa-calendar"></i>15 Sep 2016</li>
-                                    <li><i class="fa fa-heart"></i>17</li>
-                                    <li><i class="fa fa-comments"></i>04</li>
-                                </ul>
-                                <h5><a href="#">Standard Post With Preview Image</a></h5>
-                                <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>
-                                <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="gt_blog_wrap">
-                            <figure>
-                                <img src="extra-images/blog-03.jpg" alt="">
-                                <figcaption class="gt_blog_figcaption">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-search"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </figcaption>
-                            </figure>
-                            <div class="gt_blog_des_wrap">
-                                <ul class="gt_blog_meta">
-                                    <li><i class="fa fa-calendar"></i>15 Sep 2016</li>
-                                    <li><i class="fa fa-heart"></i>17</li>
-                                    <li><i class="fa fa-comments"></i>04</li>
-                                </ul>
-                                <h5><a href="#">How kids think about earth</a></h5>
-                                <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>
-                                <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="gt_blog_wrap">
-                            <figure>
-                                <img src="extra-images/blog-04.jpg" alt="">
-                                <figcaption class="gt_blog_figcaption">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-search"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </figcaption>
-                            </figure>
-                            <div class="gt_blog_des_wrap">
-                                <ul class="gt_blog_meta">
-                                    <li><i class="fa fa-calendar"></i>15 Sep 2016</li>
-                                    <li><i class="fa fa-heart"></i>17</li>
-                                    <li><i class="fa fa-comments"></i>04</li>
-                                </ul>
-                                <h5><a href="#">How kids think about earth</a></h5>
-                                <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>
-                                <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    {{/each}}
+                    {{!--<div class="item">--}}
+                    {{!--    <div class="gt_blog_wrap">--}}
+                    {{!--        <figure>--}}
+                    {{!--            <img src="extra-images/blog-02.jpg" alt="">--}}
+                    {{!--            <figcaption class="gt_blog_figcaption">--}}
+                    {{!--                <ul>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-expand"></i></a></li>--}}
+                    {{!--                </ul>--}}
+                    {{!--            </figcaption>--}}
+                    {{!--        </figure>--}}
+                    {{!--        <div class="gt_blog_des_wrap">--}}
+                    {{!--            <ul class="gt_blog_meta">--}}
+                    {{!--                <li><i class="fa fa-calendar"></i>15 Sep 2016</li>--}}
+                    {{!--                <li><i class="fa fa-heart"></i>17</li>--}}
+                    {{!--                <li><i class="fa fa-comments"></i>04</li>--}}
+                    {{!--            </ul>--}}
+                    {{!--            <h5><a href="#">Standard Post With Preview Image</a></h5>--}}
+                    {{!--            <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>--}}
+                    {{!--            <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>--}}
+                    {{!--        </div>--}}
+                    {{!--    </div>--}}
+                    {{!--</div>--}}
+                    {{!--<div class="item">--}}
+                    {{!--    <div class="gt_blog_wrap">--}}
+                    {{!--        <figure>--}}
+                    {{!--            <img src="extra-images/blog-03.jpg" alt="">--}}
+                    {{!--            <figcaption class="gt_blog_figcaption">--}}
+                    {{!--                <ul>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-expand"></i></a></li>--}}
+                    {{!--                </ul>--}}
+                    {{!--            </figcaption>--}}
+                    {{!--        </figure>--}}
+                    {{!--        <div class="gt_blog_des_wrap">--}}
+                    {{!--            <ul class="gt_blog_meta">--}}
+                    {{!--                <li><i class="fa fa-calendar"></i>15 Sep 2016</li>--}}
+                    {{!--                <li><i class="fa fa-heart"></i>17</li>--}}
+                    {{!--                <li><i class="fa fa-comments"></i>04</li>--}}
+                    {{!--            </ul>--}}
+                    {{!--            <h5><a href="#">How kids think about earth</a></h5>--}}
+                    {{!--            <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>--}}
+                    {{!--            <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>--}}
+                    {{!--        </div>--}}
+                    {{!--    </div>--}}
+                    {{!--</div>--}}
+                    {{!--<div class="item">--}}
+                    {{!--    <div class="gt_blog_wrap">--}}
+                    {{!--        <figure>--}}
+                    {{!--            <img src="extra-images/blog-04.jpg" alt="">--}}
+                    {{!--            <figcaption class="gt_blog_figcaption">--}}
+                    {{!--                <ul>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
+                    {{!--                    <li><a href="#"><i class="fa fa-expand"></i></a></li>--}}
+                    {{!--                </ul>--}}
+                    {{!--            </figcaption>--}}
+                    {{!--        </figure>--}}
+                    {{!--        <div class="gt_blog_des_wrap">--}}
+                    {{!--            <ul class="gt_blog_meta">--}}
+                    {{!--                <li><i class="fa fa-calendar"></i>15 Sep 2016</li>--}}
+                    {{!--                <li><i class="fa fa-heart"></i>17</li>--}}
+                    {{!--                <li><i class="fa fa-comments"></i>04</li>--}}
+                    {{!--            </ul>--}}
+                    {{!--            <h5><a href="#">How kids think about earth</a></h5>--}}
+                    {{!--            <p>Lorem Ipsum proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsumnibh id elit. </p>--}}
+                    {{!--            <a href="#">Read More <i class="fa fa-arrow-circle-o-right"></i></a>--}}
+                    {{!--        </div>--}}
+                    {{!--    </div>--}}
+                    {{!--</div>--}}
                 </div>
                 <!--Latest News Wrap End-->
 
