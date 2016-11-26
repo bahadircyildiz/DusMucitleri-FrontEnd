@@ -4,9 +4,9 @@
              <ul class="swiper-wrapper">
                  {{#each slider.banner}}
                 <li class="swiper-slide">
-                    <img src="{{this.link}}" alt="{{this.title}}">
-                    <div class="gt_banner_text gt_slide_1">
-                        {{this.description}}
+                    <img src="{{{image}}}" alt="{{{title}}}">
+                    <div class="gt_banner_text gt_slide_{{@index}}">
+                        {{{description}}}
                     </div>
                 </li>
                 {{/each}}

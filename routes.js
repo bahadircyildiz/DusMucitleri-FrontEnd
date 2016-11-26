@@ -1,5 +1,5 @@
 //Fake data generator
-// var faker = require("faker");
+var f = require("faker");
 //HTML stripping tool
 var striptags = require("striptags")
 
@@ -86,7 +86,72 @@ var Routes = function(app,dpd,express,Q){
     })
 
     app.get("/faker",function(req,res){
-        res.send("Iyidir senden bro ? ");
+        var fake = {
+            blog: function(){
+                return {
+                    title: f.lorem.sentence(),
+                    body: f.lorem.paragraph(),
+                    timeStamp: f.date.past() 
+                }
+            },
+            courses: function(){
+                return {
+                    title: f.lorem.sentence(),
+                    description: f.lorem.paragraph(),
+                    price: f.random.number(),
+                    ribbon: {
+                        color: f.internet.color(),
+                        category: f.random.word()
+                    }
+                }
+            },
+            slider: function(){
+                var ret = {
+                    title: f.lorem.sentence(),
+                    description: f.lorem.paragraph(),
+                    isBanner: f.random.boolean()
+                }
+                ret.image = ret.isBanner ? f.random.image() : f.image.avatar();
+                return ret;
+            }
+            
+        }, created = {}, calls = [], tables = ["blog", "courses", "slider"]
+        
+        
+        tables.forEach(function(val, index){
+            created[val] = [];
+            var amount = req.query[val] || 0;
+            for (var x=0 ; x<amount ; x++){
+                var fakedata = fake[val]();
+                fakedata.active = true;
+                console.log(fakedata);
+                var deferred = Q.defer();
+                calls.push(
+                    dpd[val].post(fakedata).then(
+                        function(success){
+                            deferred.resolve(success);
+                            created[val].push(success);
+                            return deferred.promise;
+                        },
+                        function(error){
+                            deferred.reject(error);
+                            return deferred.promise;
+                        }
+                    )
+                );
+            }
+        });
+        
+        Q.all(calls).then(function(){
+            res.send("Done without errors"); 
+        }).catch(function(error){
+            console.log(error);
+        });
+        
+        
+        
+        console.log();
+        res.send();
     })
 }
 

@@ -33,7 +33,7 @@ var hbs = exphbs.create({
             if(a == b) return options.fn(this);
             else return options.inverse(this);
         },
-        coursetags: function (coursetags, options){
+        coursetags: function (coursetags = [], options){
             var index = "";
             var allcoursetags = options.data.root.settings.allcoursetags;
             coursetags.forEach(function(val){

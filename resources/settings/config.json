@@ -33,12 +33,12 @@
 			"id": "siteKeywords",
 			"order": 3
 		},
-		"siteActive": {
-			"name": "siteActive",
-			"type": "boolean",
-			"typeLabel": "boolean",
+		"logo": {
+			"name": "logo",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "siteActive",
+			"id": "logo",
 			"order": 4
 		},
 		"facebook": {
@@ -136,6 +136,14 @@
 			"required": false,
 			"id": "allcoursetags",
 			"order": 16
+		},
+		"siteActive": {
+			"name": "siteActive",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "siteActive",
+			"order": 17
 		}
 	}
 }

@@ -1,1 +1,60 @@
-This is the footer &copy; 2017
+ <!--Jquery Library-->
+    <script src="static/js/jquery.js"></script>
+    <!--Bootstrap core JavaScript-->
+    <script src="static/js/bootstrap.min.js"></script>
+    <!--Swiper JavaScript-->
+    <script src="static/js/swiper.jquery.min.js"></script>
+    <!--Single Page JavaScript-->
+    <script src="static/js/jquery.singlePageNav.js"></script>
+    <!--Count Down JavaScript-->
+    <script src="static/js/jquery.downCount.js"></script>
+    <!--Owl Carousel JavaScript-->
+	<script src="static/js/owl.carousel.js"></script>
+    <!--Number Count (Waypoint) JavaScript-->
+	<script src="static/js/waypoints-min.js"></script>
+    <!--Filter able JavaScript-->
+    <script src="static/js/jquery-filterable.js"></script>
+    <!--Contact Form Validation JavaScript-->
+    <script src="static/js/pluginse209.js"></script>
+    <!--Custom JavaScript-->
+	<script src="static/js/custom.js"></script>
+    <script type="text/javascript">
+    /*
+      ==============================================================
+           Sticky Navigation Script
+      ==============================================================
+    */
+    if($('.gt_top3_menu').length){
+        // grab the initial top offset of the navigation 
+        var stickyNavTop = $('.gt_top3_menu').offset().top;
+        // our function that decides weather the navigation bar should have "fixed" css position or not.
+        var stickyNav = function(){
+            var scrollTop = $(window).scrollTop(); // our current vertical position from the top
+            // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+            // otherwise change it back to relative
+            if (scrollTop > stickyNavTop) { 
+                $('.gt_top3_menu').addClass('gt_sticky');
+            } else {
+                $('.gt_top3_menu').removeClass('gt_sticky'); 
+            }
+        };
+        stickyNav();
+        // and run it again every time you scroll
+        $(window).scroll(function() {
+            stickyNav();
+        });
+    }
+    if($('.single-page').length){
+        $('.single-page').singlePageNav({
+            offset: $('.kode_pet_navigation').outerHeight(),
+            filter: ':not(.external)',
+            updateHash: true,
+            beforeStart: function() {
+                console.log('begin scrolling');
+            },
+            onComplete: function() {
+                console.log('done scrolling');
+            }
+        });
+    }
+    </script>
