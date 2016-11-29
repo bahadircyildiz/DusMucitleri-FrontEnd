@@ -17,13 +17,21 @@
 			"id": "description",
 			"order": 1
 		},
+		"color": {
+			"name": "color",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "color",
+			"order": 2
+		},
 		"active": {
 			"name": "active",
 			"type": "boolean",
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "active",
-			"order": 2
+			"order": 3
 		}
 	}
 }

@@ -1,7 +1,11 @@
 //Fake data generator
 var f = require("faker");
 //HTML stripping tool
-var striptags = require("striptags")
+var striptags = require("striptags");
+
+var globals = {
+    instructorIDs: ["b11cb1c5be508b49", "04362a43cbb648f1", "f820abc77c5969d5", "d0cb61d7abe48b51"]
+}
 
 var Routes = function(app,dpd,express,Q){
     // Serve static files
@@ -54,6 +58,12 @@ var Routes = function(app,dpd,express,Q){
                     val.body = striptags(val.body).substring(0,50);
                 })
                 return res;
+            },
+            courses: function(res){
+                res.forEach(function(val){
+                    val.body = striptags(val.body).substring(0,50);
+                })
+                return res;
             }
         };
         
@@ -61,19 +71,27 @@ var Routes = function(app,dpd,express,Q){
         tables.forEach(function(val){
             var query = queries[val] || {};
             query.active = true;
+            var deferred = Q.defer();
             calls.push( 
-                dpd[val].get(query, function(results, err){
+                dpd[val].get(query).then(function(results){
                     if(extras[val]) results = extras[val](results);
                     data[val] = results;
+                    deferred.resolve(results);
+                    return deferred.promise;
+                }, function(error){
+                    deferred.reject(error);
+                    return deferred.promise;
                 })
             );
         });
         
         //Async call handler that activates after all tasks are finished.
-        Q.all(calls).then(function(results, err){
-            // console.log("Data with all async calls completed", data);
+        Q.all(calls).then(function(results){
+            console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data);
+        }).catch(function(error){
+            res.send(error);
         });
         
     });
@@ -86,19 +104,27 @@ var Routes = function(app,dpd,express,Q){
     })
 
     app.get("/faker",function(req,res){
+        
         var fake = {
             blog: function(){
-                return {
+                var ret = {
                     title: f.lorem.sentence(),
                     body: f.lorem.paragraph(),
-                    timeStamp: f.date.past() 
+                    timeStamp: f.date.past(),
+                    image: f.random.image(),
+                    date: f.date.recent(),
+                    tags: f.random.arrayElement()
                 }
+                ret.timeStamp = ret.date.getTime() / 1000;
+                return ret;
             },
             courses: function(){
                 return {
                     title: f.lorem.sentence(),
-                    description: f.lorem.paragraph(),
-                    price: f.random.number(),
+                    description: f.lorem.sentence(),
+                    price: Math.floor(Math.random()*80),
+                    image: f.random.image(),
+                    instructorID: globals.instructorIDs[Math.floor(Math.random()*3)],
                     ribbon: {
                         color: f.internet.color(),
                         category: f.random.word()
@@ -113,21 +139,63 @@ var Routes = function(app,dpd,express,Q){
                 }
                 ret.image = ret.isBanner ? f.random.image() : f.image.avatar();
                 return ret;
+            },
+            instructors: function(){
+                return {
+                    name: f.name.findName(),
+                    title: f.name.jobTitle(),
+                    description: f.name.jobDescriptor(),
+                    email: f.internet.email(),
+                    phone: f.phone.phoneNumber(),
+                    image: f.image.avatar()
+                }
+            },
+            contents: function(){
+                var cats = ["offers", "facts", "courses", "gallery", "instructors", "testimonials", "aboutus","contactus"], ret = {};
+                cats.forEach(function(val){
+                    ret[val] = {
+                        body: f.lorem.paragraph(), title: f.lorem.sentence(), 
+                        image_bg: f.random.image(), image: f.image.avatar()
+                        
+                    }
+                });
+                return ret;
+            },
+            facts: function(){
+                return{
+                    number: Math.floor(Math.random()*80),
+                    description: f.name.jobTitle(),
+                    color: f.internet.color()
+                }
+            },
+            offers: function(){
+                return{
+                    icon: "fa fa-pencil",
+                    title: f.random.words(),
+                    description: f.lorem.sentence(),
+                    color: f.internet.color()
+                }
             }
             
-        }, created = {}, calls = [], tables = ["blog", "courses", "slider"]
+        }, created = {}, calls = [];
         
+        for (var val in req.query) {
+            // skip loop if the property is from prototype
+            if (!req.query.hasOwnProperty(val)) continue;
         
-        tables.forEach(function(val, index){
             created[val] = [];
+            var isPut = val == "contents";
             var amount = req.query[val] || 0;
             for (var x=0 ; x<amount ; x++){
-                var fakedata = fake[val]();
-                fakedata.active = true;
-                console.log(fakedata);
                 var deferred = Q.defer();
+                var fakedata = fake[val]();
+                isPut ? 
+                    (fakedata = {id: "ede2dfe3773df8b7"}, fakedata[val] = fake[val]()) : 
+                    fakedata.active = true;
+                var table = isPut ? "settings" : val;
+                var type = isPut ? "put" : "post";
                 calls.push(
-                    dpd[val].post(fakedata).then(
+                    dpd[table][type](fakedata).then(
                         function(success){
                             deferred.resolve(success);
                             created[val].push(success);
@@ -140,18 +208,13 @@ var Routes = function(app,dpd,express,Q){
                     )
                 );
             }
-        });
+        }
         
-        Q.all(calls).then(function(){
-            res.send("Done without errors"); 
+        Q.all(calls).then(function(data){
+            res.send(created); 
         }).catch(function(error){
-            console.log(error);
+            res.send(error);
         });
-        
-        
-        
-        console.log();
-        res.send();
     })
 }
 

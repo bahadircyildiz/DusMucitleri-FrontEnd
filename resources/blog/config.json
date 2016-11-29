@@ -48,6 +48,14 @@
 			"required": false,
 			"id": "active",
 			"order": 5
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 6
 		}
 	}
 }

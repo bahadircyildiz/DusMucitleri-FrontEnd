@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "active",
 			"order": 3
+		},
+		"color": {
+			"name": "color",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "color",
+			"order": 4
 		}
 	}
 }

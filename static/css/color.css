@@ -114,7 +114,7 @@ ul.gt_plan_offer_list li:before,
 ul.gt_plan_offer_list li:hover a
 /*Index 03 Css*/
 {
-	color:#80cd33;	
+	color:#565655;	
 }
 
 
@@ -223,7 +223,7 @@ ul.gt_product_ui_element li:hover a,
 .gt_price_plan_wrap > a:hover
 /*Index 03 Css*/
 {
-	background-color:#80cd33;	
+	background-color:#00a296;	
 }
 
 
@@ -313,7 +313,7 @@ ul.gt_product_ui_element li a,
 /*Select your Price and Plan Wrap Start*/
 /*Index 03 Css*/
 {
-	border-color:#80cd33;	
+	border-color:#00a296;	
 }
 
 
@@ -642,16 +642,16 @@ ul.gt_product_ui_element li a i,
 	  ============================================================
 */
 .gt-main-menu:before{
-	border-color: transparent transparent #75bb2f transparent;
+	border-color: transparent transparent #00a296 transparent;
 }
 .gt-main-menu:after{
-	border-color: transparent transparent transparent #75bb2f;
+	border-color: transparent transparent transparent #00a296;
 }
 .gt_testimonial_wrap:before{
 	border-color: #fff transparent transparent transparent;	
 }
 .gt_testimonial_slider .owl-item .item:hover .gt_testimonial_wrap:before{
-	border-color: #80cd33 transparent transparent transparent;
+	border-color: #00a296 transparent transparent transparent;
 }
 /*
 	  ============================================================
@@ -659,7 +659,7 @@ ul.gt_product_ui_element li a i,
 	  ============================================================
 */
 .gt_gallery_slider .owl-item.center .gt_gallery_wrap img{
-	outline: 15px solid #80cd33
+	outline: 15px solid #00a296
 }
 /*
 	  ============================================================
@@ -668,10 +668,10 @@ ul.gt_product_ui_element li a i,
 */
 @media (max-width: 992px) {
 	.gt_hdr3_navigation ul ul{
-		background-color: #80cd33;
+		background-color: #00a296;
 	}
 	.gt_hdr3_navigation ul ul li:hover a{
-		color: #80cd33;
+		color: #00a296;
 	}
 }
 /*
@@ -680,14 +680,14 @@ ul.gt_product_ui_element li a i,
 	  ============================================================
 */
 ::selection {
-    background: #80cd33;
+    background: #00a296;
     color:#ffffff;
 }
 ::-webkit-selection {
-    background: #80cd33;
+    background: #00a296;
     color: #ffffff;
 }
 ::-moz-selection {
-    background: #80cd33;
+    background: #00a296;
     color: #ffffff;
 }

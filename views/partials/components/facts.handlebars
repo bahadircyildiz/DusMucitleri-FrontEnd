@@ -2,8 +2,9 @@
         <section class="fact_figure_bg wow fadeInUp">
             <div class="container">
                 <div class="gt_hdg_1 wow zoomIn white_hdg">
-                    {{contents.facts}}
-                    <span><img src="images/hdg-01.png" alt=""></span>
+                    <h3> {{settings.contents.facts.title}}</h3>
+                    <p> {{settings.contents.facts.body}}</p> {{contents.facts}}
+                    <span><img src="static/images/hdg-01.png" alt=""></span>
                 </div>
                 <div class="row">
                     {{#each facts}}
@@ -12,7 +13,7 @@
                             <h2 class="counter">{{this.number}}</h2>
                             <span>{{this.description}}</span>
                          </div>
-                         <span class="facts_border bg_1"></span>
+                         <span class="facts_border facts_bg_{{@index}}"></span>
                     </div>
                     {{/each}}
                     {{!--<div class="col-md-3 col-sm-6">--}}

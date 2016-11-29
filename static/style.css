@@ -403,7 +403,7 @@ section{
 	background-color: #fff;
 }
 .gt_top3_wrap{
-	background-color: #333333; 
+	background-color: #00a296; 
 }
 .gt_top3_wrap:before{
 	content: "";
@@ -423,8 +423,8 @@ section{
 	width: auto;
 	position: relative;
 	padding: 0px 10px;
-	border-left: 1px solid #484848;
-	border-right: 1px solid #484848;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
 }
 ul.gt_hdr3_scl_icon{
 	float: left;
@@ -450,7 +450,7 @@ ul.gt_hdr3_scl_icon li a{
 .gt_hdr_3_ui_element > ul > li{
 	display: inline-block;
 	position: relative;
-	border-right: 1px solid #484848;
+	border-right: 1px solid #fff;
 	color: #fff;
 	padding: 12px 20px;
 }
@@ -466,8 +466,8 @@ ul.gt_hdr3_scl_icon li a{
 	padding: 10px 10px 11px;
 	position: relative;
 	width: 240px;
-	border-left: 1px solid #484848;
-	border-right: 1px solid #484848;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
 }
 .gt_hdr3_search form{
 	width: 100%;
@@ -849,21 +849,21 @@ ul.gt_hdr3_scl_icon li a{
 .gt_main_services a:hover{
 	background-color: #222;
 }
-.bg_1{
-	background:#f64c1e;
-}
-.bg_2{
-	background:#008dd2;
-}
-.bg_3{
-	background:#fc0018;
-}
-.bg_5{
-	background:#efc336;
-}
-.bg_6{
-	background:#896ac3;
-}
+/*.bg_1{*/
+/*	background:#f64c1e;*/
+/*}*/
+/*.bg_2{*/
+/*	background:#008dd2;*/
+/*}*/
+/*.bg_3{*/
+/*	background:#fc0018;*/
+/*}*/
+/*.bg_5{*/
+/*	background:#efc336;*/
+/*}*/
+/*.bg_6{*/
+/*	background:#896ac3;*/
+/*}*/
 .gt_main_services:hover{
 	background-color: #222;
 }
@@ -1405,7 +1405,7 @@ ul.gt_hdr3_scl_icon li a{
 	background-color: #fff;
 }
 .gt_latest_course2_wrap:hover .course_price:before{
-	background-color: #75bb2f;
+	background-color: #00a296;
 }
 /*
 	  ==============================================================

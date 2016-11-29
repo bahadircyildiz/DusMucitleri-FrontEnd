@@ -15,4 +15,33 @@
     <link href="static/css/color.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="static/css/responsive.css" rel="stylesheet">
+    <style>
+        {{#each facts}}
+        .facts_bg_{{@index}}{
+        	background:{{{color}}};
+        }
+        {{/each}}
+        {{#each settings.flips}}
+        .flips_bg_{{@index}}{
+        	background:{{{color}}};
+        }
+        {{/each}}
+        {{#each courses}}
+        .courses_bg_{{@index}}{
+        	background:{{{ribbon.color}}};
+        }
+        .course_category.courses_bg_{{@index}}:before{
+        	border-color: transparent transparent transparent {{{ribbon.color}}};
+        }
+        {{/each}}
+        {{#each offers}}
+        .offers_bg_{{@index}}{
+        	background:{{{color}}};
+        }
+        .bg_offer_{{@index}}{
+            border: 2px solid {{{color}}};
+        }
+        {{/each}}
+        
+    </style>
 </head>
