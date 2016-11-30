@@ -1056,6 +1056,7 @@ ul.gt_hdr3_scl_icon li a{
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	background-color: rgb(0, 162, 150);
 }
 .fact_figure_bg:before{
 	content: "";
@@ -1067,6 +1068,7 @@ ul.gt_hdr3_scl_icon li a{
 	background-repeat: repeat;
 	background-position: center;
 	opacity: 0.75;
+
 }
 .gt_facts_wrap h2{
 	display: inline-block;
@@ -1749,6 +1751,7 @@ ul.gt_hdr3_scl_icon li a{
 	background-size: cover;
 	background-position: center;
 	padding-bottom: 65px;
+	background-color: rgb(0, 162, 150);
 }
 .gt_testimonial_bg:before{
 	content: "";
@@ -2277,7 +2280,7 @@ ul.gt_blog_meta li i{
     bottom: 10px;
     right: 30px;
     left: 0px;
-    border: 3px solid #80cd33;
+    /*border: 3px solid #80cd33;*/
     z-index: -1;
 }
 .gt_about_img img{

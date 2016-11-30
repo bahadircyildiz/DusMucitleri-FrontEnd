@@ -16,6 +16,13 @@
     <!-- Responsive CSS -->
     <link href="static/css/responsive.css" rel="stylesheet">
     <style>
+        /*Linear Gradient gives background color*/
+        .fact_figure_bg:before{
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url({{settings.contents.facts.image_bg}});
+        }
+        .gt_testimonial_bg:before{
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{settings.contents.testimonials.image_bg}});
+        }
         {{#each facts}}
         .facts_bg_{{@index}}{
         	background:{{{color}}};
@@ -34,14 +41,81 @@
         	border-color: transparent transparent transparent {{{ribbon.color}}};
         }
         {{/each}}
-        {{#each offers}}
-        .offers_bg_{{@index}}{
+        
+        /*Offer CSS's*/
+        {{#each offers.left}}
+        .offers_left_bg_{{@index}}{
         	background:{{{color}}};
         }
-        .bg_offer_{{@index}}{
-            border: 2px solid {{{color}}};
+        .bg_offer_left_{{@index}}{
+        	border: 2px solid {{{color}}};
+        }
+        .gt_offer_wrap.bg_offer_left_{{@index}}:hover{
+        	background-color:{{{color}}};
+        }
+        .gt_offer_wrap:hover.bg_offer_left_{{@index}}:before{
+        	border:1px solid {{{color}}};
+        }
+        .gt_wht_offer_wrap > i.offers_left_bg_{{@index}}:after{
+        	border: 2px dotted {{{color}}};
+        }
+        .gt_wht_offer_des span.bg_offer_left_{{@index}}{
+        	background-color: {{{color}}};
+        }
+        .gt_wht_offer_wrap:hover i.offers_left_bg_{{@index}}:after{background-color:{{{color}}};}
+        .bg_offer_left_{{@index}}:before{
+        	content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0px;
+            right: 0px;
+        	opacity: 0;
+        }
+        
+        .gt_offer_wrap:hover.bg_offer_left_{{@index}}:before{
+        	bottom: -10px;
+            right: -10px;
+            opacity: 1;
         }
         {{/each}}
         
+        
+        {{#each offers.right}}
+        .offers_right_bg_{{@index}}{
+        	background:{{{color}}};
+        }
+        .bg_offer_right_{{@index}}{
+        	border: 2px solid {{{color}}};
+        }
+        .gt_offer_wrap.bg_offer_right_{{@index}}:hover{
+        	background-color:{{{color}}};
+        }
+        .gt_offer_wrap:hover.bg_right_left_{{@index}}:before{
+        	border:1px solid {{{color}}};
+        }
+        .gt_wht_offer_wrap > i.offers_right_bg_{{@index}}:after{
+        	border: 2px dotted {{{color}}};
+        }
+        .gt_wht_offer_des span.bg_offer_right_{{@index}}{
+        	background-color: {{{color}}};
+        }
+        .gt_wht_offer_wrap:hover i.offers_right_bg_{{@index}}:after{background-color:{{{color}}};}
+        .bg_offer_right_{{@index}}:before{
+        	content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0px;
+            right: 0px;
+        	opacity: 0;
+        }
+        
+        .gt_offer_wrap:hover.bg_offer_right_{{@index}}:before{
+        	bottom: -10px;
+            right: -10px;
+            opacity: 1;
+        }
+        {{/each}}
     </style>
 </head>

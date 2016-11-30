@@ -141,8 +141,8 @@
 	.event_list_detail{width: 100%;margin: 0px 0px 30px;}
 	.event_list_item ul{width: 100%;margin: 0px;}
 	.gt_top3_scl_icon,.gt_hdr_3_ui_element,.gt_hdr3_search{width: 100%;text-align: center;}
-	.gt_top3_scl_icon,.gt_hdr_3_ui_element{border-bottom: 1px solid #484848;}
-	.gt_hdr_3_ui_element{border-left: 1px solid #484848;border-right: 1px solid #484848;}
+	.gt_top3_scl_icon,.gt_hdr_3_ui_element{border-bottom: 1px solid #fff;}
+	.gt_hdr_3_ui_element{border-left: 1px solid #fff;border-right: 1px solid #fff;}
 	.gt_hdr_3_ui_element ul li{width: 100%;border-right:0px;}
 	.gt_hdr_3_ui_element ul li:last-child{border-right: 0px;}
 	.gt_course_tab_list ul li{margin-bottom: 5px;}
@@ -152,7 +152,7 @@
 	.gt_banner_text.gt_slide_3 h3{font-size: 25px;line-height: 25px;margin: 0px 0px 5px;}
 	.gt_banner_text.gt_slide_3 h2{font-size: 30px;line-height: 22px;margin: 0px 0px 5px;}
 	.gt_hdr_3_ui_element > ul > li:nth-child(2){border-right: 0px;}
-	.gt_hdr_3_ui_element > ul > li:nth-child(3){width: 100%;border-top: 1px solid #484848;}
+	.gt_hdr_3_ui_element > ul > li:nth-child(3){width: 100%;border-top: 1px solid #fff;}
 	.gt_hdr_3_ui_element ul li ul,.gt_hdr_3_ui_element ul ul li{width: 100%;}
 	.gt_hdr_3_ui_element ul li ul{left: 0px;}
 	.top_navi_caption ul li{width: 100%;margin-bottom: 15px;padding:0px;}

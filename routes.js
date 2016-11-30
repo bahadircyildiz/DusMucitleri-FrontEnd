@@ -20,7 +20,8 @@ var Routes = function(app,dpd,express,Q){
         var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials"];
         var queries = {
             settings: {$limit: 1},
-            blog: {$limit: 9, $sort: { timeStamp: 1 } }
+            blog: {$limit: 9, $sort: { timeStamp: 1 } },
+            facts: {$limit: 6}
         };
         
         //Additional functions for tables if needed.

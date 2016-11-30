@@ -47,6 +47,25 @@ var hbs = exphbs.create({
                 if(val.id == id) result = val;
             });
             return options.fn(result);
+        },
+        math: function(lvalue, operator, rvalue, options) {
+            lvalue = parseFloat(lvalue);
+            rvalue = parseFloat(rvalue);
+                
+            return {
+                "+": lvalue + rvalue,
+                "-": lvalue - rvalue,
+                "*": lvalue * rvalue,
+                "/": lvalue / rvalue,
+                "%": lvalue % rvalue
+            }[operator];
+        },
+        count: function(array, count, options){
+            var res = '';
+            for(var x=0; x<count; x++){
+                res += options.fn(array[x]);   
+            }
+            return res;
         }
     }
 })
