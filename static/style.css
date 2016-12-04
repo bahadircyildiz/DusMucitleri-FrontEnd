@@ -1054,7 +1054,7 @@ ul.gt_hdr3_scl_icon li a{
 .fact_figure_bg{
 	background-image:url(images/fact_figure_bg.png);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% 100%;
 	background-position: center;
 	background-color: rgb(0, 162, 150);
 }
@@ -1065,7 +1065,8 @@ ul.gt_hdr3_scl_icon li a{
 	width:100%;
 	height: 100%;
 	background-image: url(images/testimonial-overlay.png);
-	background-repeat: repeat;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 	background-position: center;
 	opacity: 0.75;
 
@@ -2748,7 +2749,7 @@ input[aria-invalid="true"] {
 .gt_pagination_outer_wrap ul li {
 	position: relative;
 	display: inline-block;
-	margin: 0px -3px 0px 0px;
+	/*margin: 0px -3px 0px 0px;*/
 }
 .gt_pagination_outer_wrap ul li a {
 	display: block;

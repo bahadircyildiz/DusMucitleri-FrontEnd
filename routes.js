@@ -3,11 +3,11 @@ var f = require("faker");
 //HTML stripping tool
 var striptags = require("striptags");
 
-var globals = {
-    instructorIDs: ["b11cb1c5be508b49", "04362a43cbb648f1", "f820abc77c5969d5", "d0cb61d7abe48b51"]
-}
-
 var Routes = function(app,dpd,express,Q){
+    
+    //Global standarts within views
+    var global = require("./globals.js")(dpd, Q);
+    
     // Serve static files
     app.use('/static', express.static('./static'));
     
@@ -19,25 +19,16 @@ var Routes = function(app,dpd,express,Q){
         //Database calling parameters
         var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials"];
         var queries = {
-            settings: {$limit: 1},
+            settings: global.queries.settings,
             blog: {$limit: 9, $sort: { timeStamp: 1 } },
-            facts: {$limit: 6}
+            facts: {$limit: 6},
+            navigation: global.queries.navigation
         };
         
         //Additional functions for tables if needed.
         var extras = {
-            settings: function(res){
-                //Arranging keywords for further SEO optimizations
-                if(res[0].siteKeywords){
-                    var arr = res[0].siteKeywords, kw = "";
-                    arr.forEach(function(key, index){
-                        kw += key.text;
-                        if(arr.length - 1 != index) kw += ",";
-                    });
-                    res[0].siteKeywords = kw;
-                }
-                return res[0];
-            },
+            settings: function(res) { return global.extras.settings(res) },
+            navigation: function(res) { return global.extras.navigation(res) },
             slider: function(res){
                 var banner = [], gallery = []; 
                 res.forEach(function(val){
@@ -65,30 +56,23 @@ var Routes = function(app,dpd,express,Q){
                     val.body = striptags(val.body).substring(0,50);
                 })
                 return res;
-            }
+            },
         };
         
         //Create async fuctions by the params in tables & queries
-        tables.forEach(function(val){
-            var query = queries[val] || {};
-            query.active = true;
-            var deferred = Q.defer();
-            calls.push( 
-                dpd[val].get(query).then(function(results){
-                    if(extras[val]) results = extras[val](results);
-                    data[val] = results;
-                    deferred.resolve(results);
-                    return deferred.promise;
-                }, function(error){
-                    deferred.reject(error);
-                    return deferred.promise;
-                })
-            );
-        });
+        global.callAsyncAll({
+                        tables: tables, 
+                        queries: queries, 
+                        extras: extras
+                    },
+                    {
+                        data: data, 
+                        calls: calls
+                    });
         
         //Async call handler that activates after all tasks are finished.
         Q.all(calls).then(function(results){
-            console.log("Data with all async calls completed", data);
+            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data);
         }).catch(function(error){
@@ -97,12 +81,95 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
-    app.get("/dpd",function(req,res){
-        dpd.navigation.get(function(results, err) {
-            console.log("DATA:",results);
-            res.send(results);
+    app.get("/blog/:page",function(req,res){
+        var data = {}, calls = [], pageSize = 5;
+        data.page = req.params.page;
+        //Database calling parameters
+        var tables = ["settings","blog","navigation"];
+        var queries = {
+            settings: global.queries.settings,
+            navigation: global.queries.navigation,
+            blog: {$sort: { timeStamp: -1 } }
+        };
+        
+        //Additional functions for tables if needed.
+        var extras = {
+            settings: function(res){ return global.extras.settings(res); },
+            blog: function(res){
+                var $skip = pageSize * (data.page - 1), $limit = (res.length - $skip >= pageSize) ? pageSize : res.length - $skip;
+                data.lastPage = Math.ceil(res.length / pageSize);
+                res = res.slice($skip, $skip+$limit);
+                // console.log("All dem shitz", $skip, $limit, data.lastPage, res );
+                res.forEach(function(val){
+                    val.body = striptags(val.body).substring(0,200);
+                });
+                return res;
+            },
+            navigation: function(res){ return global.extras.navigation(res); }
+        };
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll({
+                        tables: tables, 
+                        queries: queries, 
+                        extras: extras
+                    },
+                    {
+                        data: data, 
+                        calls: calls
+                    });
+        
+        Q.all(calls).then(function(results){
+            // console.log("Data with all async calls completed", data);
+            //Send them bitchslaps
+            if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
+            else res.render('pages/blog',data);
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
         });
-    })
+    });
+    
+    app.get("/blog/details/:id",function(req,res){
+        var data = {}, calls = [];
+
+        //Database calling parameters
+        var tables = ["settings","blog","navigation"];
+        var queries = {
+            settings: global.queries.settings,
+            navigation: global.queries.navigation,
+            blog: {id: req.params.id}
+        };
+        var extras = {
+            settings: function(res){ return global.extras.settings(res); },
+            blog: function(res){
+                return res[0] ? res[0] : false;
+            },
+            navigation: function(res){ return global.extras.navigation(res); }
+        };
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll({
+                        tables: tables, 
+                        queries: queries, 
+                        extras: extras
+                    },
+                    {
+                        data: data, 
+                        calls: calls
+                    });
+                    
+        Q.all(calls).then(function(results){
+            // console.log("Data with all async calls completed", data);
+            //Send them bitchslaps
+            if(!data.blog) res.redirect("/");
+            else res.render('pages/blog.details',data);
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
+        });
+        
+    });
 
     app.get("/faker",function(req,res){
         
@@ -125,7 +192,7 @@ var Routes = function(app,dpd,express,Q){
                     description: f.lorem.sentence(),
                     price: Math.floor(Math.random()*80),
                     image: f.random.image(),
-                    instructorID: globals.instructorIDs[Math.floor(Math.random()*3)],
+                    instructorID: global.instructorIDs[Math.floor(Math.random()*3)],
                     ribbon: {
                         color: f.internet.color(),
                         category: f.random.word()
@@ -152,12 +219,11 @@ var Routes = function(app,dpd,express,Q){
                 }
             },
             contents: function(){
-                var cats = ["offers", "facts", "courses", "gallery", "instructors", "testimonials", "aboutus","contactus"], ret = {};
+                var cats = ["offers", "facts", "courses", "gallery", "instructors", "testimonials", "aboutus","contactus", "blog"], ret = {home: {}};
                 cats.forEach(function(val){
-                    ret[val] = {
-                        body: f.lorem.paragraph(), title: f.lorem.sentence(), 
+                    ret.home[val] = {
+                        body: f.lorem.paragraph(), title: val + " Title", 
                         image_bg: f.random.image(), image: f.image.avatar()
-                        
                     }
                 });
                 return ret;

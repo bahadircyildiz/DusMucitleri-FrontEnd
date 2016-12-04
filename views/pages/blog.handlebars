@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+<body>
+    <!--gt Wrapper Start-->  
+    <div class="gt_wrapper" id="news">
+        {{>components/header}}
+        {{>components/subbanner}}
+        
+        <div class="gt_main_content_wrap">
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <!--Main Content Wrap Start-->
+                        {{>components/blog.grid}}
+                        <!--Main Content Wrap End-->
+                        {{>components/blog.asidebar}}  
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!--gt Wrapper End-->
+    {{>footer}}
+    <script type="text/javascript">
+    /* ==================================================================
+		Pagination Script
+	=================================================================	*/
+	if($('.gt_pagination_outer_wrap').length){
+		$('.gt_pagination_outer_wrap').pagination({ page: {{page}}, lastPage: {{lastPage}} });
+	}
+    
+    </script>
+</body>
+</html>

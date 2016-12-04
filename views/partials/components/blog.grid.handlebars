@@ -1,0 +1,41 @@
+<!--News Grid List Wrap Start-->
+<div class="col-md-9">
+    {{#each blog}}
+    <div class="gt_blog_wrap mb">
+        <figure>
+            <img src="{{{image}}}" alt="">
+            <figcaption class="gt_blog_figcaption">
+                <ul>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li><a href="#"><i class="fa fa-expand"></i></a></li>
+                </ul>
+            </figcaption>
+        </figure>
+        <div class="gt_blog_des_wrap">
+            <ul class="gt_blog_meta">
+                <li><i class="fa fa-calendar"></i>{{{date}}}</li>
+                {{!--<li><i class="fa fa-heart"></i>17</li>--}}
+                {{!--<li><i class="fa fa-comments"></i>04</li>--}}
+            </ul>
+            <h5><a href="/details/{{id}}">{{{title}}}</a></h5>
+            <p>{{{body}}}</p>
+            <a href="#">Devamını Oku <i class="fa fa-arrow-circle-o-right"></i></a>
+        </div>
+    </div>
+    {{/each}}
+    
+
+    
+    <!--Pagination Wrap Start-->
+    <div class="gt_pagination_outer_wrap">
+        {{!--<ul>--}}
+        {{!--    <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>--}}
+        {{!--    <li><a href="1">1</a></li>--}}
+        {{!--    <li><a href="2">2</a></li>--}}
+        {{!--    <li><a href="3">3</a></li>--}}
+        {{!--    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>--}}
+        {{!--</ul>--}}
+    </div>
+    <!--Pagination Wrap End-->
+</div>
+<!--News Grid List Wrap End-->

@@ -1,0 +1,58 @@
+<!--Offer Wrap start-->
+        <section class="gt_offer_bg">
+            <div class="container">
+                <div class="gt_hdg_1">
+                    <h3>{{settings.contents.home.offers.title}}</h3>
+                    <p>{{settings.contents.home.offers.body}}</p>
+                    <span><img src="static/images/hdg-01.png" alt=""></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="gt_offer_love_wrap default_width">
+                            <ul>
+                                {{#each offers.left}}
+                                <li>
+                                    <div class="gt_wht_offer_wrap mb">
+                                        <i class="{{{icon}}} offers_left_bg_{{@index}}"></i>
+                                        <div class="gt_wht_offer_des">
+                                            <h5><a href="#">{{{title}}}</a></h5>
+                                            <span class="bg_offer_left_{{@index}}"></span>
+                                            <p>{{{description}}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="gt_offer_img default_img">
+                            <img src="{{settings.contents.offers.image}}" alt="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="default_width">
+                            <ul>
+                                {{#each offers.right}}
+                                <li>
+                                    <div class="gt_wht_offer_wrap mb">
+                                        <i class="{{{icon}}} offers_right_bg_{{@index}}"></i>
+                                        <div class="gt_wht_offer_des">
+                                            <h5><a href="#">{{{title}}}</a></h5>
+                                            <span class="bg_offer_right_{{@index}}"></span>
+                                            <p>{{{description}}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--What We Offer 1 Wrap End-->
+                
+            </div>
+        </section>

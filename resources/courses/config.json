@@ -64,6 +64,14 @@
 			"required": false,
 			"id": "ribbon",
 			"order": 7
+		},
+		"hasRibbon": {
+			"name": "hasRibbon",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "hasRibbon",
+			"order": 8
 		}
 	}
 }

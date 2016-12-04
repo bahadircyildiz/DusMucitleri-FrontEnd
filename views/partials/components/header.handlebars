@@ -29,7 +29,7 @@
         <div class="gt_top3_menu default_width single-page">
             <div class="container">
                 <div class="gt-logo">
-                    <a href="#"><img src="{{settings.logo}}" alt="{{settings.siteTitle}} - {{settings.siteSubtitle}}"></a>
+                    <a href="#"><img src="/{{settings.logo}}" alt="{{settings.siteTitle}} - {{settings.siteSubtitle}}"></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->
@@ -46,7 +46,15 @@
                             {{!--{{else}}--}}
                             {{!--<li>--}}
                             {{!--{{/if_eq}}--}}
-                        <li><a href="{{this.link}}">{{this.title}}</a></li>
+                        <li><a href="{{this.link}}">{{this.title}}</a>
+                            {{#if children}} 
+                                <ul> 
+                                {{#each children}}
+                                    <li><a href="{{this.link}}">{{this.title}}</a></li>
+                                {{/each}}
+                                </ul>
+                            {{/if}}
+                        </li>
                         {{/each}}
                     </ul>
                 </nav>

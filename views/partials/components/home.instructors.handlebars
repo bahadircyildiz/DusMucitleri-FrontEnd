@@ -1,0 +1,116 @@
+<!--Meet Our Best Teacher Wrap Start-->
+<section id="team" class="wow fadeInUp">
+    <div class="container">
+        <!--Main Heading Wrap Start-->
+        <div class="gt_hdg_1 wow zoomIn">
+            <h3>{{settings.contents.home.instructors.title}}</h3>
+            <p> {{settings.contents.home.instructors.body}}</p>
+            <span><img src="static/images/hdg-01.png" alt=""></span>
+        </div>
+        <!--Main Heading Wrap End-->
+
+        <!--Teacher List Wrap Start-->
+        <div class="row">
+            {{#each instructors}}
+            <div class="col-md-3 col-sm-6">
+                <div class="gt_team2_wrap">
+                    <figure>
+                        <img src="{{{image}}}" alt="">
+                        {{!--<figcaption class="gt_team_scl_icon">--}}
+                        {{!--    <ul>--}}
+                        {{!--        <li class="fb_bg"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+                        {{!--        <li class="twitter_bg"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+                        {{!--        <li class="gplus_bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+                        {{!--    </ul>--}}
+                        {{!--    <a class="team_share bg_4" href="#"><i class="fa fa-share-alt"></i></a>--}}
+                        {{!--</figcaption>--}}
+                    </figure>
+                    <div class="gt_team2_des_wrap">
+                        <span>{{{title}}}</span>
+                        <h5><a href="#">{{{name}}}</a></h5>
+                        {{{description}}}
+                        <ul>
+                            {{!--<li><i class="fa fa-phone"></i>+124 456 7858</li>--}}
+                            <li><i class="fa fa-envelope-o"></i>{{{email}}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{!--<div class="col-md-3 col-sm-6">--}}
+            {{!--    <div class="gt_team2_wrap">--}}
+            {{!--        <figure>--}}
+            {{!--            <img src="extra-images/best-teacher-02.jpg" alt="">--}}
+            {{!--            <figcaption class="gt_team_scl_icon">--}}
+            {{!--                <ul>--}}
+            {{!--                    <li class="fb_bg"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+            {{!--                    <li class="twitter_bg"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+            {{!--                    <li class="gplus_bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+            {{!--                </ul>--}}
+            {{!--                <a class="team_share bg_4" href="#"><i class="fa fa-share-alt"></i></a>--}}
+            {{!--            </figcaption>--}}
+            {{!--        </figure>--}}
+            {{!--        <div class="gt_team2_des_wrap">--}}
+            {{!--            <span>Sr. Teacher</span>--}}
+            {{!--            <h5><a href="#">Janifer Steel</a></h5>--}}
+            {{!--            <p>Lorem ipsum doloAr sit amet, conset adipiscing elitsed do eius sit amet</p>--}}
+            {{!--            <ul>--}}
+            {{!--                <li><i class="fa fa-phone"></i>+124 456 7858</li>--}}
+            {{!--                <li><i class="fa fa-envelope-o"></i>janifer.kidscenter.com</li>--}}
+            {{!--            </ul>--}}
+            {{!--        </div>--}}
+            {{!--    </div>--}}
+            {{!--</div>--}}
+            {{!--<div class="col-md-3 col-sm-6">--}}
+            {{!--    <div class="gt_team2_wrap">--}}
+            {{!--        <figure>--}}
+            {{!--            <img src="extra-images/best-teacher-03.jpg" alt="">--}}
+            {{!--            <figcaption class="gt_team_scl_icon">--}}
+            {{!--                <ul>--}}
+            {{!--                    <li class="fb_bg"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+            {{!--                    <li class="twitter_bg"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+            {{!--                    <li class="gplus_bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+            {{!--                </ul>--}}
+            {{!--                <a class="team_share bg_4" href="#"><i class="fa fa-share-alt"></i></a>--}}
+            {{!--            </figcaption>--}}
+            {{!--        </figure>--}}
+            {{!--        <div class="gt_team2_des_wrap">--}}
+            {{!--            <span>Sr. Teacher</span>--}}
+            {{!--            <h5><a href="#">Sara Loreen</a></h5>--}}
+            {{!--            <p>Lorem ipsum doloAr sit amet, conset adipiscing elitsed do eius sit amet</p>--}}
+            {{!--            <ul>--}}
+            {{!--                <li><i class="fa fa-phone"></i>+124 456 7858</li>--}}
+            {{!--                <li><i class="fa fa-envelope-o"></i>janifer.kidscenter.com</li>--}}
+            {{!--            </ul>--}}
+            {{!--        </div>--}}
+            {{!--    </div>--}}
+            {{!--</div>--}}
+            {{!--<div class="col-md-3 col-sm-6">--}}
+            {{!--    <div class="gt_team2_wrap">--}}
+            {{!--        <figure>--}}
+            {{!--            <img src="extra-images/best-teacher-04.jpg" alt="">--}}
+            {{!--            <figcaption class="gt_team_scl_icon">--}}
+            {{!--                <ul>--}}
+            {{!--                    <li class="fb_bg"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+            {{!--                    <li class="twitter_bg"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+            {{!--                    <li class="gplus_bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+            {{!--                </ul>--}}
+            {{!--                <a class="team_share bg_4" href="#"><i class="fa fa-share-alt"></i></a>--}}
+            {{!--            </figcaption>--}}
+            {{!--        </figure>--}}
+            {{!--        <div class="gt_team2_des_wrap">--}}
+            {{!--            <span>Sr. Teacher</span>--}}
+            {{!--            <h5><a href="#">Steel Janifer</a></h5>--}}
+            {{!--            <p>Lorem ipsum doloAr sit amet, conset adipiscing elitsed do eius sit amet</p>--}}
+            {{!--            <ul>--}}
+            {{!--                <li><i class="fa fa-phone"></i>+124 456 7858</li>--}}
+            {{!--                <li><i class="fa fa-envelope-o"></i>janifer.kidscenter.com</li>--}}
+            {{!--            </ul>--}}
+            {{!--        </div>--}}
+            {{!--    </div>--}}
+            {{!--</div>--}}
+        </div>
+        <!--Teacher List Wrap End-->
+    </div>
+</section>
+<!--Meet Our Best Teacher Wrap End-->

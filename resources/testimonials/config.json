@@ -1,12 +1,12 @@
 {
 	"type": "Collection",
 	"properties": {
-		"comment": {
-			"name": "comment",
+		"title": {
+			"name": "title",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "comment",
+			"id": "title",
 			"order": 0
 		},
 		"name": {
@@ -17,12 +17,12 @@
 			"id": "name",
 			"order": 1
 		},
-		"title": {
-			"name": "title",
+		"comment": {
+			"name": "comment",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "title",
+			"id": "comment",
 			"order": 2
 		}
 	}

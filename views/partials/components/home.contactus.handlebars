@@ -1,0 +1,45 @@
+<!--Contact Us Wrap Start-->
+        <section class="gt_contactus_bg wow fadeInUp" id="contact-us">
+            <div class="container">
+                <div class="default_width">
+                    <!--Main Heading Wrap Start-->
+                    <div class="gt_hdg_1 wow zoomIn">
+                        <h3>{{settings.contents.home.contactus.title}}</h3>
+                        <p> {{settings.contents.home.contactus.body}} </p>
+                        <span><img src="static/images/hdg-01.png" alt=""></span>
+                    </div>
+                    <!--Main Heading Wrap End-->
+                    <form class="gt_contact_form" id="contact-form" action="assets/sendmail.php" method="post">
+                        <div class="col-md-4">
+                            <div class="gt_contact_us_field">
+                                <input class="c_ph" type="text" placeholder="Adınız" id="name" name="contact-name" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="gt_contact_us_field">
+                                <input class="c_ph" type="text" placeholder="Email Adresiniz" id="email" name="contact-email" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="gt_contact_us_field">
+                                <input class="c_ph" type="text" placeholder="Telefon Numaranız" id="subject" name="contact-subject" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="gt_contact_us_field">
+                                <textarea class="gt_c_bg" name="contact-message" id="message" placeholder="Mesajınız" required="" aria-required="true"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="gt_contact_us_field">
+                                <input id="submit-message" type="submit" value="Gönder" name="submit_msg">
+                            </div>
+                            <!--Alert Message-->
+                            <div id="contact-result">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!--Contact Us Wrap End-->

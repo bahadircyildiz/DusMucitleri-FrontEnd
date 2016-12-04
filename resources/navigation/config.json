@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "parent",
 			"order": 3
+		},
+		"order": {
+			"name": "order",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "order",
+			"order": 4
 		}
 	}
 }
