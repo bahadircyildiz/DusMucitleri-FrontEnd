@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "deployd": "^0.8.9",
     "express": "^4.14.0",
+    "express-breadcrumbs": "0.0.2",
     "express-handlebars": "^3.0.0",
+    "multer": "^1.2.0",
     "q": "^1.4.1",
     "socket.io": "^1.5.1",
     "striptags": "^2.1.1",

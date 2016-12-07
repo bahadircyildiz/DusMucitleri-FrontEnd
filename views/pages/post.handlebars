@@ -3,7 +3,7 @@
 {{>head}}
 <body>
     <!--gt Wrapper Start-->  
-    <div class="gt_wrapper" id="news">
+    <div class="gt_wrapper" id="home">
         {{>components/header}}
         {{>components/subbanner}}
         
@@ -11,13 +11,20 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <!--Main Content Wrap Start-->
-                        {{>components/blog.details}}
-                        <!--Main Content Wrap End-->
-                        {{>components/blog.asidebar}}  
+                        {{#if isListing}}
+                            {{>components/post.listing}}
+                        {{else}}
+                            {{>components/post.details}}
+                        {{/if}}
+                        
+                        {{>components/post.asidebar}}  
+                        
                     </div>
                 </div>
             </section>
+            <div class="col-xs-12" style="height:50px;"></div>
+            
+            {{>components/subfooter}}
         </div>
     </div>
     <!--gt Wrapper End-->

@@ -17,10 +17,40 @@
                 {{!--<li><i class="fa fa-heart"></i>17</li>--}}
                 {{!--<li><i class="fa fa-comments"></i>04</li>--}}
             </ul>
-            <h5><a href="/details/{{id}}">{{{title}}}</a></h5>
+            <h5><a href="/blog/details/{{id}}">{{{title}}}</a></h5>
             <p>{{{body}}}</p>
-            <a href="#">Devamını Oku <i class="fa fa-arrow-circle-o-right"></i></a>
+            <a href="/blog/details/{{id}}">Devamını Oku <i class="fa fa-arrow-circle-o-right"></i></a>
         </div>
+    </div>
+    {{/each}}
+    
+    {{#each courses}}
+    <div class="gt_latest_course2_wrap default_width mb">
+        <figure>
+            <img src="{{{image}}}" alt="{{{title}}}">
+            <figcaption>
+                <div class="course_price">{{{price}}}&#8378;</div>
+                <div class="course_category courses_bg_{{@index}}">{{{ribbon.category}}}</div>
+            </figcaption>
+        </figure>
+        <div class="gt_latest_course_des default_width">
+            <h5><a href="/course/details/{{{id}}}">{{{title}}}</a></h5>
+            <p>{{{description}}}<a href="#">Read more</a> </p>
+            {{#getInstructor this.instructorID}}
+            <div class="gt_latest_course_author">
+                <figure>
+                    <img src="{{{image}}}" alt="{{{name}}}">
+                </figure>
+                <div class="course_author_des">
+                    <h6>{{{name}}}</h6>
+                    <span>{{{title}}}</span>
+                </div>
+            </div>
+            {{/getInstructor}}
+            <div class="gt_course_apply">
+                <a href="/course/details/{{{id}}}">Başvur</a>
+            </div>
+        </div> 
     </div>
     {{/each}}
     

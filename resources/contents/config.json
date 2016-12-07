@@ -1,0 +1,61 @@
+{
+	"type": "Collection",
+	"properties": {
+		"content": {
+			"name": "content",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "content",
+			"order": 0
+		},
+		"branch": {
+			"name": "branch",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "branch",
+			"order": 1
+		},
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 2
+		},
+		"body": {
+			"name": "body",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "body",
+			"order": 3
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 4
+		},
+		"bgimage": {
+			"name": "bgimage",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "bgimage",
+			"order": 5
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 6
+		}
+	}
+}

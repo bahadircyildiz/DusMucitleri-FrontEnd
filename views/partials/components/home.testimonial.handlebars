@@ -1,35 +1,58 @@
 <!--Testimonial Wrap Start-->
-        <section class="gt_testimonial_bg wow fadeInUp">
-            <div class="container">
-                <!--Main Heading Wrap Start-->
-                <div class="gt_hdg_1 wow zoomIn white_hdg">
-                    <h3>{{settings.contents.home.testimonials.title}}</h3>
-                    <p> {{settings.contents.home.testimonials.body}} </p>
-                    <span><img src="static/images/hdg-01.png" alt=""></span>
-                </div>
-                <!--Main Heading Wrap End-->
+<section class="gt_testimonial_bg">
+    <div class="container">
+        <!--Main Heading Wrap Start-->
+        <div class="gt_hdg_1 white_hdg">
+            <h3>{{contents.home.testimonials.title}}</h3>
+        </div>
+        <!--Main Heading Wrap End-->
 
-                <!--Testimonial 02 List Wrap Start-->
-                <div class="gt_testimonial2_slider" id="gt_testimonial2_slider">
-                    {{#each testimonials}}
-                    <div class="item">
-                        <div class="gt_testi2_wrap">
-                            {{{comment}}}
-                            <div class="gt_testi2_detail">
-                                <div class="gt_testi2_name">
-                                    <h6>{{{name}}}</h6>
-                                    <span>{{{title}}}</span>
-                                </div>
-                                <figure>
-                                    <img src="extra-images/comment-02.jpg" alt="">
-                                </figure>
-                            </div>
-                        </div>
+        <!--Testimonial List Wrap Start-->
+        <div class="gt_testimonial_slider" id="gt_testimonial_slider">
+            {{!--{{#each testimonials}}--}}
+            {{!--<div class="item">--}}
+            {{!--    <div class="gt_testimonial_wrap">--}}
+            {{!--        <p>{{{comment}}}</p>--}}
+            {{!--    </div>--}}
+            {{!--    <div class="gt_testimonial_img">--}}
+            {{!--        <figure>--}}
+            {{!--            <img src="extra-images/testimmonial-01.jpg" alt="">--}}
+            {{!--        </figure>--}}
+            {{!--        <div class="gt_testimonial_des">--}}
+            {{!--            <h5><a href="#">{{{name}}}</a></h5>--}}
+            {{!--        </div>--}}
+            {{!--    </div>--}}
+            {{!--</div>--}}
+            {{!--{{/each}}--}}
+            <div class="item">
+                <div class="gt_testimonial_wrap">
+                    <p>Proactively ipsum media appropriately materials without lorem networks that native cultivate daycare without client locavoire is evolve cross unit dolore niet.</p>
+                </div>
+                <div class="gt_testimonial_img">
+                    <figure>
+                        <img src="extra-images/foo-news-01.jpg" alt="">
+                    </figure>
+                    <div class="gt_testimonial_des">
+                        <h5><a href="#">Melissa Black</a></h5>
                     </div>
-                    {{/each}}
                 </div>
-                <!--Testimonial 02 List Wrap End-->
-
             </div>
-        </section>
+            <div class="item">
+                <div class="gt_testimonial_wrap">
+                    <p>Proactively ipsum media appropriately materials without lorem networks that native cultivate daycare without client locavoire is evolve cross unit dolore niet.</p>
+                </div>
+                <div class="gt_testimonial_img">
+                    <figure>
+                        <img src="extra-images/foo-news-02.jpg" alt="">
+                    </figure>
+                    <div class="gt_testimonial_des">
+                        <h5><a href="#">Alexndera Wayne</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Testimonial List Wrap End-->
+
+    </div>
+</section>
         <!--Testimonial Wrap End-->

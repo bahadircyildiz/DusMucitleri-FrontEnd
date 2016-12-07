@@ -47,7 +47,8 @@ if (typeof Object.create !== 'function') {
                 link  = e.currentTarget,
                 $elem = $(link.hash);
 
-            e.preventDefault();             
+            // REMOVED FOR DISABLING LINKS
+            // e.preventDefault();             
 
             if ($elem.length) { // Make sure the target elem exists
 

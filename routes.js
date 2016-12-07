@@ -2,9 +2,18 @@
 var f = require("faker");
 //HTML stripping tool
 var striptags = require("striptags");
+// Multer file uploads
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
+var bodyParser = require('body-parser');
+var breadcrumbs = require('express-breadcrumbs');
 
 var Routes = function(app,dpd,express,Q){
+    app.use(bodyParser.json());
     
+    //Breadcrumbs
+    app.use(breadcrumbs.init());
+    app.use(breadcrumbs.setHome({name: "Anasayfa"}));
     //Global standarts within views
     var global = require("./globals.js")(dpd, Q);
     
@@ -15,28 +24,23 @@ var Routes = function(app,dpd,express,Q){
         
         //Get entries by using dpd param.
         var data = {}, calls = [];
+        data.subfooter = {};
         
         //Database calling parameters
-        var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials"];
+        var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials","contents"];
         var queries = {
             settings: global.queries.settings,
             blog: {$limit: 9, $sort: { timeStamp: 1 } },
             facts: {$limit: 6},
-            navigation: global.queries.navigation
+            navigation: global.queries.navigation,
+            contents: { content: "home" }
         };
         
         //Additional functions for tables if needed.
         var extras = {
             settings: function(res) { return global.extras.settings(res) },
             navigation: function(res) { return global.extras.navigation(res) },
-            slider: function(res){
-                var banner = [], gallery = []; 
-                res.forEach(function(val){
-                    if(val.isBanner) banner.push(val);
-                    else gallery.push(val);
-                });
-                return {banner: banner, gallery: gallery};
-            },
+            slider: function(res){ return global.extras.slider(res); },
             offers: function(res){
                 var left = [], right = [];
                 res.forEach(function(val, index){
@@ -49,6 +53,7 @@ var Routes = function(app,dpd,express,Q){
                 res.forEach(function(val){
                     val.body = striptags(val.body).substring(0,50);
                 })
+                data.subfooter.blog = res;
                 return res;
             },
             courses: function(res){
@@ -57,6 +62,7 @@ var Routes = function(app,dpd,express,Q){
                 })
                 return res;
             },
+            contents: function(res){ return global.extras.contents(res); }
         };
         
         //Create async fuctions by the params in tables & queries
@@ -72,7 +78,8 @@ var Routes = function(app,dpd,express,Q){
         
         //Async call handler that activates after all tasks are finished.
         Q.all(calls).then(function(results){
-            // console.log("Data with all async calls completed", data);
+            data.breadcrumbs = req.breadcrumbs();
+            console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data);
         }).catch(function(error){
@@ -83,19 +90,22 @@ var Routes = function(app,dpd,express,Q){
     
     app.get("/blog/:page",function(req,res){
         var data = {}, calls = [], pageSize = 5;
-        data.page = req.params.page;
+        data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
-        var tables = ["settings","blog","navigation"];
+        var tables = ["settings","blog","navigation", "slider","contents"];
         var queries = {
             settings: global.queries.settings,
             navigation: global.queries.navigation,
-            blog: {$sort: { timeStamp: -1 } }
+            blog: global.queries.blog,
+            slider: { $limit: 6},
+            contents: {content: "subbanner", branch: "blog"}
         };
         
         //Additional functions for tables if needed.
         var extras = {
             settings: function(res){ return global.extras.settings(res); },
             blog: function(res){
+                data.subfooter.blog = res;
                 var $skip = pageSize * (data.page - 1), $limit = (res.length - $skip >= pageSize) ? pageSize : res.length - $skip;
                 data.lastPage = Math.ceil(res.length / pageSize);
                 res = res.slice($skip, $skip+$limit);
@@ -105,7 +115,9 @@ var Routes = function(app,dpd,express,Q){
                 });
                 return res;
             },
-            navigation: function(res){ return global.extras.navigation(res); }
+            navigation: function(res){ return global.extras.navigation(res); },
+            slider: function(res) {return global.extras.slider(res); },
+            contents: function(res) { return res[0]; }
         };
         
         //Create async fuctions by the params in tables & queries
@@ -120,10 +132,14 @@ var Routes = function(app,dpd,express,Q){
                     });
         
         Q.all(calls).then(function(results){
-            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
-            else res.render('pages/blog',data);
+            else {
+                req.breadcrumbs("Tüm Bloglar");
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
         }).catch(function(error){
             console.log("Hata var hocam", error);
             res.send(error);
@@ -132,20 +148,32 @@ var Routes = function(app,dpd,express,Q){
     
     app.get("/blog/details/:id",function(req,res){
         var data = {}, calls = [];
-
+        data.isListing = false, data.subfooter = {};
+        
         //Database calling parameters
-        var tables = ["settings","blog","navigation"];
+        var tables = ["settings","blog","navigation", "slider", "contents"];
         var queries = {
             settings: global.queries.settings,
             navigation: global.queries.navigation,
-            blog: {id: req.params.id}
+            blog: global.queries.blog,
+            contents: {content: "subbanner", branch: "blogdetails"}
         };
         var extras = {
             settings: function(res){ return global.extras.settings(res); },
-            blog: function(res){
-                return res[0] ? res[0] : false;
+            navigation: function(res){ return global.extras.navigation(res); },
+            slider: function(res){ return global.extras.slider(res); },
+            blog : function(res){
+                var result;
+                data.subfooter.blog = res;
+                res.some(function(val){
+                    if (val.id == req.params.id){
+                        res = val;
+                        return val;
+                    }
+                });
+                return res;
             },
-            navigation: function(res){ return global.extras.navigation(res); }
+            contents: function(res) { return res[0]; }
         };
         
         //Create async fuctions by the params in tables & queries
@@ -160,10 +188,15 @@ var Routes = function(app,dpd,express,Q){
                     });
                     
         Q.all(calls).then(function(results){
-            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
+            //We should totally start our fucking company! :D
             if(!data.blog) res.redirect("/");
-            else res.render('pages/blog.details',data);
+            else{
+                req.breadcrumbs(data.blog.title);
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
         }).catch(function(error){
             console.log("Hata var hocam", error);
             res.send(error);
@@ -171,6 +204,122 @@ var Routes = function(app,dpd,express,Q){
         
     });
 
+    app.get("/course/:page",function(req,res){
+        var data = {}, calls = [], pageSize = 5;
+        data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        //Database calling parameters
+        var tables = ["settings","courses","navigation","instructors", "blog", "slider","contents" ];
+        var queries = {
+            settings: global.queries.settings,
+            navigation: global.queries.navigation,
+            blog: global.queries.blog,
+            contents: { content: "subbanner", branch: "courses" }
+        };
+        
+        //Additional functions for tables if needed.
+        var extras = {
+            settings: function(res){ return global.extras.settings(res); },
+            courses: function(res){
+                var $skip = pageSize * (data.page - 1), $limit = (res.length - $skip >= pageSize) ? pageSize : res.length - $skip;
+                data.lastPage = Math.ceil(res.length / pageSize);
+                res = res.slice($skip, $skip+$limit);
+                // console.log("All dem shitz", $skip, $limit, data.lastPage, res );
+                res.forEach(function(val){
+                    val.body = striptags(val.body).substring(0,200);
+                });
+                return res;
+            },
+            navigation: function(res){ return global.extras.navigation(res); },
+            slider: function(res){ return global.extras.slider(res); },
+            blog : function(res){
+                data.subfooter.blog = res;
+                return [];
+            },
+            contents: function(res){ return res[0]; }
+        };
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll({
+                        tables: tables, 
+                        queries: queries, 
+                        extras: extras
+                    },
+                    {
+                        data: data, 
+                        calls: calls
+                    });
+        
+        Q.all(calls).then(function(results){
+            //Send them bitchslaps
+            if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
+            else {
+                req.breadcrumbs("Tüm Kurslar");
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
+            
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
+        });
+    });
+    
+    app.get("/course/details/:id",function(req,res){
+        var data = {}, calls = [];
+        data.isListing = false, data.subfooter = {};
+        
+        //Database calling parameters
+        var tables = ["settings","courses","navigation", "instructors", "blog", "slider","contents"];
+        var queries = {
+            settings: global.queries.settings,
+            navigation: global.queries.navigation,
+            courses: { id: req.params.id },
+            blog: global.queries.blog,
+            contents: { content: "subbanner", branch: "coursesdetails" }
+        };
+        var extras = {
+            settings: function(res){ return global.extras.settings(res); },
+            navigation: function(res){ return global.extras.navigation(res); },
+            slider: function(res){ return global.extras.slider(res); },
+            blog: function(res){
+                data.subfooter.blog = res;
+            },
+            contents: function(res){ 
+                return res[0];
+            }
+            
+            
+        };
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll({
+                        tables: tables, 
+                        queries: queries, 
+                        extras: extras
+                    },
+                    {
+                        data: data, 
+                        calls: calls
+                    });
+                    
+        Q.all(calls).then(function(results){
+            //Send them bitchslaps
+            //We should totally start our fucking company! :D
+            if(!data.courses) res.redirect("/");
+            else {
+                req.breadcrumbs(data.courses.title);
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
+        }).catch(function(error){
+            console.log("Hata var hocam", error, data);
+            res.send(error);
+        });
+        
+    });
+    
     app.get("/faker",function(req,res){
         
         var fake = {
@@ -196,7 +345,19 @@ var Routes = function(app,dpd,express,Q){
                     ribbon: {
                         color: f.internet.color(),
                         category: f.random.word()
-                    }
+                    },
+                    specs: [
+                        {
+                        icon: "fa fa-pencil",
+                        key: f.random.words(),
+                        value: f.random.words()
+                        },
+                        {
+                        icon: "fa fa-bus",
+                        key: f.random.words(),
+                        value: f.random.words()
+                        }
+                    ]
                 }
             },
             slider: function(){
@@ -219,13 +380,29 @@ var Routes = function(app,dpd,express,Q){
                 }
             },
             contents: function(){
-                var cats = ["offers", "facts", "courses", "gallery", "instructors", "testimonials", "aboutus","contactus", "blog"], ret = {home: {}};
-                cats.forEach(function(val){
-                    ret.home[val] = {
-                        body: f.lorem.paragraph(), title: val + " Title", 
-                        image_bg: f.random.image(), image: f.image.avatar()
-                    }
-                });
+                var contents = {
+                    home: ["offers", "facts", "courses", "gallery", "instructors", "testimonials", "aboutus","contactus", "blog"],
+                    subbanner: ["blog", "blogdetails", "courses", "coursesdetails"],
+                }, ret = []
+                
+                for (var key in contents) {
+                    // skip loop if the property is from prototype
+                    if (!contents.hasOwnProperty(key)) continue;
+            
+                    var val = contents[key];
+                    
+                    val.forEach(function(arritem){
+                       var entity = {
+                           content : key, branch: arritem,
+                           body: f.lorem.paragraph(),
+                           title: arritem + " Title",
+                           image: f.image.avatar(),
+                           bgimage: f.random.image()
+                       };
+                       ret.push(entity);
+                    });
+
+                }
                 return ret;
             },
             facts: function(){
@@ -244,36 +421,45 @@ var Routes = function(app,dpd,express,Q){
                 }
             }
             
-        }, created = {}, calls = [];
+        }, created = {}, calls = [],
+        
+        createCalls = function(calls, table, fakedata, created){
+            calls.push(
+                dpd[table].post(fakedata).then(
+                    function(success){
+                        deferred.resolve(success);
+                        created.push(success);
+                        return deferred.promise;
+                    },
+                    function(error){
+                        deferred.reject(error);
+                        return deferred.promise;
+                    }
+                )
+            );
+        };
+        
+        
         
         for (var val in req.query) {
             // skip loop if the property is from prototype
             if (!req.query.hasOwnProperty(val)) continue;
         
             created[val] = [];
-            var isPut = val == "contents";
             var amount = req.query[val] || 0;
             for (var x=0 ; x<amount ; x++){
-                var deferred = Q.defer();
-                var fakedata = fake[val]();
-                isPut ? 
-                    (fakedata = {id: "ede2dfe3773df8b7"}, fakedata[val] = fake[val]()) : 
+                var deferred = Q.defer(),
+                    fakedata = fake[val]();
+                if(fakedata.constructor === Array){
+                    fakedata.forEach(function(item){
+                        item.active = true;
+                        createCalls(calls,val,item,created[val]);
+                    });   
+                }
+                else{
                     fakedata.active = true;
-                var table = isPut ? "settings" : val;
-                var type = isPut ? "put" : "post";
-                calls.push(
-                    dpd[table][type](fakedata).then(
-                        function(success){
-                            deferred.resolve(success);
-                            created[val].push(success);
-                            return deferred.promise;
-                        },
-                        function(error){
-                            deferred.reject(error);
-                            return deferred.promise;
-                        }
-                    )
-                );
+                    createCalls(calls, val, fakedata, created[val]);   
+                }
             }
         }
         
@@ -283,6 +469,10 @@ var Routes = function(app,dpd,express,Q){
             res.send(error);
         });
     })
-}
+    
+    app.post('/upload', upload.single('file'), function (req, res, next) {
+        res.send({status:true,message:'Uploaded'});
+    });
+};
 
 module.exports = Routes;

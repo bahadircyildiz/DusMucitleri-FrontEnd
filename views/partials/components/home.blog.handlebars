@@ -3,8 +3,8 @@
     <div class="container">
         <!--Main Heading Wrap Start-->
         <div class="gt_hdg_1 wow zoomIn">
-            <h3> {{settings.contents.home.blog.title}}</h3>
-            <p> {{settings.contents.home.blog.body}} </p>
+            <h3> {{contents.home.blog.title}}</h3>
+            <p> {{contents.home.blog.body}} </p>
             <span><img src="static/images/hdg-01.png" alt=""></span>
         </div>
         <!--Main Heading Wrap End-->
@@ -15,7 +15,7 @@
             <div class="item">
                 <div class="gt_blog_wrap">
                     <figure>
-                        <img src="{{{image}}}" alt="">
+                        <img src="{{{image}}}" alt="{{{title}}}">
                         {{!--<figcaption class="gt_blog_figcaption">--}}
                         {{!--    <ul>--}}
                         {{!--        <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
@@ -29,9 +29,9 @@
                         {{!--    <li><i class="fa fa-heart"></i>17</li>--}}
                         {{!--    <li><i class="fa fa-comments"></i>04</li>--}}
                         {{!--</ul>--}}
-                        <h5><a href="#">{{{title}}}</a></h5>
-                        {{{description}}}
-                        <a href="/blog/{{{id}}}">Devamını oku <i class="fa fa-arrow-circle-o-right"></i></a>
+                        <h5><a href="/blog/details/{{{id}}}">{{{title}}}</a></h5>
+                        <p> {{{body}}} </p>
+                        <a href="/blog/details/{{{id}}}">Devamını oku <i class="fa fa-arrow-circle-o-right"></i></a>
                     </div>
                 </div>
             </div>

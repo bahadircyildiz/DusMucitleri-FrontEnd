@@ -2,10 +2,13 @@
     <div class="gt_sub_banner_bg default_width">
         <div class="container">
             <div class="gt_sub_banner_hdg  default_width">
-                <h3>News Detail</h3>
+                <h3>{{contents.title}}</h3>
                 <ul>
-                    <li><a href="#">Anasayfa</a></li>
-                    <li><a href="#">News Detail</a></li>
+                    {{#each breadcrumbs}}
+                    <li><a href="{{{url}}}">{{{name}}}</a></li>
+                    {{/each}}
+                    {{!--<li><a href="#">Anasayfa</a></li>--}}
+                    {{!--<li><a href="#">{{settings.subbanner.title}}</a></li>--}}
                 </ul>
             </div>
         </div>

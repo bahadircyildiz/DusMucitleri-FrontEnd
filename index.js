@@ -8,7 +8,7 @@ var config = require("./../config.js");
 // Deployd Actions
 var server = require('deployd')({
         port: config.dpdPort,
-        env:"development"
+        env:"production"
     })
     server.listen()
 var internalClient = require('deployd/lib/internal-client')
@@ -17,7 +17,6 @@ var dpd;
 var Q = require("q");
 process.server.on('listening', function() {
     dpd = internalClient.build(process.server);
-    
     // Bind routes after Deployd server is ready
     require("./routes.js")(app,dpd,express,Q);
 

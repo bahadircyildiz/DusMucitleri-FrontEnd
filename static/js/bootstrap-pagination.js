@@ -11,8 +11,8 @@
     var options = $.extend({
                              prev: '<i class="fa fa-angle-double-left"></i>',
                              next: '<i class="fa fa-angle-double-right"></i>',
-                             left: 3,
-                             right: 3,
+                             left: 2,
+                             right: 2,
                              page: 1,
                              lastPage: 1,
                              click: defaultClick
@@ -35,7 +35,7 @@
       //   li.addClass('disabled')
       // }
       a.click(stopPropagation);
-      // if (page === options.page) { li.addClass('active'); }
+      if (page === options.page) { li.addClass('active'); }
       return li;
     }
     function newUL() {

@@ -3,7 +3,8 @@ var global = function(dpd,Q){
         instructorIDs: ["b11cb1c5be508b49", "04362a43cbb648f1", "f820abc77c5969d5", "d0cb61d7abe48b51"],
         queries : {
             navigation: {$sort: {order : 1}},
-            settings: { $limit: 1}
+            settings: { $limit: 1},
+            blog: {$sort: {timeStamp : -1}}
         },
         extras: {
             settings: function(res){
@@ -32,6 +33,22 @@ var global = function(dpd,Q){
                     
                 });
                 return res;
+            },
+            slider: function(res){
+                var banner = [], gallery = []; 
+                res.forEach(function(val){
+                    if(val.isBanner) banner.push(val);
+                    else gallery.push(val);
+                });
+                return {banner: banner, gallery: gallery};
+            },
+            contents: function(res){
+                var ret = {};
+                res.forEach(function(item){
+                    if(!ret[item.content]) ret[item.content] = {}; 
+                    ret[item.content][item.branch] = item;
+                })
+                return ret;
             }
         },
         callAsyncAll : function(inputs, outputs){

@@ -1,0 +1,274 @@
+{{#if blog}}
+<div class="col-md-9">
+    <div class="gt_cd_outer_wrap default_width">
+        <figure>
+            <img src="{{blog.image}}" alt="">
+        </figure>
+        <div class="gt_news_meta default_width">
+            <h5>{{blog.title}}</h5>
+            <ul>
+                <li>
+                    Gönderen: <a href="#">{{blog.author}}</a>
+                </li>
+                <li>
+                    <i class="fa fa-calendar"></i>
+                    {{blog.date}}
+                </li>
+                {{!--<li>--}}
+                {{!--    <i class="fa fa-comments-o"></i>--}}
+                {{!--    20 Comments--}}
+                {{!--</li>--}}
+            </ul>
+        </div>
+        {{blog.body}}
+    </div>
+    <div class="gt_news_tags">
+        <h5><i class="fa fa-tag"></i>{{blog.tags}}</h5>
+        {{!--<ul>--}}
+        {{!--    <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+        {{!--    <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+        {{!--    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>--}}
+        {{!--    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+        {{!--    <li><a href="#"><i class="fa fa-instagram"></i></a></li>--}}
+        {{!--</ul>--}}
+    </div>
+    <!--Comment Wrap Start-->
+    {{!--<div class="gt_comment_list_wrap gt_detail_hdg">--}}
+    {{!--    <h5>(4)Comments</h5>--}}
+    {{!--    <ul>--}}
+    {{!--        <li>--}}
+    {{!--            <div class="gt_comment_wrap">--}}
+    {{!--                <figure>--}}
+    {{!--                    <img src="extra-images/comment-01.jpg" alt="">--}}
+    {{!--                </figure>--}}
+    {{!--                <div class="gt_comment_des">--}}
+    {{!--                    <h6><a href="#">John Matt</a></h6>--}}
+    {{!--                    <a href="#">Reply</a>--}}
+    {{!--                    <div class="gt_comment_date">--}}
+    {{!--                        <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+    {{!--                        <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+    {{!--                    </div>--}}
+    {{!--                   <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+    {{!--                </div>--}}
+    {{!--            </div>--}}
+    {{!--            <ul>--}}
+    {{!--                <li>--}}
+    {{!--                    <div class="gt_comment_wrap">--}}
+    {{!--                        <figure>--}}
+    {{!--                            <img src="extra-images/comment-03.jpg" alt="">--}}
+    {{!--                        </figure>--}}
+    {{!--                        <div class="gt_comment_des">--}}
+    {{!--                            <h6><a href="#">Sara Adward</a></h6>--}}
+    {{!--                            <a href="#">Reply</a>--}}
+    {{!--                            <div class="gt_comment_date">--}}
+    {{!--                                <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+    {{!--                                <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+    {{!--                            </div>--}}
+    {{!--                           <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+    {{!--                        </div>--}}
+    {{!--                    </div>--}}
+    {{!--                </li> --}}
+    {{!--            </ul>--}}
+    {{!--        </li>--}}
+            
+    {{!--        <li>--}}
+    {{!--            <div class="gt_comment_wrap">--}}
+    {{!--                <figure>--}}
+    {{!--                    <img src="extra-images/comment-02.jpg" alt="">--}}
+    {{!--                </figure>--}}
+    {{!--                <div class="gt_comment_des">--}}
+    {{!--                    <h6><a href="#">Sunny Leon</a></h6>--}}
+    {{!--                    <a href="#">Reply</a>--}}
+    {{!--                    <div class="gt_comment_date">--}}
+    {{!--                        <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+    {{!--                        <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+    {{!--                    </div>--}}
+    {{!--                   <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+    {{!--                </div>--}}
+    {{!--            </div>--}}
+    {{!--        </li>--}}
+    {{!--    </ul>--}}
+    {{!--</div>--}}
+    {{!--<!--Comment Wrap End-->--}}
+
+    {{!--<!--Add Acomment Wrap Start-->--}}
+    {{!--<div class="gt_post_comment_wrap gt_detail_hdg">--}}
+    {{!--    <h5>Post Comments</h5>--}}
+    {{!--    <form class="row">--}}
+    {{!--        <div class="col-md-4">--}}
+    {{!--            <div class="gt_commet_field">--}}
+    {{!--                <input class="c_ph" type="text" name="name" placeholder="Name">--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--        <div class="col-md-4">    --}}
+    {{!--            <div class="gt_commet_field">--}}
+    {{!--                <input class="c_ph" type="email" name="name" placeholder="Email">--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--        <div class="col-md-4">    --}}
+    {{!--            <div class="gt_commet_field">--}}
+    {{!--                <input class="c_ph" type="email" name="name" placeholder="Website">--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--        <div class="col-md-12">--}}
+    {{!--            <div class="gt_commet_field">--}}
+    {{!--                <textarea class="c_ph" placeholder="Message"></textarea>--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--        <div class="col-md-12">--}}
+    {{!--            <div class="gt_commet_field">--}}
+    {{!--                <button>Send Now</button>--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--    </form>--}}
+    {{!--</div>--}}
+    <!--Add Acomment Wrap End-->
+</div>
+{{/if}}
+
+{{#if courses}}
+<div class="col-md-9">
+<div class="gt_cd_outer_wrap default_width">
+    <figure>
+        <img src="{{courses.image}}" alt="{{courses.title}}">
+    </figure>
+    <div class="ct_blog_detail_top">
+        <h5>{{courses.title}}</h5>
+        <ul>
+            {{#getInstructor courses.instructorID}}
+            <li>
+                <span>{{{title}}}</span>
+                <h6>{{{name}}}</h6>
+            </li>
+            {{/getInstructor}}
+            <li>
+                <span>Kategori</span>
+                <h6>{{courses.ribbon.category}}</h6>
+            </li>
+            <li>
+                <span>Review</span>
+                <ul class="gt_rating_start">
+                    <li>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star-o"></i></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="gt_course_price">
+        <span>{{courses.price}}&#8378;</span>
+        <a href="#">Kursa Katıl</a>
+    </div>
+    <p>{{courses.description}} </p>
+</div>
+<div class="gt_class_spec default_width">
+    <ul>
+        {{#each courses.specs}}
+        <li>
+            <span><i class="{{{icon}}}"></i></span>
+            <div class="cls_spec_des">
+                <p>{{{key}}}</p>
+                <h6>{{{value}}}</h6>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+{{!--<!--Comment Wrap Start-->--}}
+{{!--<div class="gt_comment_list_wrap gt_detail_hdg">--}}
+{{!--    <h5>(4)Comments</h5>--}}
+{{!--    <ul>--}}
+{{!--        <li>--}}
+{{!--            <div class="gt_comment_wrap">--}}
+{{!--                <figure>--}}
+{{!--                    <img src="extra-images/comment-01.jpg" alt="">--}}
+{{!--                </figure>--}}
+{{!--                <div class="gt_comment_des">--}}
+{{!--                    <h6><a href="#">John Matt</a></h6>--}}
+{{!--                    <a href="#">Reply</a>--}}
+{{!--                    <div class="gt_comment_date">--}}
+{{!--                        <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+{{!--                        <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+{{!--                    </div>--}}
+{{!--                   <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+{{!--                </div>--}}
+{{!--            </div>--}}
+{{!--            <ul>--}}
+{{!--                <li>--}}
+{{!--                    <div class="gt_comment_wrap">--}}
+{{!--                        <figure>--}}
+{{!--                            <img src="extra-images/comment-03.jpg" alt="">--}}
+{{!--                        </figure>--}}
+{{!--                        <div class="gt_comment_des">--}}
+{{!--                            <h6><a href="#">Sara Adward</a></h6>--}}
+{{!--                            <a href="#">Reply</a>--}}
+{{!--                            <div class="gt_comment_date">--}}
+{{!--                                <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+{{!--                                <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+{{!--                            </div>--}}
+{{!--                           <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+{{!--                        </div>--}}
+{{!--                    </div>--}}
+{{!--                </li> --}}
+{{!--            </ul>--}}
+{{!--        </li>--}}
+        
+{{!--        <li>--}}
+{{!--            <div class="gt_comment_wrap">--}}
+{{!--                <figure>--}}
+{{!--                    <img src="extra-images/comment-02.jpg" alt="">--}}
+{{!--                </figure>--}}
+{{!--                <div class="gt_comment_des">--}}
+{{!--                    <h6><a href="#">Sunny Leon</a></h6>--}}
+{{!--                    <a href="#">Reply</a>--}}
+{{!--                    <div class="gt_comment_date">--}}
+{{!--                        <span><i class="fa fa-calendar"></i>January 31, 2016</span>--}}
+{{!--                        <span><i class="fa fa-clock-o"></i>03:26  pm</span>--}}
+{{!--                    </div>--}}
+{{!--                   <p>Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam Duis facilisis nibh quam, sit amet interdum tellus sollicitudin tempor. Curabitur aliquam…</p>--}}
+{{!--                </div>--}}
+{{!--            </div>--}}
+{{!--        </li>--}}
+{{!--    </ul>--}}
+{{!--</div>--}}
+{{!--<!--Comment Wrap End-->--}}
+
+{{!--<!--Add Acomment Wrap Start-->--}}
+{{!--<div class="gt_post_comment_wrap gt_detail_hdg">--}}
+{{!--    <h5>Post Comments</h5>--}}
+{{!--    <form class="row">--}}
+{{!--        <div class="col-md-4">--}}
+{{!--            <div class="gt_commet_field">--}}
+{{!--                <input class="c_ph" type="text" name="name" placeholder="Name">--}}
+{{!--            </div>--}}
+{{!--        </div>--}}
+{{!--        <div class="col-md-4">    --}}
+{{!--            <div class="gt_commet_field">--}}
+{{!--                <input class="c_ph" type="email" name="name" placeholder="Email">--}}
+{{!--            </div>--}}
+{{!--        </div>--}}
+{{!--        <div class="col-md-4">    --}}
+{{!--            <div class="gt_commet_field">--}}
+{{!--                <input class="c_ph" type="email" name="name" placeholder="Website">--}}
+{{!--            </div>--}}
+{{!--        </div>--}}
+{{!--        <div class="col-md-12">--}}
+{{!--            <div class="gt_commet_field">--}}
+{{!--                <textarea class="c_ph" placeholder="Message"></textarea>--}}
+{{!--            </div>--}}
+{{!--        </div>--}}
+{{!--        <div class="col-md-12">--}}
+{{!--            <div class="gt_commet_field">--}}
+{{!--                <button>Send Now</button>--}}
+{{!--            </div>--}}
+{{!--        </div>--}}
+{{!--    </form>--}}
+{{!--</div>--}}
+{{!--<!--Add Acomment Wrap End-->--}}
+</div>
+{{/if}}

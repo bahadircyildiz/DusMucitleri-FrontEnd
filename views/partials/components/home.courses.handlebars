@@ -2,8 +2,8 @@
 <section id="courses" class="wow fadeInUp">
     <div class="container">
         <div class="gt_hdg_1 wow zoomIn">
-            <h3> {{settings.contents.home.courses.title}} </h3>
-            <p> {{settings.contents.home.courses.body}}</p> 
+            <h3> {{contents.home.courses.title}} </h3>
+            <p> {{contents.home.courses.body}}</p> 
             <span><img src="static/images/hdg-01.png" alt=""></span>
         </div>
         
@@ -38,13 +38,13 @@
                     <figure>
                         <img src="{{this.image}}" alt="{{this.title}}">
                         <figcaption>
-                            <div class="course_price">{{this.price}}&#8378;</div>
+                            {{!--<div class="course_price">{{this.price}}&#8378;</div>--}}
                             {{#if ribbon}}<div class="course_category courses_bg_{{@index}}" >{{this.ribbon.category}}</div> {{/if}}
                         </figcaption>
                     </figure>
                     <div class="gt_latest_course_des default_width">
                         <h5><a href="#">{{this.title}}</a></h5>
-                        <p> {{this.description}} </p>
+                        <p> {{{body}}} </p>
                         <div class="gt_latest_course_author">
                             {{#getInstructor this.instructorID}}
                             <figure>
