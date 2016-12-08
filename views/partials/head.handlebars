@@ -18,14 +18,19 @@
 
     <style>
         /*Linear Gradient gives background color*/
+        {{#if contents.home.facts}}
         .fact_figure_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url({{contents.facts.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url({{contents.home.facts.bgimage}});
         }
-        .gt_testimonial_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.testimonials.bgimage}});
-        }
+        {{/if}}
         
-        {{#if contents}}
+        {{#if contents.home.testimonials}}
+        .gt_testimonial_bg:before{
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.home.testimonials.bgimage}});
+        }
+        {{/if}}
+        
+        {{#if contents.bgimage}}
         .gt_sub_banner_bg:before{
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.bgimage}});
         }

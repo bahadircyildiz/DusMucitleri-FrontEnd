@@ -8,7 +8,7 @@ var config = require("./../config.js");
 // Deployd Actions
 var server = require('deployd')({
         port: config.dpdPort,
-        env:"production"
+        env:"development"
     })
     server.listen()
 var internalClient = require('deployd/lib/internal-client')
