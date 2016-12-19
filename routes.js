@@ -1,5 +1,3 @@
-//Fake data generator
-var f = require("faker");
 //HTML stripping tool
 var striptags = require("striptags");
 // Multer file uploads
@@ -19,6 +17,7 @@ var Routes = function(app,dpd,express,Q){
     
     // Serve static files
     app.use('/static', express.static('./static'));
+    app.use('/dist', express.static('./dist'));
     
     
     //Homepage Route
