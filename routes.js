@@ -20,6 +20,8 @@ var Routes = function(app,dpd,express,Q){
     // Serve static files
     app.use('/static', express.static('./static'));
     
+    
+    //Homepage Route
     app.get('/', function (req, res) {
         
         //Get entries by using dpd param.
@@ -27,13 +29,14 @@ var Routes = function(app,dpd,express,Q){
         data.subfooter = {};
         
         //Database calling parameters
-        var tables = ["settings","blog","courses","facts","features","instructors","navigation","offers","slider","testimonials","contents"];
+        var tables = ["settings","blog", "userinfo", "courses","facts","features","navigation","offers","slider","testimonials","contents"];
         var queries = {
             settings: global.queries.settings,
             blog: {$limit: 9, $sort: { timeStamp: 1 } },
             facts: {$limit: 6},
             navigation: global.queries.navigation,
-            contents: { content: "home" }
+            contents: { content: "home" },
+            userinfo: { role: "Instructor"}
         };
         
         //Additional functions for tables if needed.
@@ -88,6 +91,8 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
+    
+    //Blog Listing Route
     app.get("/blog/:page",function(req,res){
         var data = {}, calls = [], pageSize = 5;
         data.page = req.params.page, data.isListing = true, data.subfooter = {};
@@ -146,6 +151,8 @@ var Routes = function(app,dpd,express,Q){
         });
     });
     
+    
+    //Blog Detail Route
     app.get("/blog/details/:id",function(req,res){
         var data = {}, calls = [];
         data.isListing = false, data.subfooter = {};

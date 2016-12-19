@@ -13,7 +13,7 @@ var helpers = {
         },
         getInstructor: function(id, options){
             var result;
-            options.data.root.instructors.forEach(function(val){
+            options.data.root.userinfo.forEach(function(val){
                 if(val.id == id) result = val;
             });
             return options.fn(result);

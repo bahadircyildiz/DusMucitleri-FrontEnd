@@ -17,13 +17,29 @@
 			"id": "name",
 			"order": 1
 		},
+		"role": {
+			"name": "role",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "role",
+			"order": 2
+		},
+		"userID": {
+			"name": "userID",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "userID",
+			"order": 3
+		},
 		"description": {
 			"name": "description",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "description",
-			"order": 2
+			"order": 4
 		},
 		"email": {
 			"name": "email",
@@ -31,7 +47,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "email",
-			"order": 3
+			"order": 5
 		},
 		"phone": {
 			"name": "phone",
@@ -39,7 +55,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "phone",
-			"order": 4
+			"order": 6
 		},
 		"image": {
 			"name": "image",
@@ -47,7 +63,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "image",
-			"order": 5
+			"order": 7
 		},
 		"linkedin": {
 			"name": "linkedin",
@@ -55,7 +71,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "linkedin",
-			"order": 6
+			"order": 8
 		},
 		"active": {
 			"name": "active",
@@ -63,7 +79,7 @@
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "active",
-			"order": 7
+			"order": 9
 		}
 	}
 }

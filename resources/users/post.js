@@ -1,0 +1,1 @@
+dpd.userinfo.post({userID: this.id, name: this.username, active: true})
