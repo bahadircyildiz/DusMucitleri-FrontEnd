@@ -51,17 +51,17 @@ var global = function(dpd,Q){
                 return ret;
             }
         },
-        callAsyncAll : function(callsets, outputs){
-            var self = this;
+        callAsyncAll : function(callsets, data){
+            var self = this, prep = [];
             //Create async fuctions by the params in tables & queries
             callsets.forEach(function(call){
                 var query = call.query || self.queries[call.table] || {};
                 query.active = true;
                 var deferred = Q.defer();
-                outputs.calls.push( 
+                prep.push( 
                     dpd[call.table].get(query).then(function(results){
                         if(call.extra) results = call.extra(results);
-                        outputs.data[call.table] = results;
+                        data[call.table] = results;
                         deferred.resolve(results);
                         return deferred.promise;
                     }, function(error){
@@ -70,6 +70,7 @@ var global = function(dpd,Q){
                     })
                 );
             });
+            return Q.all(prep);
         }
     };
 }
