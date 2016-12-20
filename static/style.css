@@ -83,6 +83,7 @@ Sidebar heading:	'Roboto Slab', serif;
 		   IMPORT CSS
 	  ==============================================================
 */
+	@import url('css/fontello.css');
 	@import url('css/bootstrap.min.css');
 	@import url('css/owl.carousel.css');
 	@import url('css/font-awesome.css');
@@ -4378,3 +4379,9 @@ ul.gt_plan_offer_list li a{
 		   Select your Price and Plan Wrap End
 	  ============================================================
 */
+
+.gt_kid_caring_service{float: left;width: 100%;position: relative;margin-bottom: 30px;}
+.gt_kid_caring_service>i{display: block;font-size: 34px;margin: 0px 0px 15px;}
+.gt_kid_caring_service>h4{margin-bottom: 15px;text-transform: capitalize;}
+.gt_kid_services_wrap{padding-bottom: 40px;}
+.gt_kid_img>img{transform: rotateY(180deg);-moz-transform: rotateY(180deg);-webkit-transform: rotateY(180deg);-ms-transform: rotateY(180deg);}

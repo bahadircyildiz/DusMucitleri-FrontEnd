@@ -4,43 +4,21 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="gt_kid_img">
-                    <img src="extra-images/kid-smile.png" alt="" class="img-responsive">
+                    <img src="{{contents.home.kidservices.image}}" alt="" class="img-responsive">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
+                    {{#each kidservices}}
                     <div class="col-md-6 col-sm-6">
                         <!-- Content Box -->
                         <div class="gt_kid_caring_service">
-                            <i class="icon-pencil-2 gt_icon1"></i>
-                            <h4>Language</h4>
-                            <p>Lorem ipsum dolor sit amet his, consectetur adipiscing elit. Curabitur pellentesque </p>
+                            <i class="{{{icon}}} gt_icon{{@index}}"></i>
+                            <h4>{{{title}}}</h4>
+                            <p>{{{description}}}</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <!-- Content Box -->
-                        <div class="gt_kid_caring_service">
-                            <i class="icon-money-1 gt_icon2"></i>
-                            <h4>Individuality</h4>
-                            <p>Lorem ipsum dolor sit amet his, consectetur adipiscing elit. Curabitur pellentesque </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <!-- Content Box -->
-                        <div class="gt_kid_caring_service">
-                            <i class="icon-music-2 gt_icon3"></i>
-                            <h4>Indentity</h4>
-                            <p>Lorem ipsum dolor sit amet his, consectetur adipiscing elit. Curabitur pellentesque </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <!-- Content Box -->
-                        <div class="gt_kid_caring_service">
-                            <i class="icon-graduation-cap-1 gt_icon4"></i>
-                            <h4>UI kit</h4>
-                            <p>Lorem ipsum dolor sit amet his, consectetur adipiscing elit. Curabitur pellentesque </p>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

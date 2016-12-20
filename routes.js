@@ -87,6 +87,9 @@ var Routes = function(app,dpd,express,Q){
                 table: "contents",
                 query: { content: {$in: ["home", "subfooter"]}},
                 extra: global.extras.contents
+            },
+            {
+                table: "kidservices"
             }
         ];
         
@@ -104,7 +107,6 @@ var Routes = function(app,dpd,express,Q){
         });
         
     });
-    
     
     //Blog Listing Route
     app.get("/blog/:page",function(req,res){
