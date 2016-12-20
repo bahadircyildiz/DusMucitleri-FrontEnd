@@ -16,8 +16,8 @@
                         </ul>
                     </div>
                     <div class="gt_foo_about widget">
-                        <h5>{{contents.home.aboutus.title}}</h5>
-                        <p>{{contents.home.aboutus.body}}</p>
+                        <h5>{{contents.subfooter.aboutus.title}}</h5>
+                        {{{contents.subfooter.aboutus.body}}}
                         <ul>
                             <li><a href="https://www.facebook.com/{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="https://www.instagram.com/{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
@@ -61,9 +61,9 @@
                             <div class="gt_foo_recent_projects widget">
                                 <h5>Galerimiz</h5>
                                 <ul>
-                                    {{#count slider.gallery 6}}
+                                    {{#each slider.subfooter}}
                                     <li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>
-                                    {{/count}}
+                                    {{/each}}
                                 </ul>
                             </div>
                         </div>

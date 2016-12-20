@@ -27,52 +27,111 @@ var Routes = function(app,dpd,express,Q){
         var data = {}, calls = [];
         data.subfooter = {};
         
-        //Database calling parameters
-        var tables = ["settings","blog", "userinfo", "courses","facts","features","navigation","offers","slider","testimonials","contents"];
-        var queries = {
-            settings: global.queries.settings,
-            blog: {$limit: 9, $sort: { timeStamp: 1 } },
-            facts: {$limit: 6},
-            navigation: global.queries.navigation,
-            contents: { content: "home" },
-            userinfo: { role: "Instructor"}
-        };
+        var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            {
+                table: "blog",
+                query: {$limit: 9, $sort: { timeStamp: 1 } },
+                extra: function(res){
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).substring(0,50);
+                    })
+                    data.subfooter.blog = [res[0]];
+                    return res;
+                }
+            },
+            {
+                table: "userinfo",
+                query: { role: "Instructor"},
+            },
+            {
+                table: "courses",
+                extra: function(res){
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).substring(0,50);
+                    })
+                    return res;
+                }
+            },
+            {
+                table: "facts",
+                query: {$limit: 6},
+                extra: global.extras.facts
+            },
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            {
+                table: "offers",
+                extra: function(res){
+                    var left = [], right = [];
+                    res.forEach(function(val, index){
+                        if(index%2==0) left.push(val);
+                        else right.push(val);
+                    });
+                    return {left: left, right: right};
+                }
+            },
+            {
+                table: "slider",
+                extra: global.extras.settings
+            },
+            {
+                table: "testimonials"
+            },
+            {
+                table: "contents",
+                query: { content: {$in: ["home", "subfooter"]}},
+                extra: global.extras.contents
+            }
+        ];
         
-        //Additional functions for tables if needed.
-        var extras = {
-            settings: function(res) { return global.extras.settings(res) },
-            navigation: function(res) { return global.extras.navigation(res) },
-            slider: function(res){ return global.extras.slider(res); },
-            offers: function(res){
-                var left = [], right = [];
-                res.forEach(function(val, index){
-                    if(index%2==0) left.push(val);
-                    else right.push(val);
-                });
-                return {left: left, right: right};
-            },
-            blog: function(res){
-                res.forEach(function(val){
-                    val.body = striptags(val.body).substring(0,50);
-                })
-                data.subfooter.blog = res;
-                return res;
-            },
-            courses: function(res){
-                res.forEach(function(val){
-                    val.body = striptags(val.body).substring(0,50);
-                })
-                return res;
-            },
-            contents: function(res){ return global.extras.contents(res); }
-        };
+        //Database calling parameters
+        // var tables = ["settings","blog", "userinfo", "courses","facts","features","navigation","offers","slider","testimonials","contents"];
+        // var queries = {
+        //     settings: global.queries.settings,
+        //     blog: {$limit: 9, $sort: { timeStamp: 1 } },
+        //     facts: {$limit: 6},
+        //     navigation: global.queries.navigation,
+        //     contents: { content: {$in: ["home", "subfooter"]}},
+        //     userinfo: { role: "Instructor"}
+        // };
+        
+        // //Additional functions for tables if needed.
+        // var extras = {
+        //     settings: global.extras.settings,
+        //     navigation: global.extras.navigation,
+        //     slider: global.extras.slider,
+        //     offers: function(res){
+        //         var left = [], right = [];
+        //         res.forEach(function(val, index){
+        //             if(index%2==0) left.push(val);
+        //             else right.push(val);
+        //         });
+        //         return {left: left, right: right};
+        //     },
+        //     blog: function(res){
+        //         res.forEach(function(val){
+        //             val.body = striptags(val.body).substring(0,50);
+        //         })
+        //         data.subfooter.blog = [res[0]];
+        //         return res;
+        //     },
+        //     courses: function(res){
+        //         res.forEach(function(val){
+        //             val.body = striptags(val.body).substring(0,50);
+        //         })
+        //         return res;
+        //     },
+        //     contents: global.extras.contents
+        // };
         
         //Create async fuctions by the params in tables & queries
-        global.callAsyncAll({
-                        tables: tables, 
-                        queries: queries, 
-                        extras: extras
-                    },
+        global.callAsyncAll(callsets,
                     {
                         data: data, 
                         calls: calls
@@ -102,7 +161,7 @@ var Routes = function(app,dpd,express,Q){
             navigation: global.queries.navigation,
             blog: global.queries.blog,
             slider: { $limit: 6},
-            contents: {content: "subbanner", branch: "blog"}
+            contents: {content: {$in: ["subbanner", "subfooter"]}, branch: "blog"}
         };
         
         //Additional functions for tables if needed.
@@ -121,7 +180,7 @@ var Routes = function(app,dpd,express,Q){
             },
             navigation: function(res){ return global.extras.navigation(res); },
             slider: function(res) {return global.extras.slider(res); },
-            contents: function(res) { return res[0]; }
+            contents: global.extras.contents
         };
         
         //Create async fuctions by the params in tables & queries

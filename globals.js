@@ -40,7 +40,7 @@ var global = function(dpd,Q){
                     if(val.isBanner) banner.push(val);
                     else gallery.push(val);
                 });
-                return {banner: banner, gallery: gallery};
+                return {banner: banner, gallery: gallery, subfooter: gallery.slice(0,6)};
             },
             contents: function(res){
                 var ret = {};
@@ -51,16 +51,17 @@ var global = function(dpd,Q){
                 return ret;
             }
         },
-        callAsyncAll : function(inputs, outputs){
+        callAsyncAll : function(callsets, outputs){
+            var self = this;
             //Create async fuctions by the params in tables & queries
-            inputs.tables.forEach(function(val){
-                var query = inputs.queries[val] || {};
+            callsets.forEach(function(call){
+                var query = call.query || self.queries[call.table] || {};
                 query.active = true;
                 var deferred = Q.defer();
                 outputs.calls.push( 
-                    dpd[val].get(query).then(function(results){
-                        if(inputs.extras[val]) results = inputs.extras[val](results);
-                        outputs.data[val] = results;
+                    dpd[call.table].get(query).then(function(results){
+                        if(call.extra) results = call.extra(results);
+                        outputs.data[call.table] = results;
                         deferred.resolve(results);
                         return deferred.promise;
                     }, function(error){
