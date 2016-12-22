@@ -1,0 +1,26 @@
+<!--Our Client Wrap Start-->
+        <section>
+            <div class="container">
+                <!--Main Heading Wrap Start-->
+                <div class="gt_hdg_1">
+                    <h3>{{contents.home.sponsors.title}}</h3>
+                    {{{contents.home.sponsors.body}}}
+                    <span><img src="images/hdg-01.png" alt=""></span>
+                </div>
+                <!--Main Heading Wrap End-->
+                
+                <!--Brand List Wrap Start-->
+                <div class="gt_brand_carousel owl-carouse">
+                    {{each sponsors}}
+                    <div class="item">
+                        <div class="gt_brand_outer_wrap">
+                            <a href="{{{link}}}"><img src="{{{image}}}" alt="{{{title}}}"></a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <!--Brand List Wrap End-->
+                
+            </div>
+        </section>
+        <!--Our Client Wrap End-->

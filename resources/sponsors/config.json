@@ -1,13 +1,21 @@
 {
 	"type": "Collection",
 	"properties": {
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 0
+		},
 		"image": {
 			"name": "image",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "image",
-			"order": 0
+			"order": 1
 		},
 		"link": {
 			"name": "link",
@@ -15,7 +23,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "link",
-			"order": 1
+			"order": 2
 		}
 	}
 }

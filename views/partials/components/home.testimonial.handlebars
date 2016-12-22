@@ -5,53 +5,27 @@
         <div class="gt_hdg_1 white_hdg">
             <h3>{{contents.home.testimonials.title}}</h3>
             <br>
-            {{{contents.home.testimmonials.body}}}
+            {{{contents.home.testimonials.body}}}
         </div>
         <!--Main Heading Wrap End-->
 
         <!--Testimonial List Wrap Start-->
         <div class="gt_testimonial_slider" id="gt_testimonial_slider">
-            {{!--{{#each testimonials}}--}}
-            {{!--<div class="item">--}}
-            {{!--    <div class="gt_testimonial_wrap">--}}
-            {{!--        <p>{{{comment}}}</p>--}}
-            {{!--    </div>--}}
-            {{!--    <div class="gt_testimonial_img">--}}
-            {{!--        <figure>--}}
-            {{!--            <img src="extra-images/testimmonial-01.jpg" alt="">--}}
-            {{!--        </figure>--}}
-            {{!--        <div class="gt_testimonial_des">--}}
-            {{!--            <h5><a href="#">{{{name}}}</a></h5>--}}
-            {{!--        </div>--}}
-            {{!--    </div>--}}
-            {{!--</div>--}}
-            {{!--{{/each}}--}}
+            {{#each testimonials}}
             <div class="item">
                 <div class="gt_testimonial_wrap">
-                    <p>Proactively ipsum media appropriately materials without lorem networks that native cultivate daycare without client locavoire is evolve cross unit dolore niet.</p>
+                    <p>{{{comment}}}</p>
                 </div>
                 <div class="gt_testimonial_img">
                     <figure>
-                        <img src="extra-images/foo-news-01.jpg" alt="">
+                        <img src="{{{image}}}" alt="{{{name}}}">
                     </figure>
                     <div class="gt_testimonial_des">
-                        <h5><a href="#">Melissa Black</a></h5>
+                        <h5><a href="#">{{{name}}}</a></h5>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="gt_testimonial_wrap">
-                    <p>Proactively ipsum media appropriately materials without lorem networks that native cultivate daycare without client locavoire is evolve cross unit dolore niet.</p>
-                </div>
-                <div class="gt_testimonial_img">
-                    <figure>
-                        <img src="extra-images/foo-news-02.jpg" alt="">
-                    </figure>
-                    <div class="gt_testimonial_des">
-                        <h5><a href="#">Alexndera Wayne</a></h5>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
         </div>
         <!--Testimonial List Wrap End-->
 

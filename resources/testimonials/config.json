@@ -24,6 +24,14 @@
 			"required": false,
 			"id": "comment",
 			"order": 2
+		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 3
 		}
 	}
 }

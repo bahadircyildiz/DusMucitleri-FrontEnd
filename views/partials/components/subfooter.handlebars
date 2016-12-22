@@ -1,98 +1,117 @@
-<!--Footer Wrap Start-->
-<div class="gt_footer_bg default_width">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="gt_office_wrap default_width">
-                    <div class="gt_office_time widget">
-                        <h5>Açılış Saatleri</h5>
-                        <ul>
-                            {{#each settings.hours}}
-                            <li>
-                                {{{days}}}
-                                <span>{{{hours}}}</span>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                    <div class="gt_foo_about widget">
-                        <h5>{{contents.subfooter.aboutus.title}}</h5>
-                        {{{contents.subfooter.aboutus.body}}}
-                        <ul>
-                            <li><a href="https://www.facebook.com/{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
+<footer>
+    <!--NewsLetter Wrap Start-->
+    <div class="gt_newsltr_bg default_width">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                    <div class="gt_newsltr_wrap">
+                        <form>
+                            <input type="text" placeholder="Enter your email">
+                            <input class="button_style_1 btn_lg" type="submit" value="Subscribe">
+                        </form>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-9">
-                <div class="foo_col_outer_wrap default_width">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="gt_foo_news widget">
-                                <h5>En Yeni Blogumuz</h5>
-                                <ul>
-                                    {{#count subfooter.blog 1}}
-                                    <li>
-                                        <figure>
-                                            <img src="{{{image}}}" alt="{{{title}}}">
-                                        </figure>
-                                        <div class="foo_news_content">
-                                            <a href="#">{{{title}}}</a>
-                                            <ul>
-                                                <li>
-                                                    <i class="fa fa-calendar"></i>
-                                                    <span>{{{date}}}</span>
-                                                </li>
-                                                {{!--<li>--}}
-                                                {{!--    <i class="fa fa-comments-o"></i>--}}
-                                                {{!--    <span>20</span>--}}
-                                                {{!--</li>--}}
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    {{/count}}
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6">
-                            <div class="gt_foo_recent_projects widget">
-                                <h5>Galerimiz</h5>
-                                <ul>
-                                    {{#each slider.subfooter}}
-                                    <li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>
-                                    {{/each}}
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6">
-                            <div class="widget">
-                                <h5>Adresimiz</h5>
-                                <ul class="gt_team1_contact_info">
-                                    {{#each settings.address}}
-                                    <li><i class="fa fa-map-marker"></i>{{this}}</li>
-                                    {{/each}}
-                                    {{#each settings.phones}}
-                                    <li><i class="fa fa-phone"></i>{{{text}}} </li>
-                                    {{/each}}
-                                    {{#each settings.emails}}
-                                    <li><i class="fa fa-envelope"></i> <a href="mailto:{{{text}}}">{{{text}}}</a> </li>
-                                    {{/each}}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-</div>
-<!--Footer Wrap End-->
+    <!--NewsLetter Wrap End-->
+    <!--Footer Wrap Start-->
+    <div class="gt_footer_bg default_width">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="gt_office_wrap default_width">
+                        <div class="gt_office_time widget">
+                            <h5>Açılış Saatleri</h5>
+                            <ul>
+                                {{#each settings.hours}}
+                                <li>
+                                    {{{days}}}
+                                    <span>{{{hours}}}</span>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="gt_foo_about widget">
+                            <h5>{{contents.subfooter.aboutus.title}}</h5>
+                            {{{contents.subfooter.aboutus.body}}}
+                            <ul>
+                                <li><a href="https://www.facebook.com/{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
     
+                <div class="col-md-9">
+                    <div class="foo_col_outer_wrap default_width">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gt_foo_news widget">
+                                    <h5>En Yeni Blogumuz</h5>
+                                    <ul>
+                                        {{#count subfooter.blog 1}}
+                                        <li>
+                                            <figure>
+                                                <img src="{{{image}}}" alt="{{{title}}}">
+                                            </figure>
+                                            <div class="foo_news_content">
+                                                <a href="#">{{{title}}}</a>
+                                                <ul>
+                                                    <li>
+                                                        <i class="fa fa-calendar"></i>
+                                                        <span>{{{date}}}</span>
+                                                    </li>
+                                                    {{!--<li>--}}
+                                                    {{!--    <i class="fa fa-comments-o"></i>--}}
+                                                    {{!--    <span>20</span>--}}
+                                                    {{!--</li>--}}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        {{/count}}
+                                    </ul>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gt_foo_recent_projects widget">
+                                    <h5>Galerimiz</h5>
+                                    <ul>
+                                        {{#each slider.subfooter}}
+                                        <li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4 col-sm-6">
+                                <div class="widget">
+                                    <h5>Adresimiz</h5>
+                                    <ul class="gt_team1_contact_info">
+                                        {{#each settings.address}}
+                                        <li><i class="fa fa-map-marker"></i>{{this}}</li>
+                                        {{/each}}
+                                        {{#each settings.phones}}
+                                        <li><i class="fa fa-phone"></i>{{{text}}} </li>
+                                        {{/each}}
+                                        {{#each settings.emails}}
+                                        <li><i class="fa fa-envelope"></i> <a href="mailto:{{{text}}}">{{{text}}}</a> </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    <!--Footer Wrap End-->
+</footer>
+
 <!--Copyright Wrap Start-->
 <div class="copyright_bg default_width">
     <div class="container">

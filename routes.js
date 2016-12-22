@@ -66,19 +66,11 @@ var Routes = function(app,dpd,express,Q){
                 extra: global.extras.navigation
             },
             {
-                table: "offers",
-                extra: function(res){
-                    var left = [], right = [];
-                    res.forEach(function(val, index){
-                        if(index%2==0) left.push(val);
-                        else right.push(val);
-                    });
-                    return {left: left, right: right};
-                }
+                table: "offers"
             },
             {
                 table: "slider",
-                extra: global.extras.settings
+                extra: global.extras.slider
             },
             {
                 table: "testimonials"
@@ -99,10 +91,11 @@ var Routes = function(app,dpd,express,Q){
         //Async call handler that activates after all tasks are finished.
         global.callAsyncAll(callsets,data).then(function(results){
             data.breadcrumbs = req.breadcrumbs();
-            console.log("Data with all async calls completed", data);
+            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data);
         }).catch(function(error){
+            console.log(error);
             res.send(error);
         });
         

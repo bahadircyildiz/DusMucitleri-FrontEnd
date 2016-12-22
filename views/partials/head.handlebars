@@ -21,30 +21,59 @@
         {{#if contents.home.facts}}
         .fact_figure_bg:before{
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url({{contents.home.facts.bgimage}});
+            background-size: cover;
         }
         {{/if}}
         
         {{#if contents.home.testimonials}}
         .gt_testimonial_bg:before{
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.home.testimonials.bgimage}});
+            background-size: cover;
         }
         {{/if}}
         
         {{#if contents.home.testimonials}}
         .gt_testimonial_bg:before{
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.home.testimonials.bgimage}});
+            background-size: cover;
+        }
+        {{/if}}
+        
+        {{#if contents.home.gallery}}
+        .gt_gallery_bg:before{
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7));
+        }
+        .gt_gallery_bg{
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url({{contents.home.gallery.bgimage}});
+            background-size: cover;
+        }
+        {{/if}}
+        
+        {{#if contents.subfooter.aboutus}}
+        .gt_footer_bg:before{
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.subfooter.aboutus.bgimage}});
+            background-size: cover;
         }
         {{/if}}
         
         {{#if contents.bgimage}}
         .gt_sub_banner_bg:before{
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.bgimage}});
+            background-size: cover;
         }
         {{/if}}
         
         {{#each kidservices}}
         .gt_icon{{@index}}{
             color: {{{color}}};
+        }
+        
+        .bannerservices_bg_{{@index}}{
+            background: {{{color}}};
+        }
+        
+        .flips_bg_{{@index}}{
+        	background:{{{color}}};
         }
         {{/each}}
         
@@ -53,11 +82,7 @@
         	background:{{{color}}};
         }
         {{/each}}
-        {{#each settings.flips}}
-        .flips_bg_{{@index}}{
-        	background:{{{color}}};
-        }
-        {{/each}}
+        
         {{#each courses}}
         .courses_bg_{{@index}}{
         	background:{{{ribbon.color}}};
@@ -68,27 +93,27 @@
         {{/each}}
         
         /*Offer CSS's*/
-        {{#each offers.left}}
-        .offers_left_bg_{{@index}}{
+        {{#each offers}}
+        .offers_bg_{{@index}}{
         	background:{{{color}}};
         }
-        .bg_offer_left_{{@index}}{
+        .bg_offers_{{@index}}{
         	border: 2px solid {{{color}}};
         }
-        .gt_offer_wrap.bg_offer_left_{{@index}}:hover{
+        .gt_offer_wrap.bg_offers_{{@index}}:hover{
         	background-color:{{{color}}};
         }
-        .gt_offer_wrap:hover.bg_offer_left_{{@index}}:before{
+        .gt_offer_wrap:hover.bg_offers_{{@index}}:before{
         	border:1px solid {{{color}}};
         }
-        .gt_wht_offer_wrap > i.offers_left_bg_{{@index}}:after{
+        .gt_wht_offer_wrap > i.offers_bg_{{@index}}:after{
         	border: 2px dotted {{{color}}};
         }
-        .gt_wht_offer_des span.bg_offer_left_{{@index}}{
+        .gt_wht_offer_des span.bg_offers_{{@index}}{
         	background-color: {{{color}}};
         }
-        .gt_wht_offer_wrap:hover i.offers_left_bg_{{@index}}:after{background-color:{{{color}}};}
-        .bg_offer_left_{{@index}}:before{
+        .gt_wht_offer_wrap:hover i.offers_bg_{{@index}}:after{background-color:{{{color}}};}
+        .bg_offers_{{@index}}:before{
         	content: "";
             position: absolute;
             width: 100%;
@@ -98,45 +123,7 @@
         	opacity: 0;
         }
         
-        .gt_offer_wrap:hover.bg_offer_left_{{@index}}:before{
-        	bottom: -10px;
-            right: -10px;
-            opacity: 1;
-        }
-        {{/each}}
-        
-        
-        {{#each offers.right}}
-        .offers_right_bg_{{@index}}{
-        	background:{{{color}}};
-        }
-        .bg_offer_right_{{@index}}{
-        	border: 2px solid {{{color}}};
-        }
-        .gt_offer_wrap.bg_offer_right_{{@index}}:hover{
-        	background-color:{{{color}}};
-        }
-        .gt_offer_wrap:hover.bg_right_left_{{@index}}:before{
-        	border:1px solid {{{color}}};
-        }
-        .gt_wht_offer_wrap > i.offers_right_bg_{{@index}}:after{
-        	border: 2px dotted {{{color}}};
-        }
-        .gt_wht_offer_des span.bg_offer_right_{{@index}}{
-        	background-color: {{{color}}};
-        }
-        .gt_wht_offer_wrap:hover i.offers_right_bg_{{@index}}:after{background-color:{{{color}}};}
-        .bg_offer_right_{{@index}}:before{
-        	content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            bottom: 0px;
-            right: 0px;
-        	opacity: 0;
-        }
-        
-        .gt_offer_wrap:hover.bg_offer_right_{{@index}}:before{
+        .gt_offer_wrap:hover.bg_offers_{{@index}}:before{
         	bottom: -10px;
             right: -10px;
             opacity: 1;

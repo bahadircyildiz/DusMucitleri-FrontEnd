@@ -1,6 +1,5 @@
 var global = function(dpd,Q){
     return {
-        instructorIDs: ["b11cb1c5be508b49", "04362a43cbb648f1", "f820abc77c5969d5", "d0cb61d7abe48b51"],
         queries : {
             navigation: {$sort: {order : 1}},
             settings: { $limit: 1},
@@ -20,19 +19,21 @@ var global = function(dpd,Q){
                 return res[0];
             },
             navigation: function(res){
-                res.forEach(function(val,index){
-                    if(val.parent){
-                        res.forEach(function(parent, pIndex){
-                            if(parent.id == val.parent){
-                                if(!parent.children) parent.children = [];
-                                parent.children.push(val);
-                                res.splice(index, 1);
-                            }
-                        })
-                    }
-                    
-                });
-                return res;
+                var papas = [], kids = [];
+                res.forEach(function(val, index){
+                    if(!val.parentID) papas.push(val);
+                    else kids.push(val);
+                })
+                console.log("Papas", papas, "Kids", kids);
+                kids.forEach(function(kid, index){
+                    papas.forEach(function(papa, index){
+                        if(kid.parentID == papa.id){
+                            if(!papa.children) papa.children = [];
+                            papa.children.push(kid);
+                        }
+                    })
+                })
+                return papas;
             },
             slider: function(res){
                 var banner = [], gallery = []; 
