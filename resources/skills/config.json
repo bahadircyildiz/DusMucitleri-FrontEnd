@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 0
+		},
+		"percentage": {
+			"name": "percentage",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "percentage",
+			"order": 1
+		},
+		"color": {
+			"name": "color",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "color",
+			"order": 2
+		},
+		"isRight": {
+			"name": "isRight",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "isRight",
+			"order": 3
+		}
+	}
+}

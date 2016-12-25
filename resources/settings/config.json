@@ -136,6 +136,14 @@
 			"required": false,
 			"id": "siteActive",
 			"order": 16
+		},
+		"allblogtags": {
+			"name": "allblogtags",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "allblogtags",
+			"order": 17
 		}
 	}
 }

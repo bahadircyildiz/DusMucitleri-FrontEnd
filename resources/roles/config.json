@@ -1,13 +1,21 @@
 {
 	"type": "Collection",
 	"properties": {
-		"type": {
-			"name": "type",
+		"name": {
+			"name": "name",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "type",
+			"id": "name",
 			"order": 0
+		},
+		"alias": {
+			"name": "alias",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "alias",
+			"order": 1
 		}
 	}
 }

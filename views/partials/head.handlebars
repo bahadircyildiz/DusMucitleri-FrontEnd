@@ -56,9 +56,9 @@
         }
         {{/if}}
         
-        {{#if contents.bgimage}}
+        {{#if contents.subbanner}}
         .gt_sub_banner_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.subbanner.bgimage}});
             background-size: cover;
         }
         {{/if}}
@@ -89,6 +89,18 @@
         }
         .course_category.courses_bg_{{@index}}:before{
         	border-color: transparent transparent transparent {{{ribbon.color}}};
+        }
+        {{/each}}
+        
+        {{#each skills.left}}
+        .left_p_bg{{@index}}{
+            background-color: {{{color}}};    
+        }
+        {{/each}}
+        
+        {{#each skills.left}}
+        .right_p_bg{{@index}}{
+            background-color: {{{color}}};    
         }
         {{/each}}
         

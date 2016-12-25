@@ -413,7 +413,7 @@ section{
 	left: 0px;
 	width: 100%;
 	height: 2px;
-	background-image: url(images/top-wrap-bg.png);
+	/*background-image: url(images/top-wrap-bg.png);*/
 	background-position: center;
 	background-repeat: repeat;
 	background-size: 100%;
@@ -1053,7 +1053,7 @@ ul.gt_hdr3_scl_icon li a{
 	  ==============================================================
 */
 .fact_figure_bg{
-	background-image:url(images/fact_figure_bg.png);
+	/*background-image:url(images/fact_figure_bg.png);*/
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center;
@@ -1748,7 +1748,7 @@ ul.gt_hdr3_scl_icon li a{
 	  ==============================================================
 */
 .gt_testimonial_bg{
-	background-image: url(images/testimonial-bg.jpg);
+	/*background-image: url(images/testimonial-bg.jpg);*/
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -1959,7 +1959,6 @@ ul.gt_hdr3_scl_icon li a{
 	display: inline-block;
 	border-radius: 100%;
 	background-color: #fff;
-	border: 2px solid #383838;
 	margin: 0px 0px 0px 6px;
 }
 .gt_testimonial2_slider .owl-dots .owl-dot.active{
@@ -2403,7 +2402,7 @@ ul.gt_blog_meta li i{
 	  ==============================================================
 */
 .gt_comming_soon_bg {
-	background-image: url(images/comming-soon-bg.jpg);
+	/*background-image: url(images/comming-soon-bg.jpg);*/
 	position: relative;
 	float: left;
 	width: 100%;
@@ -3589,7 +3588,7 @@ ul.gt_rating_start li a{
 	  ==============================================================
 */
 .gt_sub_banner_bg{
-	background-image: url(images/sub-banner-bg.jpg);
+	/*background-image: url(images/sub-banner-bg.jpg); */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

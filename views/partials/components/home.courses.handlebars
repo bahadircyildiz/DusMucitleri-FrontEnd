@@ -3,7 +3,6 @@
     <div class="container">
         <div class="gt_hdg_1 wow zoomIn">
             <h3> {{contents.home.courses.title}} </h3>
-            <br>
             {{{contents.home.courses.body}}}
             <span><img src="static/images/hdg-01.png" alt=""></span>
         </div>
@@ -23,8 +22,8 @@
             </div>
             <div class="col-md-4">
                 <div class="gt_course_search_bar default_width">
-                    <form>
-                        <input class="c_ph" type="search" placeholder="Ders araması">
+                    <form action="/course/1">
+                        <input class="c_ph" type="search" name="q" placeholder="Ders araması">
                         <label><input type="submit" value="Ara"></label>
                     </form>
                 </div>
@@ -58,7 +57,8 @@
                             {{/getInstructor}}
                         </div>
                         <div class="gt_course_apply">
-                            <a data-toggle="modal" data-target="#apply_form" href="#">Başvur</a>
+                            {{!--<a data-toggle="modal" data-target="#apply_form" href="#">Başvur</a>--}}
+                            <a href="/course/details/{{{id}}}">Başvur</a>
                         </div>
                     </div> 
                 </div>

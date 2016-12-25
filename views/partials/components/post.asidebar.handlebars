@@ -1,94 +1,91 @@
 <!--Aside Bar Wrap Start-->
+{{#if blog}}
 <div class="col-md-3">
     <aside class="gt_aside_outer_wrap">
         <!--Search Bar Wrap Start-->
         <div class="gt_aside_search_wrap aside_margin_bottom">
-            <form>
-                <input class="c_ph" type="text" placeholder="Search">
-                <button class="fa fa-search"></button>
+            <form action="/blog/1">
+                <input class="c_ph" type="text" name="q" placeholder="Blog Ara">
+                <button class="fa fa-search" type="submit"></button>
             </form>
         </div>
         <!--Search Bar Wrap Start-->
         
         <!--Category Wrap Start-->
-        <div class="gt_aside_category gt_detail_hdg aside_margin_bottom">
-            <h6>Categories</h6>
-            <ul>
-                <li><a href="#">Guidance</a> <span>(55)</span></li>
-                <li><a href="#">Listing</a> <span>(45)</span></li>
-                <li><a href="#">Advertise</a> <span>(10)</span></li>
-                <li><a href="#">Consulting</a> <span>(15)</span></li>
-                <li><a href="#">Clean design</a> <span>(25)</span></li>
-                <li><a href="#">Happy Clients</a> <span>(50)</span></li>
-            </ul>
-        </div>
+        {{!--<div class="gt_aside_category gt_detail_hdg aside_margin_bottom">--}}
+        {{!--    <h6>Kategoriler</h6>--}}
+        {{!--    <ul>--}}
+                
+        {{!--        <li><a href="#">Guidance</a> <span>(55)</span></li>--}}
+        {{!--        <li><a href="#">Listing</a> <span>(45)</span></li>--}}
+        {{!--        <li><a href="#">Advertise</a> <span>(10)</span></li>--}}
+        {{!--        <li><a href="#">Consulting</a> <span>(15)</span></li>--}}
+        {{!--        <li><a href="#">Clean design</a> <span>(25)</span></li>--}}
+        {{!--        <li><a href="#">Happy Clients</a> <span>(50)</span></li>--}}
+        {{!--    </ul>--}}
+        {{!--</div>--}}
         <!--Category Wrap Start-->
         
-        <!--Recent News Wrap Start-->
-        <div class="gt_aside_post_wrap gt_detail_hdg aside_margin_bottom">
-            <h6>Recent Post</h6>
-            <ul>
-                <li>
-                    <figure>
-                        <img src="extra-images/foo-news-09.jpg" alt="">
-                    </figure>
-                    <div class="gt_aside_post_des">
-                        <span>Marketing</span>
-                        <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>
-                    </div>
-                </li>
-                <li>
-                    <figure>
-                        <img src="extra-images/foo-news-10.jpg" alt="">
-                    </figure>
-                    <div class="gt_aside_post_des">
-                        <span>Marketing</span>
-                        <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>
-                    </div>
-                </li>
-                <li>
-                    <figure>
-                        <img src="extra-images/foo-news-11.jpg" alt="">
-                    </figure>
-                    <div class="gt_aside_post_des">
-                        <span>Marketing</span>
-                        <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>
-                    </div>
-                </li>
-                <li>
-                    <figure>
-                        <img src="extra-images/foo-news-12.jpg" alt="">
-                    </figure>
-                    <div class="gt_aside_post_des">
-                        <span>Marketing</span>
-                        <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>
-                    </div>
-                </li>
-                <li>
-                    <figure>
-                        <img src="extra-images/foo-news-13.jpg" alt="">
-                    </figure>
-                    <div class="gt_aside_post_des">
-                        <span>Marketing</span>
-                        <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!--Recent News Wrap Start-->
+        {{!--<!--Recent News Wrap Start-->--}}
+        {{!--<div class="gt_aside_post_wrap gt_detail_hdg aside_margin_bottom">--}}
+        {{!--    <h6>Son Bloglar</h6>--}}
+        {{!--    <ul>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-09.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-10.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-11.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-12.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-13.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--    </ul>--}}
+        {{!--</div>--}}
+        {{!--<!--Recent News Wrap Start-->--}}
         <!--Tags Wrap Start-->
         <div class="gt_aside_tags gt_detail_hdg">
-            <h6>Tags</h6>
+            <h6>Etiketler</h6>
             <ul>
                 <li>
-                    <a href="#">Fashion</a>
-                    <a href="#">MuSiC</a>
-                    <a href="#">Lorem tag</a>
-                    <a href="#">Tag</a>
-                    <a href="#">psum tag</a>
-                    <a href="#">travel</a>
-                    <a href="#">Fashion</a>
-                    <a href="#">MuSiC</a>
+                    {{#each settings.allblogtags}}
+                    <a href="/blog/1?cat={{this}}">{{this}}</a>
+                    {{/each}}
                 </li>
             </ul>
         </div>
@@ -96,3 +93,101 @@
     </aside>
 </div>
 <!--Aside Bar Wrap End-->
+{{/if}}
+
+<!--Aside Bar Wrap Start-->
+{{#if courses}}
+<div class="col-md-3">
+    <aside class="gt_aside_outer_wrap">
+        <!--Search Bar Wrap Start-->
+        <div class="gt_aside_search_wrap aside_margin_bottom">
+            <form action="/course/1">
+                <input class="c_ph" type="text" name="q" placeholder="Kurs Ara">
+                <button class="fa fa-search" type="submit"></button>
+            </form>
+        </div>
+        <!--Search Bar Wrap Start-->
+        
+        <!--Category Wrap Start-->
+        {{!--<div class="gt_aside_category gt_detail_hdg aside_margin_bottom">--}}
+        {{!--    <h6>Kategoriler</h6>--}}
+        {{!--    <ul>--}}
+                
+        {{!--        <li><a href="#">Guidance</a> <span>(55)</span></li>--}}
+        {{!--        <li><a href="#">Listing</a> <span>(45)</span></li>--}}
+        {{!--        <li><a href="#">Advertise</a> <span>(10)</span></li>--}}
+        {{!--        <li><a href="#">Consulting</a> <span>(15)</span></li>--}}
+        {{!--        <li><a href="#">Clean design</a> <span>(25)</span></li>--}}
+        {{!--        <li><a href="#">Happy Clients</a> <span>(50)</span></li>--}}
+        {{!--    </ul>--}}
+        {{!--</div>--}}
+        <!--Category Wrap Start-->
+        
+        {{!--<!--Recent News Wrap Start-->--}}
+        {{!--<div class="gt_aside_post_wrap gt_detail_hdg aside_margin_bottom">--}}
+        {{!--    <h6>Son Bloglar</h6>--}}
+        {{!--    <ul>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-09.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-10.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-11.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-12.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--        <li>--}}
+        {{!--            <figure>--}}
+        {{!--                <img src="extra-images/foo-news-13.jpg" alt="">--}}
+        {{!--            </figure>--}}
+        {{!--            <div class="gt_aside_post_des">--}}
+        {{!--                <span>Marketing</span>--}}
+        {{!--                <h6><a href="#">Sed ut perspiciatis unde omnis iste natus  </a></h6>--}}
+        {{!--            </div>--}}
+        {{!--        </li>--}}
+        {{!--    </ul>--}}
+        {{!--</div>--}}
+        {{!--<!--Recent News Wrap Start-->--}}
+        <!--Tags Wrap Start-->
+        <div class="gt_aside_tags gt_detail_hdg">
+            <h6>Etiketler</h6>
+            <ul>
+                <li>
+                    {{#each settings.allcoursetags}}
+                    <a href="/blog/1?cat={{this}}">{{this}}</a>
+                    {{/each}}
+                </li>
+            </ul>
+        </div>
+        <!--Tags Wrap Start-->
+    </aside>
+</div>
+<!--Aside Bar Wrap End-->
+{{/if}}

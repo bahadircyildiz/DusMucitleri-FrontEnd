@@ -72,6 +72,14 @@
 			"required": false,
 			"id": "hasRibbon",
 			"order": 8
+		},
+		"categories": {
+			"name": "categories",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "categories",
+			"order": 9
 		}
 	}
 }

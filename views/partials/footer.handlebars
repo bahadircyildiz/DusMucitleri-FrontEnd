@@ -58,4 +58,20 @@
             }
         });
     }
+    if($('#subscribe').length){
+        $('#subscribe').submit(function(event){
+            event.preventDefault();
+            console.log($('#email').val());
+            $.ajax({
+                url: "/subscribe",
+                type: 'post',
+                dataType: 'json',
+                data: {email : $('#email').val()},
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        })
+    }
+    
     </script>

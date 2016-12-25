@@ -1,5 +1,8 @@
 var global = function(dpd,Q){
     return {
+        roles : {
+            Admin: 0, Moderator:1, Psychologist: 2, Student: 3, Parent: 4, Instructor: 5    
+        },
         queries : {
             navigation: {$sort: {order : 1}},
             settings: { $limit: 1},
@@ -24,7 +27,7 @@ var global = function(dpd,Q){
                     if(!val.parentID) papas.push(val);
                     else kids.push(val);
                 })
-                console.log("Papas", papas, "Kids", kids);
+                // console.log("Papas", papas, "Kids", kids);
                 kids.forEach(function(kid, index){
                     papas.forEach(function(papa, index){
                         if(kid.parentID == papa.id){
@@ -50,6 +53,14 @@ var global = function(dpd,Q){
                     ret[item.content][item.branch] = item;
                 })
                 return ret;
+            },
+            skills: function(res){
+                var left = [], right = [];
+                res.forEach(function(val){
+                    if(val.isRight) right.push(val);
+                    else left.push(val);
+                })
+                return {left: left, right: right};
             }
         },
         callAsyncAll : function(callsets, data){

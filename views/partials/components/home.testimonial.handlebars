@@ -4,31 +4,67 @@
         <!--Main Heading Wrap Start-->
         <div class="gt_hdg_1 white_hdg">
             <h3>{{contents.home.testimonials.title}}</h3>
-            <br>
             {{{contents.home.testimonials.body}}}
+            <span><img src="/static/images/hdg-01.png" alt=""></span>
         </div>
         <!--Main Heading Wrap End-->
 
-        <!--Testimonial List Wrap Start-->
-        <div class="gt_testimonial_slider" id="gt_testimonial_slider">
+        <!--Testimonial 02 List Wrap Start-->
+        <div class="gt_testimonial2_slider" id="gt_testimonial2_slider">
             {{#each testimonials}}
             <div class="item">
-                <div class="gt_testimonial_wrap">
+                <div class="gt_testi2_wrap">
                     <p>{{{comment}}}</p>
-                </div>
-                <div class="gt_testimonial_img">
-                    <figure>
-                        <img src="{{{image}}}" alt="{{{name}}}">
-                    </figure>
-                    <div class="gt_testimonial_des">
-                        <h5><a href="#">{{{name}}}</a></h5>
+                    <div class="gt_testi2_detail">
+                        <div class="gt_testi2_name">
+                            <h6>{{{name}}}</h6>
+                            <span>{{{title}}}</span>
+                        </div>
+                        <figure>
+                            <img src="{{{image}}}" alt="{{{name}}}">
+                        </figure>
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
-        <!--Testimonial List Wrap End-->
+        <!--Testimonial 02 List Wrap End-->
 
     </div>
 </section>
-        <!--Testimonial Wrap End-->
+<!--Testimonial Wrap End-->
+
+{{!--<!--Testimonial Wrap Start-->--}}
+{{!--<section class="gt_testimonial_bg">--}}
+{{!--    <div class="container">--}}
+{{!--        <!--Main Heading Wrap Start-->--}}
+{{!--        <div class="gt_hdg_1 white_hdg">--}}
+{{!--            <h3>{{contents.home.testimonials.title}}</h3>--}}
+{{!--            <br>--}}
+{{!--            {{{contents.home.testimonials.body}}}--}}
+{{!--        </div>--}}
+{{!--        <!--Main Heading Wrap End-->--}}
+
+{{!--        <!--Testimonial List Wrap Start-->--}}
+{{!--        <div class="gt_testimonial_slider" id="gt_testimonial_slider">--}}
+{{!--            {{#each testimonials}}--}}
+{{!--            <div class="item">--}}
+{{!--                <div class="gt_testimonial_wrap">--}}
+{{!--                    <p>{{{comment}}}</p>--}}
+{{!--                </div>--}}
+{{!--                <div class="gt_testimonial_img">--}}
+{{!--                    <figure>--}}
+{{!--                        <img src="{{{image}}}" alt="{{{name}}}">--}}
+{{!--                    </figure>--}}
+{{!--                    <div class="gt_testimonial_des">--}}
+{{!--                        <h5><a href="#">{{{name}}}</a></h5>--}}
+{{!--                    </div>--}}
+{{!--                </div>--}}
+{{!--            </div>--}}
+{{!--            {{/each}}--}}
+{{!--        </div>--}}
+{{!--        <!--Testimonial List Wrap End-->--}}
+
+{{!--    </div>--}}
+{{!--</section>--}}
+{{!--<!--Testimonial Wrap End-->--}}
