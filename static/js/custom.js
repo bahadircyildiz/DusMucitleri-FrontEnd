@@ -456,22 +456,22 @@ $(document).ready(function(){
 	jQuery(window).load(function($) {
 		if(jQuery('#filterable-item-holder-1').length){
 		var filter_container = jQuery('#filterable-item-holder-1');
-		filter_container.children().css('position','relative');	
-		filter_container.masonry({
-			singleMode: true,
-			itemSelector: '.filterable-item:not(.hide)',
-			animate: true,
-			animationOptions:{ duration: 800, queue: false }
-		});	
+		// filter_container.children().css('position','relative');	
+		// filter_container.masonry({
+		// 	singleMode: true,
+		// 	itemSelector: '.filterable-item:not(.hide)',
+		// 	animate: true,
+		// 	animationOptions:{ duration: 800, queue: false }
+		// });	
 		jQuery(window).resize(function(){
 			var temp_width =  filter_container.children().filter(':first');
-			filter_container.masonry({
-				columnWidth: temp_width,
-				singleMode: true,
-				itemSelector: '.filterable-item:not(.hide)',
-				animate: true,
-				animationOptions:{ duration: 800, queue: false }
-			});		
+			// filter_container.masonry({
+			// 	columnWidth: temp_width,
+			// 	singleMode: true,
+			// 	itemSelector: '.filterable-item:not(.hide)',
+			// 	animate: true,
+			// 	animationOptions:{ duration: 800, queue: false }
+			// });		
 		});	
 		jQuery('ul#filterable-item-filter-1 a').on('click',function(e){	
 
@@ -500,7 +500,7 @@ $(document).ready(function(){
 					}
 				});
 			}
-			filter_container.masonry();
+			// filter_container.masonry();
 		});
 		}
 	});

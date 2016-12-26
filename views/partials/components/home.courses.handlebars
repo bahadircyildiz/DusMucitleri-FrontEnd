@@ -12,34 +12,36 @@
                 <div class="gt_course_tab_list default_width">
                     <ul id="filterable-item-filter-1">
                         <li><a class="active" data-value="all" href="#">Hepsi</a></li>
-                        {{#each settings.allcoursetags}}
-                        <li><a data-value="{{@index}}" href="#">{{this}}</a></li>
+                        {{#each categories}}
+                        <li><a data-value="{{{id}}}" href="#">{{{title}}}</a></li>
                         {{/each}}
                         {{!--<li><a data-value="2" href="#">Special Courses</a></li>--}}
                         {{!--<li><a data-value="3" href="#">Famouse Courses</a></li>--}}
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="gt_course_search_bar default_width">
-                    <form action="/course/1">
-                        <input class="c_ph" type="search" name="q" placeholder="Ders araması">
-                        <label><input type="submit" value="Ara"></label>
-                    </form>
-                </div>
-            </div>
+            {{!--<div class="col-md-4">--}}
+            {{!--    <div class="gt_course_search_bar default_width">--}}
+            {{!--        <form action="/course/1">--}}
+            {{!--            <input class="c_ph" type="search" name="q" placeholder="Ders araması">--}}
+            {{!--            <label><input type="submit" value="Ara"></label>--}}
+            {{!--        </form>--}}
+            {{!--    </div>--}}
+            {{!--</div>--}}
         </div>
 
         <!--Popular Courses List Wrap Start-->
         <div id="filterable-item-holder-1">
             {{#each courses}}
-            <div class="filterable-item all {{coursetags this.tags}}col-md-4 col-sm-6 col-xs-12">
+            <div class="filterable-item all {{{categoryID}}} col-md-4 col-sm-6 col-xs-12">
                 <div class="gt_latest_course2_wrap default_width">
                     <figure>
                         <img src="{{this.image}}" alt="{{this.title}}">
                         <figcaption>
                             {{!--<div class="course_price">{{this.price}}&#8378;</div>--}}
-                            {{#if ribbon}}<div class="course_category courses_bg_{{@index}}" >{{this.ribbon.category}}</div> {{/if}}
+                            {{#getRibbon this.categoryID}}
+                            <div class="course_category courses_bg_{{{id}}}" >{{{title}}}</div> 
+                            {{/getRibbon}}
                         </figcaption>
                     </figure>
                     <div class="gt_latest_course_des default_width">

@@ -1,34 +1,60 @@
 <!--About Us Wrap Start-->
-        <section class="gt_about_bg wow fadeInUp" id="about-us">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
+<section class="gt_about_bg wow fadeInUp" id="about-us">
+    <div class="container">
+        <div class="row">
+            {{#each contents.descriptive}}
+                {{#if this.image}}
+                    <div class="col-md-8" id="{{{branch}}}">
                         <div class="gt_about_wrap">
-                            <h3> {{contents.home.aboutus.title}} </h3>
+                            <h3> {{{title}}} </h3>
                             <br />
-                            {{{contents.home.aboutus.body}}}
-                            <div class="row">
-                                {{#each kidservices}}
-                                <div class="col-md-3 col-sm-3 flip_container">
-                                    <div class="gt_flip_effect">
-                                        <div class="gt_about_icon">
-                                            <i class="{{this.icon}}"></i>
-                                        </div>
-                                        <div class="gt_icon_des flips_bg_{{@index}}">
-                                            <a href="#">{{this.title}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{/each}}
-                            </div>
+                            {{{this.body}}}
+                            {{!--<div class="row">--}}
+                            {{!--    {{#each kidservices}}--}}
+                            {{!--    <div class="col-md-3 col-sm-3 flip_container">--}}
+                            {{!--        <div class="gt_flip_effect">--}}
+                            {{!--            <div class="gt_about_icon">--}}
+                            {{!--                <i class="{{this.icon}}"></i>--}}
+                            {{!--            </div>--}}
+                            {{!--            <div class="gt_icon_des flips_bg_{{@index}}">--}}
+                            {{!--                <a href="#">{{this.title}}</a>--}}
+                            {{!--            </div>--}}
+                            {{!--        </div>--}}
+                            {{!--    </div>--}}
+                            {{!--    {{/each}}--}}
+                            {{!--</div>--}}
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="gt_about_img">
-                            <img src="{{contents.home.aboutus.image}}" alt="{{contents.home.aboutus.title}}">
+                            <img src="{{{image}}}" alt="{{{title}}}">
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!--About Us Wrap End-->
+                {{else}}
+                    <div class="col-md-12" id="{{{branch}}}">
+                        <div class="gt_about_wrap">
+                            <h3> {{{title}}} </h3>
+                            <br />
+                            {{{this.body}}}
+                            {{!--<div class="row">--}}
+                            {{!--    {{#each kidservices}}--}}
+                            {{!--    <div class="col-md-3 col-sm-3 flip_container">--}}
+                            {{!--        <div class="gt_flip_effect">--}}
+                            {{!--            <div class="gt_about_icon">--}}
+                            {{!--                <i class="{{this.icon}}"></i>--}}
+                            {{!--            </div>--}}
+                            {{!--            <div class="gt_icon_des flips_bg_{{@index}}">--}}
+                            {{!--                <a href="#">{{this.title}}</a>--}}
+                            {{!--            </div>--}}
+                            {{!--        </div>--}}
+                            {{!--    </div>--}}
+                            {{!--    {{/each}}--}}
+                            {{!--</div>--}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</section>
+<!--About Us Wrap End-->

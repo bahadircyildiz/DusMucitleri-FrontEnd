@@ -113,21 +113,13 @@
 			"id": "hours",
 			"order": 13
 		},
-		"flips": {
-			"name": "flips",
-			"type": "array",
-			"typeLabel": "array",
+		"categorytypes": {
+			"name": "categorytypes",
+			"type": "object",
+			"typeLabel": "object",
 			"required": false,
-			"id": "flips",
+			"id": "categorytypes",
 			"order": 14
-		},
-		"allcoursetags": {
-			"name": "allcoursetags",
-			"type": "array",
-			"typeLabel": "array",
-			"required": false,
-			"id": "allcoursetags",
-			"order": 15
 		},
 		"siteActive": {
 			"name": "siteActive",
@@ -135,15 +127,7 @@
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "siteActive",
-			"order": 16
-		},
-		"allblogtags": {
-			"name": "allblogtags",
-			"type": "array",
-			"typeLabel": "array",
-			"required": false,
-			"id": "allblogtags",
-			"order": 17
+			"order": 15
 		}
 	}
 }

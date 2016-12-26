@@ -18,6 +18,13 @@ var helpers = {
             });
             return options.fn(result);
         },
+        getRibbon: function(id, options){
+            var result;
+            options.data.root.categories.forEach(function(val){
+                if(val.id == id) result = val;
+            });
+            return options.fn(result);
+        },
         math: function(lvalue, operator, rvalue, options) {
             lvalue = parseFloat(lvalue);
             rvalue = parseFloat(rvalue);

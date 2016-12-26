@@ -1,12 +1,18 @@
 var global = function(dpd,Q){
     return {
         roles : {
-            Admin: 0, Moderator:1, Psychologist: 2, Student: 3, Parent: 4, Instructor: 5    
+            Admin: "e8c3e2161a60ca0a", 
+            Moderator:"4661206640e8e8af", 
+            Psychologist: "482d6b0a03ba09dd", 
+            Student: "23a36107a3a89a0f", 
+            Parent: "56027a4997be69e4", 
+            Instructor: "f50e89a29481f8e6"
         },
         queries : {
             navigation: {$sort: {order : 1}},
             settings: { $limit: 1},
-            blog: {$sort: {timeStamp : -1}}
+            blog: {$sort: {timeStamp : -1}},
+            slider: {$sort: {order : 1}}
         },
         extras: {
             settings: function(res){
@@ -14,7 +20,7 @@ var global = function(dpd,Q){
                 if(res[0].siteKeywords){
                     var arr = res[0].siteKeywords, kw = "";
                     arr.forEach(function(key, index){
-                        kw += key.text;
+                        kw += key;
                         if(arr.length - 1 != index) kw += ",";
                     });
                     res[0].siteKeywords = kw;

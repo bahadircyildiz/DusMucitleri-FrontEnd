@@ -1407,10 +1407,24 @@ ul.gt_hdr3_scl_icon li a{
 }
 .gt_latest_course2_wrap:hover .gt_latest_course_des{
 	background-color: #fff;
+	height:100%;
 }
 .gt_latest_course2_wrap:hover .course_price:before{
 	background-color: #00a296;
 }
+
+/*Custom Stuff*/
+
+#filterable-item-holder-1{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#filterable-item-holder-1 .filterable-item{
+	display: flex;
+	margin: 0px 0px 30px;
+}
+
 /*
 	  ==============================================================
 		   Heading CSS
@@ -1598,6 +1612,16 @@ ul.gt_hdr3_scl_icon li a{
 	opacity: 1;
 	visibility: visible;
 }
+
+.instructors-grid{
+	display: flex;
+	flex-wrap: wrap;
+}
+.instructors-item{
+	display: flex;
+	flex-basis: auto;
+}
+
 /*
 	  ==============================================================
 		   Meet Our Best Teacher 02 Wrap CSS
@@ -1942,6 +1966,7 @@ ul.gt_hdr3_scl_icon li a{
 /*Slider Css*/
 .gt_testimonial2_slider .item{
 	margin: 0px 10px;
+	height: 100%;
 }
 .gt_testimonial2_slider .owl-stage-outer{
 	margin: 0px 0px 30px;
@@ -2064,6 +2089,7 @@ ul.gt_hdr3_scl_icon li a{
 }
 .gt_blog_wrap{
 	border: 1px solid rgba(153,153,153,0.34);
+	height: 100%;
 }
 .gt_blog_wrap:before{
 	content: "";
@@ -2175,8 +2201,10 @@ ul.gt_blog_meta li i{
 	opacity: 0;
 }
 /*Slider Css*/
+
 .gt_news_slider .item{
 	margin: 0px 10px;
+	height: 100%;
 }
 .gt_news_slider .owl-stage-outer{
 	margin: 0px 0px 30px;
@@ -4384,3 +4412,17 @@ ul.gt_plan_offer_list li a{
 .gt_kid_caring_service>h4{margin-bottom: 15px;text-transform: capitalize;}
 .gt_kid_services_wrap{padding-bottom: 40px;}
 .gt_kid_img>img{transform: rotateY(180deg);-moz-transform: rotateY(180deg);-webkit-transform: rotateY(180deg);-ms-transform: rotateY(180deg);}
+
+.bannerservices{
+	display: flex;
+	flex-wrap: wrap;
+}
+.bannerservices-item{
+	display: flex;
+}
+
+.owl-stage{
+	display: flex;
+}
+
+

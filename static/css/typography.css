@@ -68,7 +68,7 @@ p a {
 	font-family: 'Roboto Slab', serif;
 }
 /* Peragraph Typo */
-p {
+p, ol li, ul li {
     letter-spacing: 0.2px;
     line-height: 24px;
 	color:#999;

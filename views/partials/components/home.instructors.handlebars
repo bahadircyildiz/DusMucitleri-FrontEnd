@@ -11,12 +11,12 @@
         <!--Main Heading Wrap End-->
 
         <!--Teacher List Wrap Start-->
-        <div class="row">
+        <div class="container instructors-grid">
             {{#each userinfo}}
-            <div class="col-md-3 col-sm-6">
+            <div class="instructors-item col-md-3 col-sm-6 col-xs-6" >
                 <div class="gt_team2_wrap">
                     <figure>
-                        <img src="{{{image}}}" alt="">
+                        <img src="{{{image}}}" alt="{{{name}}}">
                         {{!--<figcaption class="gt_team_scl_icon">--}}
                         {{!--    <ul>--}}
                         {{!--        <li class="fb_bg"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}

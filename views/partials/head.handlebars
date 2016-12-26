@@ -83,12 +83,12 @@
         }
         {{/each}}
         
-        {{#each courses}}
-        .courses_bg_{{@index}}{
-        	background:{{{ribbon.color}}};
+        {{#each categories}}
+        .courses_bg_{{{id}}}{
+        	background:{{{color}}};
         }
-        .course_category.courses_bg_{{@index}}:before{
-        	border-color: transparent transparent transparent {{{ribbon.color}}};
+        .course_category.courses_bg_{{{id}}}:before{
+        	border-color: transparent transparent transparent {{{color}}};
         }
         {{/each}}
         

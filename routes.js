@@ -26,7 +26,6 @@ var Routes = function(app,dpd,express,Q){
         
         //Get entries by using dpd param.
         var data = {};
-        data.subfooter = {};
         
         var callsets = [
             {
@@ -38,8 +37,9 @@ var Routes = function(app,dpd,express,Q){
                 query: {$limit: 9, $sort: { timeStamp: 1 } },
                 extra: function(res){
                     res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,50);
+                        val.body = striptags(val.body);
                     })
+                    if(!data.subfooter) data.subfooter = {};
                     data.subfooter.blog = [res[0]];
                     return res;
                 }
@@ -78,11 +78,14 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { content: {$in: ["home", "subfooter"]}},
+                query: {$or: [ { content: {$in: ["home", "subfooter"] } }, {content: "aboutus", branch: "main"} ]},
                 extra: global.extras.contents
             },
             {
                 table: "kidservices"
+            },
+            {
+                table: "categories"   
             }
         ];
         
@@ -121,6 +124,7 @@ var Routes = function(app,dpd,express,Q){
                     res.forEach(function(val){
                         val.body = striptags(val.body).substring(0,50);
                     })
+                    if(!data.subfooter) data.subfooter = {};
                     data.subfooter.blog = [res[0]];
                     return res;
                 }
@@ -144,14 +148,15 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { content: {$in: ["home", "subfooter"]}},
+                query: { content: {$in: ["home", "subfooter", "aboutus"]}},
                 extra: function(res){
                     var ret = {};
                     res.forEach(function(item){
                         if(!ret[item.content]) ret[item.content] = {}; 
                         ret[item.content][item.branch] = item;
                     });
-                    ret.subbanner = ret.home.aboutus;
+                    ret.subbanner = ret.aboutus.main;
+                    ret.descriptive = ret.aboutus;
                     return ret;
                 }
                 
@@ -168,9 +173,86 @@ var Routes = function(app,dpd,express,Q){
         //Async call handler that activates after all tasks are finished.
         global.callAsyncAll(callsets,data).then(function(results){
             data.breadcrumbs = req.breadcrumbs();
-            //console.log("Data with all async calls completed", data);
+            console.log("Data with all async calls completed", data);
             //Send them bitchslaps
-            res.render('pages/aboutus',data);
+            res.render('pages/descriptive',data);
+        }).catch(function(error){
+            res.send(error);
+        });
+        
+    });
+    
+    app.get('/education', function (req, res) {
+        
+        //Get entries by using dpd param.
+        var data = {};
+        data.subfooter = {};
+        
+        //Create async fuctions by the params in tables & queries
+         var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            {
+                table: "blog",
+                query: {$limit: 9, $sort: { timeStamp: 1 } },
+                extra: function(res){
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).substring(0,50);
+                    })
+                    if(!data.subfooter) data.subfooter = {};
+                    data.subfooter.blog = [res[0]];
+                    return res;
+                }
+            },
+            {
+                table: "userinfo",
+                query: { role: global.roles.Instructor},
+            },
+            {
+                table: "facts",
+                query: {$limit: 6},
+                extra: global.extras.facts
+            },
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            {
+                table: "slider",
+                extra: global.extras.slider
+            },
+            {
+                table: "contents",
+                query: { content: {$in: ["home", "subfooter", "education"]}},
+                extra: function(res){
+                    var ret = {};
+                    res.forEach(function(item){
+                        if(!ret[item.content]) ret[item.content] = {}; 
+                        ret[item.content][item.branch] = item;
+                    });
+                    ret.subbanner = ret.education.main;
+                    ret.descriptive = ret.education;
+                    return ret;
+                }
+                
+            },
+            {
+                table: "skills",
+                extra: global.extras.skills
+            },
+            {
+                table: "sponsors"
+            }
+        ];
+        
+        //Async call handler that activates after all tasks are finished.
+        global.callAsyncAll(callsets,data).then(function(results){
+            data.breadcrumbs = req.breadcrumbs();
+            console.log("Data with all async calls completed", data);
+            //Send them bitchslaps
+            res.render('pages/descriptive',data);
         }).catch(function(error){
             res.send(error);
         });

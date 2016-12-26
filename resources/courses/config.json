@@ -25,29 +25,13 @@
 			"id": "price",
 			"order": 2
 		},
-		"tags": {
-			"name": "tags",
-			"type": "array",
-			"typeLabel": "array",
-			"required": false,
-			"id": "tags",
-			"order": 3
-		},
 		"instructorID": {
 			"name": "instructorID",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "instructorID",
-			"order": 4
-		},
-		"active": {
-			"name": "active",
-			"type": "boolean",
-			"typeLabel": "boolean",
-			"required": false,
-			"id": "active",
-			"order": 5
+			"order": 3
 		},
 		"image": {
 			"name": "image",
@@ -55,31 +39,31 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "image",
-			"order": 6
+			"order": 4
 		},
-		"ribbon": {
-			"name": "ribbon",
-			"type": "object",
-			"typeLabel": "object",
+		"categoryID": {
+			"name": "categoryID",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "ribbon",
-			"order": 7
+			"id": "categoryID",
+			"order": 5
 		},
-		"hasRibbon": {
-			"name": "hasRibbon",
-			"type": "boolean",
-			"typeLabel": "boolean",
-			"required": false,
-			"id": "hasRibbon",
-			"order": 8
-		},
-		"categories": {
-			"name": "categories",
+		"tags": {
+			"name": "tags",
 			"type": "array",
 			"typeLabel": "array",
 			"required": false,
-			"id": "categories",
-			"order": 9
+			"id": "tags",
+			"order": 6
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 7
 		}
 	}
 }

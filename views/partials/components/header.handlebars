@@ -11,10 +11,10 @@
                 <div class="gt_hdr_3_ui_element">
                     <ul>
                         {{#each settings.phones}}
-                        <li><i class="fa fa-phone"></i><a href="#">{{{text}}}</a></li>
+                        <li><i class="fa fa-phone"></i><a href="#">{{this}}</a></li>
                         {{/each}}
                         {{#each settings.emails}}
-                        <li><i class="fa fa-envelope-o"></i><a href="mailto:{{{text}}}">{{{text}}}</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="mailto:{{this}}">{{this}}</a></li>
                         {{/each}}
                     </ul>
                 </div>
