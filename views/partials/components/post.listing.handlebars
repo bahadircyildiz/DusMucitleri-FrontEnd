@@ -4,12 +4,12 @@
     <div class="gt_blog_wrap mb">
         <figure>
             <img src="{{{image}}}" alt="">
-            <figcaption class="gt_blog_figcaption">
-                <ul>
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#"><i class="fa fa-expand"></i></a></li>
-                </ul>
-            </figcaption>
+            {{!--<figcaption class="gt_blog_figcaption">--}}
+            {{!--    <ul>--}}
+            {{!--        <li><a href="#"><i class="fa fa-search"></i></a></li>--}}
+            {{!--        <li><a href="#"><i class="fa fa-expand"></i></a></li>--}}
+            {{!--    </ul>--}}
+            {{!--</figcaption>--}}
         </figure>
         <div class="gt_blog_des_wrap">
             <ul class="gt_blog_meta">
@@ -18,7 +18,7 @@
                 {{!--<li><i class="fa fa-comments"></i>04</li>--}}
             </ul>
             <h5><a href="/blog/details/{{id}}">{{{title}}}</a></h5>
-            <p>{{{body}}}</p>
+            <p>{{{body}}}...</p>
             <a href="/blog/details/{{id}}">Devamını Oku <i class="fa fa-arrow-circle-o-right"></i></a>
         </div>
     </div>
@@ -35,7 +35,7 @@
         </figure>
         <div class="gt_latest_course_des default_width">
             <h5><a href="/course/details/{{{id}}}">{{{title}}}</a></h5>
-            <p>{{{body}}}<a href="/course/details/{{{id}}}">Read more</a> </p>
+            <p>{{{body}}}...<a href="/course/details/{{{id}}}">Devamını Oku</a> </p>
             {{#getInstructor this.instructorID}}
             <div class="gt_latest_course_author">
                 <figure>

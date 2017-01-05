@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="gt_course_tab_list default_width">
                     <ul id="filterable-item-filter-1">
-                        <li><a class="active" data-value="all" href="#">Hepsi</a></li>
+                        {{!--<li><a class="active" data-value="All" href="#">Hepsi</a></li>--}}
                         {{#each categories}}
                         <li><a data-value="{{{id}}}" href="#">{{{title}}}</a></li>
                         {{/each}}
@@ -33,10 +33,10 @@
         <!--Popular Courses List Wrap Start-->
         <div id="filterable-item-holder-1">
             {{#each courses}}
-            <div class="filterable-item all {{{categoryID}}} col-md-4 col-sm-6 col-xs-12">
+            <div class="filterable-item All {{{categoryID}}} col-md-4 col-sm-6 col-xs-12">
                 <div class="gt_latest_course2_wrap default_width">
                     <figure>
-                        <img src="{{this.image}}" alt="{{this.title}}">
+                        {{#if this.image}}<img src="{{this.image}}" alt="{{this.title}}">{{/if}}
                         <figcaption>
                             {{!--<div class="course_price">{{this.price}}&#8378;</div>--}}
                             {{#getRibbon this.categoryID}}
@@ -45,7 +45,7 @@
                         </figcaption>
                     </figure>
                     <div class="gt_latest_course_des default_width">
-                        <h5><a href="/course/details/{{{id}}}">{{this.title}}</a></h5>
+                        <h5><a href="/course/details/{{{id}}}">{{{title}}}</a></h5>
                         <p> {{{body}}} </p>
                         <div class="gt_latest_course_author">
                             {{#getInstructor this.instructorID}}
@@ -67,6 +67,7 @@
             </div>
             {{/each}}
         </div>
+
         {{!--<div class="gt_view_more default_width">--}}
         {{!--    <a href="#">Load More</a>--}}
         {{!--</div>--}}

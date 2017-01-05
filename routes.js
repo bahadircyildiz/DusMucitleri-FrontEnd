@@ -1,3 +1,10 @@
+String.prototype.subword = function(first, last){
+    var trimmedString = this.substr(first, last);
+    //re-trim if we are in the middle of a word
+    trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
+    return trimmedString;
+}
+
 //HTML stripping tool
 var striptags = require("striptags");
 // Multer file uploads
@@ -37,7 +44,7 @@ var Routes = function(app,dpd,express,Q){
                 query: {$limit: 9, $sort: { timeStamp: 1 } },
                 extra: function(res){
                     res.forEach(function(val){
-                        val.body = striptags(val.body);
+                        val.body = striptags(val.body).subword(0, 100);
                     })
                     if(!data.subfooter) data.subfooter = {};
                     data.subfooter.blog = [res[0]];
@@ -52,7 +59,7 @@ var Routes = function(app,dpd,express,Q){
                 table: "courses",
                 extra: function(res){
                     res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,50);
+                        val.body = striptags(val.body).subword(0,100);
                     })
                     return res;
                 }
@@ -95,7 +102,7 @@ var Routes = function(app,dpd,express,Q){
         //Async call handler that activates after all tasks are finished.
         global.callAsyncAll(callsets,data).then(function(results){
             data.breadcrumbs = req.breadcrumbs();
-            // console.log("Data with all async calls completed", data);
+            console.log("Data with all async calls completed", data.kidservices);
             //Send them bitchslaps
             res.render('pages/index',data);
         }).catch(function(error){
@@ -105,159 +112,13 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
-    app.get('/aboutus', function (req, res) {
-        
-        //Get entries by using dpd param.
-        var data = {};
-        data.subfooter = {};
-        
-        //Create async fuctions by the params in tables & queries
-        var callsets = [
-            {
-                table: "settings",
-                extra: global.extras.settings
-            },
-            {
-                table: "blog",
-                query: {$limit: 9, $sort: { timeStamp: 1 } },
-                extra: function(res){
-                    res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,50);
-                    })
-                    if(!data.subfooter) data.subfooter = {};
-                    data.subfooter.blog = [res[0]];
-                    return res;
-                }
-            },
-            {
-                table: "userinfo",
-                query: { role: global.roles.Instructor},
-            },
-            {
-                table: "facts",
-                query: {$limit: 6},
-                extra: global.extras.facts
-            },
-            {
-                table: "navigation",
-                extra: global.extras.navigation
-            },
-            {
-                table: "slider",
-                extra: global.extras.slider
-            },
-            {
-                table: "contents",
-                query: { content: {$in: ["home", "subfooter", "aboutus"]}},
-                extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
-                    });
-                    ret.subbanner = ret.aboutus.main;
-                    ret.descriptive = ret.aboutus;
-                    return ret;
-                }
-                
-            },
-            {
-                table: "skills",
-                extra: global.extras.skills
-            },
-            {
-                table: "sponsors"
-            }
-        ];
-        
-        //Async call handler that activates after all tasks are finished.
-        global.callAsyncAll(callsets,data).then(function(results){
-            data.breadcrumbs = req.breadcrumbs();
-            console.log("Data with all async calls completed", data);
-            //Send them bitchslaps
-            res.render('pages/descriptive',data);
-        }).catch(function(error){
-            res.send(error);
-        });
-        
-    });
+    app.get("/blog", function(req,res) {res.redirect("/blog/1")});
     
-    app.get('/education', function (req, res) {
-        
-        //Get entries by using dpd param.
-        var data = {};
-        data.subfooter = {};
-        
-        //Create async fuctions by the params in tables & queries
-         var callsets = [
-            {
-                table: "settings",
-                extra: global.extras.settings
-            },
-            {
-                table: "blog",
-                query: {$limit: 9, $sort: { timeStamp: 1 } },
-                extra: function(res){
-                    res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,50);
-                    })
-                    if(!data.subfooter) data.subfooter = {};
-                    data.subfooter.blog = [res[0]];
-                    return res;
-                }
-            },
-            {
-                table: "userinfo",
-                query: { role: global.roles.Instructor},
-            },
-            {
-                table: "facts",
-                query: {$limit: 6},
-                extra: global.extras.facts
-            },
-            {
-                table: "navigation",
-                extra: global.extras.navigation
-            },
-            {
-                table: "slider",
-                extra: global.extras.slider
-            },
-            {
-                table: "contents",
-                query: { content: {$in: ["home", "subfooter", "education"]}},
-                extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
-                    });
-                    ret.subbanner = ret.education.main;
-                    ret.descriptive = ret.education;
-                    return ret;
-                }
-                
-            },
-            {
-                table: "skills",
-                extra: global.extras.skills
-            },
-            {
-                table: "sponsors"
-            }
-        ];
-        
-        //Async call handler that activates after all tasks are finished.
-        global.callAsyncAll(callsets,data).then(function(results){
-            data.breadcrumbs = req.breadcrumbs();
-            console.log("Data with all async calls completed", data);
-            //Send them bitchslaps
-            res.render('pages/descriptive',data);
-        }).catch(function(error){
-            res.send(error);
-        });
-        
-    });
+    app.get("/course", function(req,res) {res.redirect("/course/1")});
+    
+    app.get("/practising", function(req,res) {res.redirect("/practising/1")});
+    
+    app.get("/workshops", function(req,res) {res.redirect("/workshops/1")});
     
     //Blog Listing Route
     app.get("/blog/:page",function(req,res){
@@ -274,12 +135,10 @@ var Routes = function(app,dpd,express,Q){
                 query: req.query.q ? {title: {$regex: req.query.q}} : global.queries.blog,
                 extra: function(res){
                     data.subfooter.blog = [res[0]];
-                    var $skip = data.pageSize * (data.page - 1), $limit = (res.length - $skip >= data.pageSize) ? data.pageSize : res.length - $skip;
-                    data.lastPage = Math.ceil(res.length / data.pageSize);
-                    res = res.slice($skip, $skip+$limit);
-                    // console.log("All dem shitz", $skip, $limit, data.lastPage, res );
+                    data.allTags = global.getAllTags(res);
+                    res = global.paginate(res, data);
                     res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,200);
+                        val.body = striptags(val.body).subword(0,200);
                     });
                     return res;
                 }
@@ -297,11 +156,7 @@ var Routes = function(app,dpd,express,Q){
                 table: "contents",
                 query: { $or: [{content: "subbanner", branch: "blog"}, {content: "subfooter"}]},
                 extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
-                    });
+                    var ret = global.extras.contents(res);
                     ret.subbanner = ret.subbanner.blog;
                     return ret;
                 }
@@ -338,6 +193,7 @@ var Routes = function(app,dpd,express,Q){
                 table: "blog",
                 extra: function(res){
                     data.subfooter.blog = res;
+                    data.allTags = global.getAllTags(res);
                     res.some(function(val){
                         if (val.id == req.params.id){
                             res = val;
@@ -359,15 +215,14 @@ var Routes = function(app,dpd,express,Q){
                 table: "contents",
                 query: { $or: [{content: "subbanner", branch: "blogdetails"}, {content: "subfooter"}]},
                 extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
-                    });
+                    var ret = global.extras.contents(res);
                     ret.subbanner = ret.subbanner.blogdetails;
                     return ret;
                 }
             },
+            {
+                table: "categories"
+            }
         ]
         
         //Create async fuctions by the params in tables & queries
@@ -385,9 +240,8 @@ var Routes = function(app,dpd,express,Q){
         });
         
     });
-
-    //Couse Listing Route
-    app.get("/course/:page",function(req,res){
+    
+    app.get("/practising/:page", function(req,res){
         var data = {}; 
         data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
@@ -398,15 +252,19 @@ var Routes = function(app,dpd,express,Q){
                 extra: global.extras.settings
             },
             {
-                table: "courses",
-                query: req.query.q ? {title: {$regex: req.query.q}} : global.queries.courses,
+                table: "categories",
                 extra: function(res){
-                    var $skip = data.pageSize * (data.page - 1), $limit = (res.length - $skip >= data.pageSize) ? data.pageSize : res.length - $skip;
-                    data.lastPage = Math.ceil(res.length / data.pageSize);
-                    res = res.slice($skip, $skip+$limit);
-                    // console.log("All dem zitz", $skip, $limit, data.lastPage, res );
+                    return res;
+                }
+            },
+            {
+                table: "courses",
+                query: { categoryID: "952ee4cd940ea884"},
+                extra: function(res){
+                    data.allTags = global.getAllTags(res);
+                    res = global.paginate(res, data);
                     res.forEach(function(val){
-                        val.body = striptags(val.body).substring(0,200);
+                        val.body = striptags(val.body).subword(0,200);
                     });
                     return res;
                 }
@@ -428,11 +286,159 @@ var Routes = function(app,dpd,express,Q){
                 table: "contents",
                 query: { $or: [{content: "subbanner", branch: "courses"}, {content: "subfooter"}]},
                 extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
+                    var ret = global.extras.contents(res);
+                    ret.subbanner = ret.subbanner.courses;
+                    return ret;
+                }
+            },
+            {
+                table: "blog",
+                extra: function(res){
+                    data.subfooter.blog = [res[0]];
+                    return [];
+                }
+            },
+        ]
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll(callsets,data).then(function(results){
+            //Send them bitchslaps
+            if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
+            else {
+                req.breadcrumbs("Tüm Kurslar");
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
+            
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
+        });
+    });
+
+    app.get("/workshops/:page", function(req,res){
+        var data = {}; 
+        data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        //Database calling parameters
+        
+        var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            {
+                table: "categories",
+                extra: function(res){
+                    return res;
+                }
+            },
+            {
+                table: "courses",
+                query: { categoryID: "2e30c4295ed8483a"},
+                extra: function(res){
+                    data.allTags = global.getAllTags(res);
+                    res = global.paginate(res, data);
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).subword(0,200);
                     });
+                    return res;
+                }
+            },
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            {
+                table: "userinfo",
+                query: {role : "Instructor"}
+            },
+            {
+                table: "slider",
+                query: {$limit: 6},
+                extra: global.extras.slider
+            },
+            {
+                table: "contents",
+                query: { $or: [{content: "subbanner", branch: "courses"}, {content: "subfooter"}]},
+                extra: function(res){
+                    var ret = global.extras.contents(res);
+                    ret.subbanner = ret.subbanner.courses;
+                    return ret;
+                }
+            },
+            {
+                table: "blog",
+                extra: function(res){
+                    data.subfooter.blog = [res[0]];
+                    return [];
+                }
+            },
+        ]
+        
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll(callsets,data).then(function(results){
+            //Send them bitchslaps
+            if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
+            else {
+                req.breadcrumbs("Tüm Kurslar");
+                data.breadcrumbs = req.breadcrumbs();
+                console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
+            
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
+        });
+    });
+
+    //Couse Listing Route
+    app.get("/course/:page",function(req,res){
+        var data = {}; 
+        data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        //Database calling parameters
+        
+        var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            {
+                table: "categories",
+                extra: function(res){
+                    return res;
+                }
+            },
+            {
+                table: "courses",
+                extra: function(res){
+                    data.allTags = global.getAllTags(res);
+                    res = global.paginate(res, data);
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).subword(0,200);
+                    });
+                    return res;
+                }
+            },
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            {
+                table: "userinfo",
+                query: {role : "Instructor"}
+            },
+            {
+                table: "slider",
+                query: {$limit: 6},
+                extra: global.extras.slider
+            },
+            {
+                table: "contents",
+                query: { $or: [{content: "subbanner", branch: "courses"}, {content: "subfooter"}]},
+                extra: function(res){
+                    var ret = global.extras.contents(res);
                     ret.subbanner = ret.subbanner.courses;
                     return ret;
                 }
@@ -491,11 +497,7 @@ var Routes = function(app,dpd,express,Q){
                 table: "contents",
                 query: { $or: [{content: "subbanner", branch: "coursesdetails"}, {content: "subfooter"}]},
                 extra: function(res){
-                    var ret = {};
-                    res.forEach(function(item){
-                        if(!ret[item.content]) ret[item.content] = {}; 
-                        ret[item.content][item.branch] = item;
-                    });
+                    var ret = global.extras.contents(res);
                     ret.subbanner = ret.subbanner.coursesdetails;
                     return ret;
                 }
@@ -507,7 +509,11 @@ var Routes = function(app,dpd,express,Q){
             {
                 table: "userinfo",
                 query: { role: "Instructor" },
+            },
+            {
+                table:"categories"
             }
+            
         ]
         
         //Create async fuctions by the params in tables & queries
@@ -528,11 +534,83 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
+    app.get('/:content/:branch', function (req, res, next) {
+        
+        //Get entries by using dpd param.
+        var data = {};
+        
+        //Create async fuctions by the params in tables & queries
+        var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            {
+                table: "blog",
+                query: {$limit: 9, $sort: { timeStamp: 1 } },
+                extra: function(res){
+                    res.forEach(function(val){
+                        val.body = striptags(val.body).substring(0,50);
+                    })
+                    if(!data.subfooter) data.subfooter = {};
+                    data.subfooter.blog = [res[0]];
+                    return res;
+                }
+            },
+            {
+                table: "userinfo",
+                query: { role: global.roles.Instructor},
+            },
+            {
+                table: "facts",
+                query: {$limit: 6},
+                extra: global.extras.facts
+            },
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            {
+                table: "slider",
+                extra: global.extras.slider
+            },
+            {
+                table: "contents",
+                query: { content: {$in: ["home", "subfooter", req.params.content]}},
+                extra: function(res){
+                    var ret = global.extras.contents(res);
+                    ret.subbanner = ret[req.params.content].main,
+                    ret.descriptive = [ret[req.params.content][req.params.branch]]
+                    return ret;
+                }
+                
+            },
+            {
+                table: "skills",
+                extra: global.extras.skills
+            },
+            {
+                table: "sponsors"
+            }
+        ];
+        
+        //Async call handler that activates after all tasks are finished.
+        global.callAsyncAll(callsets,data).then(function(results){
+            data.breadcrumbs = req.breadcrumbs();
+            console.log("Data with all async calls completed", data);
+            //Send them bitchslaps
+            res.render('pages/descriptive',data);
+        }).catch(function(error){
+            res.send(error);
+        });
+        
+    });
+    
+    
     //Image Uploading API
     app.post('/upload', upload.single('file'), function (req, res, next) {
         res.send({status:true,message:'Uploaded'});
     });
-    
     //Subscribe API
     app.post('/subscribe', function (req, res, next) {
         var status;

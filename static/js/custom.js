@@ -453,57 +453,96 @@ $(document).ready(function(){
 		  		Filter Able Script Script
 	  =======================================================================
 	*/
-	jQuery(window).load(function($) {
+	
+	// jQuery(window).load(function($) {
 		if(jQuery('#filterable-item-holder-1').length){
-		var filter_container = jQuery('#filterable-item-holder-1');
-		// filter_container.children().css('position','relative');	
-		// filter_container.masonry({
-		// 	singleMode: true,
-		// 	itemSelector: '.filterable-item:not(.hide)',
-		// 	animate: true,
-		// 	animationOptions:{ duration: 800, queue: false }
-		// });	
-		jQuery(window).resize(function(){
-			var temp_width =  filter_container.children().filter(':first');
+			// var coursedata = jQuery('#filterable-item-holder-1 .filterable-item');
+			// console.log(coursedata);
+			var filter_container = jQuery('#filterable-item-holder-1');
+			// filter_container.html("");
+			// filter_container.owlCarousel({
+			// 	autoplay: true,
+			// 	autoPlay: 3000,
+			// 	slideSpeed : 800,
+			// 	autoplayHoverPause:true,
+			// 	items:3,
+			// 	nav:true,
+			// 	center:true,
+			// 	responsiveClass:true,
+			// 	navText: [
+			// 	  "<span class='fa fa-angle-left'></span>",
+			// 	  "<span class='fa fa-angle-right'></span>"
+			// 	  ],
+			// 	responsive:{
+			// 		0:{items:1},
+			// 		480:{items:1},
+			// 		600:{items:1},
+			// 		768:{items:2},
+			// 		1000:{items:2},
+			// 		1024:{items:3},
+			// 		1280:{items:3},
+			// 		1366:{items:3}
+			// 	}
+			// });
+			// var owl_container = filter_container.children(".owl_stage_outer .owl_stage");
+			// console.log(owl_container);
+			// filter_container.children().css('position','relative');	
 			// filter_container.masonry({
-			// 	columnWidth: temp_width,
 			// 	singleMode: true,
 			// 	itemSelector: '.filterable-item:not(.hide)',
 			// 	animate: true,
 			// 	animationOptions:{ duration: 800, queue: false }
-			// });		
-		});	
-		jQuery('ul#filterable-item-filter-1 a').on('click',function(e){	
-
-			jQuery(this).addClass("active");
-			jQuery(this).parents("li").siblings().children("a").removeClass("active");
-			e.preventDefault();
-			var select_filter = jQuery(this).attr('data-value');
-			if( select_filter == "All" || jQuery(this).parent().index() == 0 ){		
-				filter_container.children().each(function(){
-					if( jQuery(this).hasClass('hide') ){
-						jQuery(this).removeClass('hide');
-						jQuery(this).fadeIn();
-					}
-				});
-			}else{
-				filter_container.children().not('.' + select_filter).each(function(){
-					if( !jQuery(this).hasClass('hide') ){
-						jQuery(this).addClass('hide');
-						jQuery(this).fadeOut();
-					}
-				});
-				filter_container.children('.' + select_filter).each(function(){
-					if( jQuery(this).hasClass('hide') ){
-						jQuery(this).removeClass('hide');
-						jQuery(this).fadeIn();
-					}
-				});
-			}
-			// filter_container.masonry();
-		});
+			// });	
+			jQuery(window).resize(function(){
+				var temp_width =  coursedata.children().filter(':first');
+				// filter_container.masonry({
+				// 	columnWidth: temp_width,
+				// 	singleMode: true,
+				// 	itemSelector: '.filterable-item:not(.hide)',
+				// 	animate: true,
+				// 	animationOptions:{ duration: 800, queue: false }
+				// });		
+			});	
+			jQuery('ul#filterable-item-filter-1 a').on('click',function(e){	
+				// owl_container.html("");
+				jQuery(this).addClass("active");
+				jQuery(this).parents("li").siblings().children("a").removeClass("active");
+				e.preventDefault();
+				var select_filter = jQuery(this).attr('data-value');
+				if( select_filter == "All" ){		
+					// coursedata.each(function(){
+					filter_container.children().each(function(){
+						if( jQuery(this).hasClass('hide') ){
+							// jQuery(this).removeClass('hide');
+							jQuery(this).fadeIn();
+						}
+						// filter_container.trigger("add.owl.carousel", this);
+					});
+				}else{
+					filter_container.children().not('.' + select_filter).each(function(){
+						if( !jQuery(this).hasClass('hide') ){
+							jQuery(this).addClass('hide');
+							jQuery(this).fadeOut();
+						}
+					});
+					filter_container.children('.' + select_filter).each(function(){
+						if( jQuery(this).hasClass('hide') ){
+							jQuery(this).removeClass('hide');
+							jQuery(this).fadeIn();
+						}
+					});
+					// coursedata.children('.' + select_filter ).each(function(){
+					// 	console.log("DONDU!!");
+					// 	// if(jQuery(this).hasClass(select_filter)) filter_container.trigger("add.owl.carousel", this);
+					// 	filter_container.trigger("add.owl.carousel", this);
+					// })
+				}
+				// filter_container.trigger("refresh.owl.carousel");
+				// filter_container.masonry();
+			});
 		}
-	});
+		jQuery( "ul#filterable-item-filter-1 li:first-child a" ).click();
+	// });
 	/*
 	  =======================================================================
 		  		Map Script Script

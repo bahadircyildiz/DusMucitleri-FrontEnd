@@ -47,7 +47,7 @@
     }
     if($('.single-page').length){
         $('.single-page').singlePageNav({
-            offset: $('.kode_pet_navigation').outerHeight(),
+            offset: $('.kode_pet_navigation').outerHeight() + 100,
             filter: ':not(.external)',
             updateHash: true,
             beforeStart: function() {
@@ -73,5 +73,9 @@
             });
         })
     }
+    
+    // window.addEventListener("hashchange", function () {
+    //     window.scrollTo(window.scrollX, window.scrollY - 300);    
+    // });
     
     </script>

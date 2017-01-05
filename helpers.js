@@ -43,6 +43,13 @@ var helpers = {
                 res += options.fn(array[x]);   
             }
             return res;
+        },
+        getById: function(id, arr, options){
+            console.log(id, arr); var result;
+            options.data.root[arr].forEach(function(val){
+                if(val.id == id) result = val;
+            });
+            return options.fn(result);
         }
 }
 

@@ -1388,6 +1388,7 @@
 	 * @param {Number} [position] - The relative position at which to insert the item otherwise the item will be added to the end.
 	 */
 	Owl.prototype.add = function(content, position) {
+		content = this.prepare(content);
 		position = position === undefined ? this._items.length : this.normalize(position, true);
 
 		this.trigger('add', { content: content, position: position });

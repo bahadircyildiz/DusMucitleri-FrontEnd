@@ -17,6 +17,7 @@
     <link href="/static/css/responsive.css" rel="stylesheet">
 
     <style>
+    
         /*Linear Gradient gives background color*/
         {{#if contents.home.facts}}
         .fact_figure_bg:before{
@@ -121,9 +122,9 @@
         .gt_wht_offer_wrap > i.offers_bg_{{@index}}:after{
         	border: 2px dotted {{{color}}};
         }
-        .gt_wht_offer_des span.bg_offers_{{@index}}{
-        	background-color: {{{color}}};
-        }
+        /*.gt_wht_offer_des span.bg_offers_{{@index}}{*/
+        /*	background-color: {{{color}}};*/
+        /*}*/
         .gt_wht_offer_wrap:hover i.offers_bg_{{@index}}:after{background-color:{{{color}}};}
         .bg_offers_{{@index}}:before{
         	content: "";

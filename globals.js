@@ -69,6 +69,30 @@ var global = function(dpd,Q){
                 return {left: left, right: right};
             }
         },
+        getAllTags: function(res){
+            var tags = [], temp = [], temp2 = {};
+            res.forEach(function(val){
+                if(val.tags) temp = temp.concat(val.tags);
+            })
+            temp.forEach(function(val){
+                if(!temp2[val]) temp2[val] = 1; else temp2[val]++;
+            })
+            for (var key in temp2) {
+                // skip loop if the property is from prototype
+                if (!temp2.hasOwnProperty(key)) continue;
+                
+                var tag = temp2[key];
+                tags.push({title: key, amount: tag});
+            }
+            return tags;
+        },
+        paginate: function(res, data){
+            var $skip = data.pageSize * (data.page - 1), $limit = (res.length - $skip >= data.pageSize) ? data.pageSize : res.length - $skip;
+            data.lastPage = Math.ceil(res.length / data.pageSize);
+            res = res.slice($skip, $skip+$limit);
+            // console.log("All dem zitz", $skip, $limit, data.lastPage, res );
+            return res;
+        },
         callAsyncAll : function(callsets, data){
             var self = this, prep = [];
             //Create async fuctions by the params in tables & queries

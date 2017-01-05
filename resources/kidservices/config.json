@@ -9,12 +9,12 @@
 			"id": "title",
 			"order": 0
 		},
-		"description": {
-			"name": "description",
+		"body": {
+			"name": "body",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "description",
+			"id": "body",
 			"order": 1
 		},
 		"icon": {

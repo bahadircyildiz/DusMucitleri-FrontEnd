@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "isRight",
 			"order": 3
+		},
+		"active": {
+			"name": "active",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "active",
+			"order": 4
 		}
 	}
 }

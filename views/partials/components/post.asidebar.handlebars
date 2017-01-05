@@ -2,14 +2,14 @@
 {{#if blog}}
 <div class="col-md-3">
     <aside class="gt_aside_outer_wrap">
-        <!--Search Bar Wrap Start-->
-        <div class="gt_aside_search_wrap aside_margin_bottom">
-            <form action="/blog/1">
-                <input class="c_ph" type="text" name="q" placeholder="Blog Ara">
-                <button class="fa fa-search" type="submit"></button>
-            </form>
-        </div>
-        <!--Search Bar Wrap Start-->
+        {{!--<!--Search Bar Wrap Start-->--}}
+        {{!--<div class="gt_aside_search_wrap aside_margin_bottom">--}}
+        {{!--    <form action="/blog/1">--}}
+        {{!--        <input class="c_ph" type="text" name="q" placeholder="Blog Ara">--}}
+        {{!--        <button class="fa fa-search" type="submit"></button>--}}
+        {{!--    </form>--}}
+        {{!--</div>--}}
+        {{!--<!--Search Bar Wrap Start-->--}}
         
         <!--Category Wrap Start-->
         {{!--<div class="gt_aside_category gt_detail_hdg aside_margin_bottom">--}}
@@ -83,8 +83,8 @@
             <h6>Etiketler</h6>
             <ul>
                 <li>
-                    {{#each settings.allblogtags}}
-                    <a href="/blog/1?cat={{this}}">{{this}}</a>
+                    {{#each allTags}}
+                    <a href="/blog/1?cat={{{title}}}">{{{title}}} ({{{amount}}})</a>
                     {{/each}}
                 </li>
             </ul>

@@ -12,11 +12,13 @@
                 <!--Brand List Wrap Start-->
                 <div class="gt_brand_carousel owl-carouse">
                     {{#each sponsors}}
-                    <div class="item">
-                        <div class="gt_brand_outer_wrap">
-                            <a href="{{{link}}}"><img src="{{{image}}}" alt="{{{title}}}"></a>
+                        {{#if this.image}}
+                        <div class="item">
+                            <div class="gt_brand_outer_wrap">
+                                <a href="{{{link}}}"><img src="{{{image}}}" alt="{{{title}}}"></a>
+                            </div>
                         </div>
-                    </div>
+                        {{/if}}
                     {{/each}}
                 </div>
                 <!--Brand List Wrap End-->

@@ -143,27 +143,30 @@
             {{/getInstructor}}
             <li>
                 <span>Kategori</span>
-                <h6>{{courses.ribbon.category}}</h6>
+                <h6>{{#getById this.categoryID "categories"}} {{this}} {{/getById}}</h6>
             </li>
             <li>
-                <span>Review</span>
-                <ul class="gt_rating_start">
-                    <li>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star-o"></i></a>
-                    </li>
-                </ul>
+                <span>Ayrıntılı bilgi için 0544 370 35 15 – 0232 370 35 15 ‘i arayınız</span>
             </li>
+            {{!--<li>--}}
+            {{!--    <span>Review</span>--}}
+            {{!--    <ul class="gt_rating_start">--}}
+            {{!--        <li>--}}
+            {{!--            <a href="#"><i class="fa fa-star"></i></a>--}}
+            {{!--            <a href="#"><i class="fa fa-star"></i></a>--}}
+            {{!--            <a href="#"><i class="fa fa-star"></i></a>--}}
+            {{!--            <a href="#"><i class="fa fa-star"></i></a>--}}
+            {{!--            <a href="#"><i class="fa fa-star-o"></i></a>--}}
+            {{!--        </li>--}}
+            {{!--    </ul>--}}
+            {{!--</li>--}}
         </ul>
     </div>
     <div class="gt_course_price">
-        <span>{{courses.price}}&#8378;</span>
-        <a href="#">Kursa Katıl</a>
+        {{!--<span> Ayrıntılı bilgi için 0544 370 35 15 – 0232 370 35 15 ‘i arayınız</span>--}}
+        {{!--<a href="#">Kursa Katıl</a>--}}
     </div>
-    <p>{{courses.description}} </p>
+    {{{courses.body}}}
 </div>
 <div class="gt_class_spec default_width">
     <ul>
