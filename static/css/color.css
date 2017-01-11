@@ -138,8 +138,8 @@ ul.gt_plan_offer_list li:hover a
 .gt_hdr3_navigation .navbar-btn span,
 .gt_hdr3_navigation ul li a.current:before,
 /*Banner CSS*/
-.gt_banner .swiper-button-next,
-.gt_banner .swiper-button-prev,
+/*.gt_banner .swiper-button-next,*/
+/*.gt_banner .swiper-button-prev,*/
 /*Banner Services CSS*/
 .bg_4,
 /*Offer Wrap CSS*/
@@ -354,8 +354,8 @@ ul.gt_hdr3_scl_icon li a,
 .banner_text > a,
 .banner_text > a:before,
 .gt_banner_text > a,
-.gt_banner .swiper-button-next,
-.gt_banner .swiper-button-prev,
+/*.gt_banner .swiper-button-next,*/
+/*.gt_banner .swiper-button-prev,*/
 /*Banner Services CSS*/
 .gt_main_services,
 .gt_main_services i,

@@ -20,7 +20,7 @@
                 {{!--</li>--}}
             </ul>
         </div>
-        {{blog.body}}
+        {{{blog.body}}}
     </div>
     <div class="gt_news_tags">
         <h5><i class="fa fa-tag"></i>{{blog.tags}}</h5>
@@ -135,15 +135,15 @@
     <div class="ct_blog_detail_top">
         <h5>{{courses.title}}</h5>
         <ul>
-            {{#getInstructor courses.instructorID}}
-            <li>
-                <span>{{{title}}}</span>
-                <h6>{{{name}}}</h6>
-            </li>
-            {{/getInstructor}}
+            {{!--{{#getInstructor courses.instructorID}}--}}
+            {{!--<li>--}}
+            {{!--    <span>{{{title}}}</span>--}}
+            {{!--    <h6>{{{name}}}</h6>--}}
+            {{!--</li>--}}
+            {{!--{{/getInstructor}}--}}
             <li>
                 <span>Kategori</span>
-                <h6>{{#getById this.categoryID "categories"}} {{this}} {{/getById}}</h6>
+                <h6>{{#getByID courses.categoryID "categories"}} {{{title}}} {{/getByID}}</h6>
             </li>
             <li>
                 <span>Ayrıntılı bilgi için 0544 370 35 15 – 0232 370 35 15 ‘i arayınız</span>

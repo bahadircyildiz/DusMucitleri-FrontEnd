@@ -3,7 +3,7 @@
 @import 'https://fonts.googleapis.com/css?family=Courgette&subset=latin-ext';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese';
 
-	/*  font-family: 'Roboto Slab', serif;
+	/*  font-family: 'Source Sans Pro', serif;
 		font-family: 'Droid Sans', sans-serif;
 		font-family: 'Open Sans', sans-serif;
         font-family: 'Courgette', cursive;
@@ -27,7 +27,7 @@ body {
 /* Heading Typo */
 body h1, body h2, body h3, body h4, body h5, body h6 {
     color: #4d4d4d;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Source Sans Pro', serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.2;
@@ -60,12 +60,12 @@ h6 {
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: #191919;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 
 p a {
     color: #fff;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 /* Peragraph Typo */
 p, ol li, ul li {

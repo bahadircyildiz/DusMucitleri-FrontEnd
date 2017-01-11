@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "color",
 			"order": 3
+		},
+		"link": {
+			"name": "link",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "link",
+			"order": 4
 		}
 	}
 }

@@ -5,10 +5,12 @@
             {{#each kidservices}}
             <div class="col-md-3 bannerservices-item">
                 <div class="gt_main_services bannerservices_bg_{{@index}}">
-                    <i class="{{{icon}}}"></i>
-                     <h5>{{{title}}}</h5>
+                    <figure class="bannerservices-figure">
+                        <img src="{{{icon}}}">
+                    </figure>
+                    <h5>{{{title}}}</h5>
                     {{{body}}}
-                    <a class="bannerservices_bg_{{@index}}" href="#"> <i class="fa fa-arrow-right"></i></a>
+                    <a class="bannerservices_bg_{{@index}}" href="{{{link}}}" target="_blank"> <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             {{/each}}

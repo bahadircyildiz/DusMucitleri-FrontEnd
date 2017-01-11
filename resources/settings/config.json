@@ -128,6 +128,22 @@
 			"required": false,
 			"id": "siteActive",
 			"order": 15
+		},
+		"lefticon": {
+			"name": "lefticon",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "lefticon",
+			"order": 16
+		},
+		"righticon": {
+			"name": "righticon",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "righticon",
+			"order": 17
 		}
 	}
 }

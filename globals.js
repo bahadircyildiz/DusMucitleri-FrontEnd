@@ -69,6 +69,13 @@ var global = function(dpd,Q){
                 return {left: left, right: right};
             }
         },
+        sortByTag: function(res, cat){
+            var temp = [];
+            res.forEach(function(val){
+                if(val.tags.indexOf(cat) > -1) temp.push(val);
+            })
+            return temp;
+        },
         getAllTags: function(res){
             var tags = [], temp = [], temp2 = {};
             res.forEach(function(val){

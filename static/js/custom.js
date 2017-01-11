@@ -306,9 +306,15 @@ $(document).ready(function(){
 				768:{items:3},
 				1000:{items:3},
 				1024:{items:4},
-				1280:{items:5},
-				1366:{items:5}
-			}
+				1280:{items:4},
+				1366:{items:4}
+			},
+			onRefresh: function () {
+            	$('.gt_brand_carousel').find('.gt_brand_outer_wrap').height("100px");
+        	},
+	        onRefreshed: function () {
+	            $('.gt_brand_carousel').find('.gt_brand_outer_wrap').height($('.gt_brand_carousel').height());
+	        }
 		});
 	}
 	/*

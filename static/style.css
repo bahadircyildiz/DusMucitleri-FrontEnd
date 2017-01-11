@@ -71,9 +71,9 @@ a (active):	#33 (blue)
 [Typography]
   
 Body copy:		14px/ 'Source Sans Pro', sans-serif;
-Headers:		'Roboto Slab', serif;
-Input, textarea:	'Roboto Slab', serif;
-Sidebar heading:	'Roboto Slab', serif;
+Headers:		'Source Sans Pro', serif;
+Input, textarea:	'Source Sans Pro', serif;
+Sidebar heading:	'Source Sans Pro', serif;
 
 
 /*-------------------------------------------------------------------*/
@@ -255,7 +255,7 @@ section{
     position: relative;
     padding: 16px 28px 16px;
     z-index: 99;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Source Sans Pro', serif;
     border-left: 1px solid #eef8e4;
     text-transform: uppercase;
 }
@@ -291,7 +291,7 @@ section{
     position: relative;
     padding: 16px 28px;
     z-index: 99;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Source Sans Pro', serif;
 }
 /*Hover*/
 .menu ul > li:hover > ul{
@@ -527,7 +527,7 @@ ul.gt_hdr3_scl_icon li a{
     position: relative;
     padding: 30px 25px;
     z-index: 99;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Source Sans Pro', serif;
     text-transform: uppercase;
     position: relative;
     z-index: 1;
@@ -565,7 +565,7 @@ ul.gt_hdr3_scl_icon li a{
     position: relative;
     padding: 16px 28px;
     z-index: 99;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Source Sans Pro', serif;
     text-transform: capitalize;
 }
 /*Hover*/
@@ -639,7 +639,7 @@ ul.gt_hdr3_scl_icon li a{
 	color: #fff;
 	font-size: 30px;
 	padding: 10px 0px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 	line-height: 24px;
 	position: relative;
 	z-index: 100;
@@ -700,7 +700,7 @@ ul.gt_hdr3_scl_icon li a{
 }
 .banner_text > a{
 	margin-right: 10px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .banner_text > a:last-of-type{
 	margin: 0px;
@@ -791,9 +791,9 @@ ul.gt_hdr3_scl_icon li a{
 .gt_banner .swiper-button-next,
 .gt_banner .swiper-button-prev{
 	background-image: none;
-	width:40px;
-    line-height: 40px;
-    height: 40px;
+	width:100px;
+    line-height: 100px;
+    height: 100px;
     color:#fff;
     text-align: center;
     coursor:pointer;
@@ -801,10 +801,10 @@ ul.gt_hdr3_scl_icon li a{
     font-size:25px;
     font-weight: bold;
 }
-.gt_banner .swiper-button-next:hover,
-.gt_banner .swiper-button-prev:hover{
-	background: #000;
-}
+/*.gt_banner .swiper-button-next:hover,*/
+/*.gt_banner .swiper-button-prev:hover{*/
+/*	background: #000;*/
+/*}*/
 /*
 	  ==============================================================
 		   Banner Services CSS
@@ -1126,7 +1126,7 @@ ul.gt_hdr3_scl_icon li a{
 .gt_pop_course_hvr > span{
 	font-size: 40px;
 	color: #fff;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 	display: inline-block;
 	z-index: 10;
 	position: absolute;
@@ -2065,7 +2065,7 @@ ul.gt_hdr3_scl_icon li a{
 	border: 1px solid;
 	padding: 10px 35px;
 	border-radius: 2px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 /*hover css*/
 .gt_latest_news_wrap:hover .gt_news_date,
@@ -2188,7 +2188,7 @@ ul.gt_blog_meta li i{
 .gt_blog_des_wrap > a{
 	display: block;
 	color: #666666;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .gt_blog_des_wrap > a i{
 	margin-left: 8px;
@@ -2461,7 +2461,7 @@ ul.gt_blog_meta li i{
 	text-align: center;
 	z-index: 10;
 	margin: 0px 0px 20px 50px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .gt_commming_soon ul.countdown li:first-child{
 	margin-left: 0px;
@@ -2498,7 +2498,7 @@ ul.gt_blog_meta li i{
 	font-weight: 400;
 	color: #fff;
 	font-size: 16px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .gt_comming_soon_form{
 	width: 760px;
@@ -2526,7 +2526,7 @@ ul.gt_blog_meta li i{
 	height: 54px;
 	border: 0px;
 	text-transform: uppercase;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 	padding: 0px 30px;
 	font-weight: 500;
 	background: none;
@@ -2598,7 +2598,7 @@ ul.gt_blog_meta li i{
 	top: -100px;
 }
 .gt_404_text p{
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 	color: #323333;
 	font-size: 40px;
 	text-transform: uppercase;
@@ -3233,7 +3233,7 @@ ul.gt_rating_start li a{
 }
 .event_detail_wrap ul.countdown li span{
 	font-size: 40px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 	width:65px;
 }
 .event_detail_wrap ul.countdown li p{
@@ -3284,7 +3284,7 @@ ul.gt_rating_start li a{
 	font-size: 16px;
 	border: 1px solid;
 	font-weight: 600;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .event_list_detail ul li a:hover{
 	color: #fff;
@@ -3605,7 +3605,7 @@ ul.gt_rating_start li a{
 	color: #fff;
 	font-weight: normal;
 	padding: 20px 0px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Source Sans Pro', serif;
 }
 .edu_masonery_thumb figure > a:hover{
 	color: #222;

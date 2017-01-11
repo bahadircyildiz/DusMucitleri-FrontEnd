@@ -45,22 +45,22 @@
                         </figcaption>
                     </figure>
                     <div class="gt_latest_course_des default_width">
-                        <h5><a href="/course/details/{{{id}}}">{{{title}}}</a></h5>
-                        <p> {{{body}}} </p>
-                        <div class="gt_latest_course_author">
-                            {{#getInstructor this.instructorID}}
-                            <figure>
-                                <img src="{{{image}}}" alt="{{{name}}}">
-                            </figure>
-                            <div class="course_author_des">
-                                <h6>{{{name}}}</h6>
-                                <span>{{{title}}}</span>
-                            </div>
-                            {{/getInstructor}}
-                        </div>
+                        <h5><a href="/service/details/{{{id}}}">{{{title}}}</a></h5>
+                        <p> {{{body}}}... </p>
+                        {{!--<div class="gt_latest_course_author">--}}
+                        {{!--    {{#getInstructor this.instructorID}}--}}
+                        {{!--    <figure>--}}
+                        {{!--        <img src="{{{image}}}" alt="{{{name}}}">--}}
+                        {{!--    </figure>--}}
+                        {{!--    <div class="course_author_des">--}}
+                        {{!--        <h6>{{{name}}}</h6>--}}
+                        {{!--        <span>{{{title}}}</span>--}}
+                        {{!--    </div>--}}
+                        {{!--    {{/getInstructor}}--}}
+                        {{!--</div>--}}
                         <div class="gt_course_apply">
                             {{!--<a data-toggle="modal" data-target="#apply_form" href="#">Başvur</a>--}}
-                            <a href="/course/details/{{{id}}}">Başvur</a>
+                            <a href="/service/details/{{{id}}}">Başvur</a>
                         </div>
                     </div> 
                 </div>

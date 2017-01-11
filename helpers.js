@@ -44,7 +44,7 @@ var helpers = {
             }
             return res;
         },
-        getById: function(id, arr, options){
+        getByID: function(id, arr, options){
             console.log(id, arr); var result;
             options.data.root[arr].forEach(function(val){
                 if(val.id == id) result = val;

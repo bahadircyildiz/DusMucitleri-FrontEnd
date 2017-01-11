@@ -41,7 +41,7 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "blog",
-                query: {$limit: 9, $sort: { timeStamp: 1 } },
+                query: {$limit: 9, $sort: { timeStamp: -1 } },
                 extra: function(res){
                     res.forEach(function(val){
                         val.body = striptags(val.body).subword(0, 100);
@@ -63,11 +63,6 @@ var Routes = function(app,dpd,express,Q){
                     })
                     return res;
                 }
-            },
-            {
-                table: "facts",
-                query: {$limit: 6},
-                extra: global.extras.facts
             },
             {
                 table: "navigation",
@@ -93,6 +88,9 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "categories"   
+            },
+            {
+                table: "sponsors"   
             }
         ];
         
@@ -132,10 +130,11 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "blog",
-                query: req.query.q ? {title: {$regex: req.query.q}} : global.queries.blog,
+                // query: req.query.cat ? {title: {$regex: req.query.cat}} : global.queries.blog,
                 extra: function(res){
                     data.subfooter.blog = [res[0]];
                     data.allTags = global.getAllTags(res);
+                    if(req.query.cat) res = global.sortByTag(res, req.query.cat);
                     res = global.paginate(res, data);
                     res.forEach(function(val){
                         val.body = striptags(val.body).subword(0,200);
@@ -243,7 +242,7 @@ var Routes = function(app,dpd,express,Q){
     
     app.get("/practising/:page", function(req,res){
         var data = {}; 
-        data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
         
         var callsets = [
@@ -284,10 +283,10 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { $or: [{content: "subbanner", branch: "courses"}, {content: "subfooter"}]},
+                query: { $or: [{content: "subbanner", branch: "practising"}, {content: "subfooter"}]},
                 extra: function(res){
                     var ret = global.extras.contents(res);
-                    ret.subbanner = ret.subbanner.courses;
+                    ret.subbanner = ret.subbanner.practising;
                     return ret;
                 }
             },
@@ -319,7 +318,7 @@ var Routes = function(app,dpd,express,Q){
 
     app.get("/workshops/:page", function(req,res){
         var data = {}; 
-        data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
         
         var callsets = [
@@ -360,10 +359,10 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { $or: [{content: "subbanner", branch: "courses"}, {content: "subfooter"}]},
+                query: { $or: [{content: "subbanner", branch: "workshops"}, {content: "subfooter"}]},
                 extra: function(res){
                     var ret = global.extras.contents(res);
-                    ret.subbanner = ret.subbanner.courses;
+                    ret.subbanner = ret.subbanner.workshops;
                     return ret;
                 }
             },
@@ -396,7 +395,7 @@ var Routes = function(app,dpd,express,Q){
     //Couse Listing Route
     app.get("/course/:page",function(req,res){
         var data = {}; 
-        data.pageSize = 5, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
         
         var callsets = [
@@ -470,7 +469,7 @@ var Routes = function(app,dpd,express,Q){
     });
     
     //Course Detail Route
-    app.get("/course/details/:id",function(req,res){
+    app.get("/service/details/:id",function(req,res){
         var data = {};
         data.isListing = false, data.subfooter = {};
         
@@ -584,10 +583,6 @@ var Routes = function(app,dpd,express,Q){
                     return ret;
                 }
                 
-            },
-            {
-                table: "skills",
-                extra: global.extras.skills
             },
             {
                 table: "sponsors"
