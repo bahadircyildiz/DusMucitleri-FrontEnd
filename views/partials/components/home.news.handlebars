@@ -1,18 +1,19 @@
+{{#if essays.Haberler}}
 <!--Latest News Wrap Start-->
-<section class="gt_news_bg wow fadeInUp" id="blog">
+<section class="gt_news_bg wow fadeInUp" id="news">
     <div class="container">
         <!--Main Heading Wrap Start-->
         <div class="gt_hdg_1 wow zoomIn">
-            <h3> {{contents.home.blog.title}}</h3>
+            <h3> {{contents.home.news.title}}</h3>
             <br>
-            {{{contents.home.blog.body}}}
+            {{{contents.home.news.body}}}
             <span><img src="static/images/hdg-01.png" alt=""></span>
         </div>
         <!--Main Heading Wrap End-->
 
         <!--Latest News Wrap Start-->
-        <div class="gt_news_slider" id="gt_blog_slider">
-            {{#each essays.Blog}}
+        <div class="gt_news_slider" id="gt_news_slider">
+            {{#each essays.Haberler}}
             <div class="item">
                 <div class="gt_blog_wrap">
                     <figure>
@@ -43,3 +44,4 @@
     </div>
 </section>
 <!--Latest News Wrap End-->
+{{/if}}

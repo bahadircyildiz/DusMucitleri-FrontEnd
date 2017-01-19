@@ -51,7 +51,7 @@
                                 <div class="gt_foo_news widget">
                                     <h5>En Yeni Blogumuz</h5>
                                     <ul>
-                                        {{#count subfooter.blog 1}}
+                                        {{#if subfooter.blog}}
                                         <li>
                                             <figure>
                                                 <img src="{{{image}}}" alt="{{{title}}}">
@@ -70,7 +70,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        {{/count}}
+                                        {{/if}}
                                     </ul>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 <div class="gt_foo_recent_projects widget">
                                     <h5>Galerimiz</h5>
                                     <ul>
-                                        {{#each slider.subfooter}}
+                                        {{#each images.subfooter}}
                                         <li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>
                                         {{/each}}
                                     </ul>
@@ -90,7 +90,7 @@
                                 <div class="widget">
                                     <h5>Adresimiz</h5>
                                     <ul class="gt_team1_contact_info">
-                                        {{#each settings.address}}
+                                        {{#each settings.addresses}}
                                         <li><i class="fa fa-map-marker"></i>{{this}}</li>
                                         {{/each}}
                                         {{#each settings.phones}}

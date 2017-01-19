@@ -1,9 +1,9 @@
 <!--Popular Courses Wrap Start-->
-<section id="courses" class="wow fadeInUp">
+<section id="services" class="wow fadeInUp">
     <div class="container">
         <div class="gt_hdg_1 wow zoomIn">
-            <h3> {{contents.home.courses.title}} </h3>
-            {{{contents.home.courses.body}}}
+            <h3> {{contents.home.services.title}} </h3>
+            {{{contents.home.services.body}}}
             <span><img src="static/images/hdg-01.png" alt=""></span>
         </div>
         
@@ -12,7 +12,7 @@
                 <div class="gt_course_tab_list default_width">
                     <ul id="filterable-item-filter-1">
                         {{!--<li><a class="active" data-value="All" href="#">Hepsi</a></li>--}}
-                        {{#each categories}}
+                        {{#each servicecat}}
                         <li><a data-value="{{{id}}}" href="#">{{{title}}}</a></li>
                         {{/each}}
                         {{!--<li><a data-value="2" href="#">Special Courses</a></li>--}}
@@ -32,7 +32,7 @@
 
         <!--Popular Courses List Wrap Start-->
         <div id="filterable-item-holder-1">
-            {{#each courses}}
+            {{#each services}}
             <div class="filterable-item All {{{categoryID}}} col-md-4 col-sm-6 col-xs-12">
                 <div class="gt_latest_course2_wrap default_width">
                     <figure>

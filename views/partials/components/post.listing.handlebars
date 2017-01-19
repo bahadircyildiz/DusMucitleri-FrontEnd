@@ -1,6 +1,6 @@
 <!--News Grid List Wrap Start-->
 <div class="col-md-9">
-    {{#each blog}}
+    {{#each essays}}
     <div class="gt_blog_wrap mb">
         <figure>
             <img src="{{{image}}}" alt="">
@@ -24,7 +24,7 @@
     </div>
     {{/each}}
     
-    {{#each courses}}
+    {{#each services}}
     <div class="gt_latest_course2_wrap default_width mb">
         <figure>
             <img src="{{{image}}}" alt="{{{title}}}">
@@ -34,7 +34,7 @@
             </figcaption>
         </figure>
         <div class="gt_latest_course_des default_width">
-            <h5><a href="/details/{{{id}}}">{{{title}}}</a></h5>
+            <h5><a href="/service/details/{{{id}}}">{{{title}}}</a></h5>
             <p>{{{body}}}...<a href="/service/details/{{{id}}}">Devamını Oku</a> </p>
             {{#getInstructor this.instructorID}}
             <div class="gt_latest_course_author">

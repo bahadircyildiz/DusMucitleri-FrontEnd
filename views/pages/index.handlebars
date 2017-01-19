@@ -4,6 +4,7 @@
 <body>
     <!--gt Wrapper Start-->  
     <div class="gt_wrapper" id="home">
+        {{#if images.Popup}} {{>components/modal}} {{/if}}
         {{>components/header}}
         {{>components/banner}}
         <!--Main Content Wrap Start-->
@@ -14,6 +15,7 @@
             {{>components/home.services}}
             {{>components/home.gallery}}
             {{!--{{>components/home.instructors}}--}}
+            {{>components/home.news}}
             {{>components/home.testimonial}}
             {{>components/home.blog}}
             {{>components/home.sponsors}}

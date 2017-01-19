@@ -33,13 +33,29 @@
 			"id": "body",
 			"order": 3
 		},
+		"image": {
+			"name": "image",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "image",
+			"order": 4
+		},
+		"categoryID": {
+			"name": "categoryID",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "categoryID",
+			"order": 5
+		},
 		"date": {
 			"name": "date",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "date",
-			"order": 4
+			"order": 6
 		},
 		"timeStamp": {
 			"name": "timeStamp",
@@ -47,7 +63,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "timeStamp",
-			"order": 5
+			"order": 7
 		},
 		"active": {
 			"name": "active",
@@ -55,22 +71,6 @@
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "active",
-			"order": 6
-		},
-		"image": {
-			"name": "image",
-			"type": "string",
-			"typeLabel": "string",
-			"required": false,
-			"id": "image",
-			"order": 7
-		},
-		"categories": {
-			"name": "categories",
-			"type": "array",
-			"typeLabel": "array",
-			"required": false,
-			"id": "categories",
 			"order": 8
 		}
 	}

@@ -17,21 +17,13 @@
 			"id": "description",
 			"order": 1
 		},
-		"isBanner": {
-			"name": "isBanner",
-			"type": "boolean",
-			"typeLabel": "boolean",
-			"required": false,
-			"id": "isBanner",
-			"order": 2
-		},
 		"image": {
 			"name": "image",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
 			"id": "image",
-			"order": 3
+			"order": 2
 		},
 		"link": {
 			"name": "link",
@@ -39,6 +31,14 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "link",
+			"order": 3
+		},
+		"categoryID": {
+			"name": "categoryID",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "categoryID",
 			"order": 4
 		},
 		"active": {

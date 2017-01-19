@@ -49,13 +49,29 @@
 			"id": "categoryID",
 			"order": 5
 		},
+		"specs": {
+			"name": "specs",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "specs",
+			"order": 6
+		},
 		"tags": {
 			"name": "tags",
 			"type": "array",
 			"typeLabel": "array",
 			"required": false,
 			"id": "tags",
-			"order": 6
+			"order": 7
+		},
+		"order": {
+			"name": "order",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "order",
+			"order": 8
 		},
 		"active": {
 			"name": "active",
@@ -63,7 +79,7 @@
 			"typeLabel": "boolean",
 			"required": false,
 			"id": "active",
-			"order": 7
+			"order": 9
 		}
 	}
 }

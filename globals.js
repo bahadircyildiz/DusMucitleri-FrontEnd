@@ -11,8 +11,9 @@ var global = function(dpd,Q){
         queries : {
             navigation: {$sort: {order : 1}},
             settings: { $limit: 1},
-            blog: {$sort: {timeStamp : -1}},
-            slider: {$sort: {order : 1}}
+            essays: {$sort: {timeStamp : -1}},
+            slider: {$sort: {order : 1}},
+            services: {$sort: {order : 1}}
         },
         extras: {
             settings: function(res){
@@ -100,27 +101,70 @@ var global = function(dpd,Q){
             // console.log("All dem zitz", $skip, $limit, data.lastPage, res );
             return res;
         },
-        callAsyncAll : function(callsets, data){
-            var self = this, prep = [];
+        callAsyncAll : function(callsets, data, sync = false){
+            var self = this, prep = [], funcToInject;
             //Create async fuctions by the params in tables & queries
             callsets.forEach(function(call){
-                var query = call.query || self.queries[call.table] || {};
-                query.active = true;
-                var deferred = Q.defer();
-                prep.push( 
-                    dpd[call.table].get(query).then(function(results){
-                        if(call.extra) results = call.extra(results);
-                        data[call.table] = results;
+                if (call.constructor == Array) funcToInject = self.callAsyncAll(call, data, true).then(function(success){
+                    // console.log("Sync Call cevaplari", success);
+                    call.forEach(function(c, index){
+                        data[c.table] = c.extra(success[index])        
+                    })
+                }).catch(function(error){
+                    // console.log("Sync Call\'da Error", error);
+                });
+                else funcToInject = self.callAsync(call, data, sync);
+                prep.push(funcToInject);
+            });
+            return Q.all(prep);
+        },
+        callAsync: function(callset, data, sync){
+            var deferred = Q.defer();
+            var query = callset.query || this.queries[callset.table] || {};
+            query.active = true;
+            return dpd[callset.table].get(query).then(function(results){
+                        if(callset.extra && !sync) results = callset.extra(results);
+                        // console.log(callset.table+" extras implemented");
+                        data[callset.table] = results;
+                        // console.log(callset.table+" sent to data");
                         deferred.resolve(results);
                         return deferred.promise;
                     }, function(error){
                         deferred.reject(error);
                         return deferred.promise;
                     })
-                );
-            });
-            return Q.all(prep);
+        },
+        thumbnailByHeight : function(height, image){
+            return "https://process.filestackapi.com/resize=height:"+height+",fit:clip/"+image.getImageID();
         }
+        // callAsyncAll : function(callsets, data){
+        //     var self = this, prep = [];
+        //     //Create async fuctions by the params in tables & queries
+        //     callsets.forEach(function(call){
+        //         var query = call.query || self.queries[call.table] || {};
+        //         query.active = true;
+        //         if(call.extras.constructor == Array){
+        //             var syncfunc;
+        //             call.extras.forEach(function(extra){
+        //                 if(!typeof syncfunc == function) syncfunc =  
+        //             })
+        //         }
+        //         var deferred = Q.defer();
+        //         prep.push( 
+        //             dpd[call.table].get(query).then(function(results){
+        //                 if(call.extra) results = call.extra(results);
+        //                 data[call.table] = results;
+        //                 deferred.resolve(results);
+        //                 return deferred.promise;
+        //             }, function(error){
+        //                 deferred.reject(error);
+        //                 return deferred.promise;
+        //             })
+        //         );
+        //     });
+        //     return Q.all(prep);
+        // },
+        
     };
 }
 module.exports = global;

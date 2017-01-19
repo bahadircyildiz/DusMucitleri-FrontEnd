@@ -86,6 +86,37 @@ $(document).ready(function(){
 	$('.gt_popup_remove i').on('click' , function(){
 		$('.gt_popup_wrap').removeClass('active');
 	});
+	
+	$('#image_popup').modal();
+	
+	if($('#popup-swipe-container').length){
+		$('#popup-swipe-container').owlCarousel({
+			autoplay: true,
+			autoPlay: 4000,
+			slideSpeed : 800,
+			autoplayHoverPause:true,
+			loop:true,
+			items:5,
+			nav:true,
+			center:true,
+			responsiveClass:true,
+			navText: [
+			  "<span class='fa fa-angle-left'></span>",
+			  "<span class='fa fa-angle-right'></span>"
+			  ],
+			responsive:{
+				0:{items:1},
+				480:{items:1},
+				600:{items:1},
+				768:{items:1},
+				1000:{items:1},
+				1024:{items:1},
+				1280:{items:1},
+				1366:{items:1}
+			}
+		});
+	}
+	
 	/*
 	  ==============================================================
 		   Search Bar Script
@@ -256,6 +287,34 @@ $(document).ready(function(){
 	*/
 	if($('#gt_news_slider').length){
 		$('#gt_news_slider').owlCarousel({
+			autoplay: true,
+			autoPlay: 3000,
+			slideSpeed : 800,
+			autoplayHoverPause:true,
+			loop:true,
+			items:6,
+			nav:true,
+			center:true,
+			responsiveClass:true,
+			navText: [
+			  "<span class='fa fa-angle-left'></span>",
+			  "<span class='fa fa-angle-right'></span>"
+			  ],
+			responsive:{
+				0:{items:1},
+				480:{items:1},
+				600:{items:1},
+				768:{items:2},
+				1000:{items:2},
+				1024:{items:3},
+				1280:{items:3},
+				1366:{items:3}
+			}
+		});
+	}
+	
+	if($('#gt_blog_slider').length){
+		$('#gt_blog_slider').owlCarousel({
 			autoplay: true,
 			autoPlay: 3000,
 			slideSpeed : 800,

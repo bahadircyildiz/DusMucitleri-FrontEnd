@@ -20,7 +20,7 @@ var helpers = {
         },
         getRibbon: function(id, options){
             var result;
-            options.data.root.categories.forEach(function(val){
+            options.data.root.servicecat.forEach(function(val){
                 if(val.id == id) result = val;
             });
             return options.fn(result);
@@ -51,6 +51,7 @@ var helpers = {
             });
             return options.fn(result);
         }
+        
 }
 
 module.exports = helpers;
