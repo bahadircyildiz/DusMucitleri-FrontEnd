@@ -812,7 +812,7 @@ ul.gt_hdr3_scl_icon li a{
 */
 .gt_servicer{
 	position:relative;
-	margin-top:-50px;
+	margin-top: 10px;
 	float: left;
 	width: 100%;
 	z-index: 10;

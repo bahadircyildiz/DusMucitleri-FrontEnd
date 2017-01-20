@@ -45,90 +45,75 @@ var Routes = function(app,dpd,express,Q){
             },
             [
                 {
+                    table: "essaycat",
+                    extra: global.extras.c_catList
+                },
+                {
                     table: "essays",
                     // query: {$sort: { timeStamp: -1 } },
                     extra: function(res){
-                        var ret = {}
+                        var ret = {};
                         res.forEach(function(val){
                             val.body = striptags(val.body).subword(0, 100);
                             val.image ? val.image = global.thumbnailByHeight(250, val.image) : null;
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
+                            console.log(val.categoryID);
+                            var cat = data.essaycat[val.categoryID].title;
+                            if(!ret[cat]) ret[cat] = [];
+                            ret[cat].push(val);
                         })
-                        if(!data.subfooter) data.subfooter = {};
-                        data.subfooter.blog = res[0];
+                        ret.subfooter = ret.Blog[0];
                         return ret;
-                    }
-                },
-                {
-                    table: "essaycat",
-                    extra: function(res){
-                        var indexarr = [], ret = {};
-                        res.forEach(function(val){
-                            indexarr.push(val.ID);
-                        });
-                        data.essays.forEach(function(essay){
-                            var index = indexarr.indexOf(essay.categoryID);
-                            if(index > -1){
-                                var title = res[index].title;
-                                if(!ret[title]) ret[title] = [];
-                                ret[title].push(essay);
-                            }
-                        })
-                        data.essays = ret;
-                        return res;
                     }
                 }
             ],
-            // {
-            //     table: "essays",
-            //     // query: {$sort: { timeStamp: -1 } },
-            //     extra: function(res){
-            //         res.forEach(function(val){
-            //             val.body = striptags(val.body).subword(0, 100);
-            //             val.image ? val.image = global.thumbnailByHeight(250, val.image) : null;
-            //         })
-            //         if(!data.subfooter) data.subfooter = {};
-            //         data.subfooter.blog = res[0];
-            //         return res;
-            //     }
-            // },
-            // {
-            //     table: "essaycat",
-            //     extra: function(res){
-            //         var ret = {};
-            //         res.forEach(function(val){
-            //             ret[val.id] = val;
-            //         });
-            //         // console.log(ret);
-            //         data.ecarr = ret;
-            //         return res;
-            //     }
-            // },
             {
                 table: "userinfo",
                 query: { role: global.roles.Instructor},
             },
-            {  
-                table: "services",
-                extra: function(res){
-                    res.forEach(function(val){
-                        val.body = striptags(val.body).subword(0,100);
-                        val.image ? val.image = global.thumbnailByHeight(150, val.image) : null;
-                    })
-                    return res;
+            [
+                {
+                    table: "servicecat",
+                    extra: function(res){
+                        data.serviceCatList = global.extras.c_catList(res);
+                        return res;
+                    }
+                },
+                {
+                    table: "services",
+                    // query: {$sort: { timeStamp: -1 } },
+                    extra: function(res){
+                        var ret = {};
+                        res.forEach(function(val){
+                            val.body = striptags(val.body).subword(0, 100);
+                            val.image ? val.image = global.thumbnailByHeight(150, val.image) : null;
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
+                            var cat = data.serviceCatList[val.categoryID].title;
+                            if(cat == "Yetenek Geliştirme") val.apply = false;
+                            else val.apply = true;
+                        });
+                        // ret.subfooter = ret.Blog[0];
+                        return res;
+                    }
                 }
-            },
-            {
-                table: "servicecat",
-                extra: function(res){
-                    var ret = {};
-                    res.forEach(function(val){
-                        ret[val.id] = val;
-                    });
-                    // console.log(ret);
-                    data.scarr = ret;
-                    return res;
-                }
-            },
+            ],
+            // {  
+            //     table: "services",
+            //     extra: function(res){
+            //         res.forEach(function(val){
+            //             val.body = striptags(val.body).subword(0,100);
+            //             val.image ? val.image = global.thumbnailByHeight(150, val.image) : null;
+            //         })
+            //         return res;
+            //     }
+            // },
+            // {
+            //     table: "servicecat"
+            //     // extra: function(res){
+            //     //     data.serviceCatList = global.extras.c_catList;
+            //     //     return res;
+            //     // }
+            // },
             {
                 table: "navigation",
                 extra: global.extras.navigation
@@ -139,14 +124,7 @@ var Routes = function(app,dpd,express,Q){
             [
                 {
                     table: "imagecat",
-                    extra: function(res){
-                        var ret = {};
-                        res.forEach(function(val){
-                            ret[val.id] = val;
-                        });
-                        // console.log(ret);
-                        return ret;
-                    }
+                    extra: global.extras.c_catList
                 },
                 {
                     table: "images",
@@ -157,13 +135,11 @@ var Routes = function(app,dpd,express,Q){
                             if(!ret[cat]) ret[cat] = [];
                             ret[cat].push(val);
                         });
+                        if(ret.Gallery.length > 6) ret.Gallery.splice(0,6);
                         return ret;
                     }
                 }
             ],
-            {
-                table: "testimonials"
-            },
             {
                 table: "contents",
                 query: {$or: [ { content: {$in: ["home", "subfooter"] } }, {content: "aboutus", branch: "main"} ]},
@@ -176,28 +152,16 @@ var Routes = function(app,dpd,express,Q){
                 table: "sponsors"   
             }
         ];
-        
-        
         //Create async fuctions by the params in tables & queries
-        
-        var divideByCat = function(table, cat){
-            var ret = {};
-            data[table].forEach(function(val){
-                var catobj = data[cat][val.categoryID];
-                if(!ret[catobj.title]) ret[catobj.title] = [];
-                ret[catobj.title].push(val);
-            });
-            // console.log(ret);
-            data[table] = ret;
-        }
         
         //Async call handler that activates after all tasks are finished.
         global.callAsyncAll(callsets,data).then(function(results){
             data.breadcrumbs = req.breadcrumbs();
+            console.log(data.essaycat);
             // console.log(data);
             // divideByCat("essays", "ecarr");
             // divideByCat("images", "icarr");
-            console.log("Data with all async calls completed", data);
+            // console.log("Data with all async calls completed", data);
             //Send them bitchslaps
             res.render('pages/index',data); 
         }).catch(function(error){
@@ -225,29 +189,60 @@ var Routes = function(app,dpd,express,Q){
                 table: "settings",
                 extra: global.extras.settings
             },
-            {
-                table: "essays",
-                // query: req.query.cat ? {title: {$regex: req.query.cat}} : global.queries.blog,
-                extra: function(res){
-                    data.subfooter.blog = [res[0]];
-                    data.allTags = global.getAllTags(res);
-                    if(req.query.cat) res = global.sortByTag(res, req.query.cat);
-                    res = global.paginate(res, data);
-                    res.forEach(function(val){
-                        val.body = striptags(val.body).subword(0,200);
-                    });
-                    return res;
+            [
+                {
+                    table: "essaycat",
+                    extra: function(res){
+                        var ret = {};
+                        res.forEach(function(val){
+                            ret[val.title] = val;
+                        })
+                        data.categories = ret;
+                        return ret;
+                    }
+                },
+                {
+                    table: "essays",
+                    // query: {categoryID: data.essayCatList.Blog.id , $sort: { timeStamp: -1 } },
+                    extra: function(res){
+                        var ret = [];
+                        res.forEach(function(val){
+                            if(val.categoryID == data.essaycat.Blog.id) ret.push(val);    
+                        })
+                        data.allTags = global.getAllTags(ret);
+                        if(req.query.tag) ret = global.sortByTag(ret, req.query.tag);
+                        ret = global.paginate(ret, data);
+                        data.subfooter.blog = [ret[0]];
+                        ret.forEach(function(val){
+                            val.body = striptags(val.body).subword(0,200);
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
+                        });
+                        return ret; 
+                    }
                 }
-            },
+            ],
             {
                 table: "navigation",
                 extra: global.extras.navigation
             },
-            {
-                table: "images",
-                query: {$limit: 6},
-                extra: global.extras.images
-            },
+            [
+                {
+                    table: "imagecat",
+                    extra: global.extras.c_catList
+                },
+                {
+                    table: "images",
+                    extra : function(res){
+                        var ret = {}
+                        res.forEach(function(val, index){
+                            var cat = data.imagecat[val.categoryID].title;
+                            if(!ret[cat]) ret[cat] = [];
+                            ret[cat].push(val);
+                        });
+                        return ret;
+                    }
+                }
+            ],
             {
                 table: "contents",
                 query: { $or: [{content: "subbanner", branch: "blog"}, {content: "subfooter"}]},
@@ -256,37 +251,12 @@ var Routes = function(app,dpd,express,Q){
                     ret.subbanner = ret.subbanner.blog;
                     return ret;
                 }
-            },
-            {
-                table: "essaycat",
-                extra: function(res){
-                    var ret = {};
-                    res.forEach(function(val){
-                        ret[val.id] = val;
-                    });
-                    // console.log(ret);
-                    data.ecarr = ret;
-                    return res;
-                }
             }
         ]
-        
-        var divideByCat = function(table, cat){
-            var ret = {};
-            data[table].forEach(function(val){
-                var catobj = data[cat][val.categoryID];
-                if(!ret[catobj.title]) ret[catobj.title] = [];
-                ret[catobj.title].push(val);
-            });
-            // console.log(ret);
-            data[table] = ret;
-        }
         
         //Create async fuctions by the params in tables & queries
         global.callAsyncAll(callsets,data).then(function(results){
             //Send them bitchslaps
-            divideByCat("essays","ecarr");
-            data.essays = data.essays.Blog;
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
             else {
                 req.breadcrumbs("Tüm Bloglar");
@@ -309,68 +279,162 @@ var Routes = function(app,dpd,express,Q){
                 table: "settings",
                 extra: global.extras.settings
             },
-            {
-                table: "essays",
-                // query: req.query.cat ? {title: {$regex: req.query.cat}} : global.queries.blog,
-                extra: function(res){
-                    data.subfooter.blog = [res[0]];
-                    data.allTags = global.getAllTags(res);
-                    if(req.query.cat) res = global.sortByTag(res, req.query.cat);
-                    res = global.paginate(res, data);
-                    res.forEach(function(val){
-                        val.body = striptags(val.body).subword(0,200);
-                    });
-                    return res;
+            [
+                {
+                    table: "essaycat",
+                    extra: function(res){
+                        var ret = {};
+                        res.forEach(function(val){
+                            ret[val.title] = val;
+                        })
+                        data.categories = ret;
+                        return ret;
+                    }
+                },
+                {
+                    table: "essays",
+                    // query: {categoryID: data.essayCatList.Blog.id , $sort: { timeStamp: -1 } },
+                    extra: function(res){
+                        var ret = [];
+                        res.forEach(function(val){
+                            if(val.categoryID == data.essaycat.Haberler.id) ret.push(val);    
+                        })
+                        data.allTags = global.getAllTags(ret);
+                        if(req.query.tag) ret = global.sortByTag(ret, req.query.tag);
+                        ret = global.paginate(ret, data);
+                        data.subfooter.blog = [ret[0]];
+                        ret.forEach(function(val){
+                            val.body = striptags(val.body).subword(0,200);
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
+                        });
+                        return ret; 
+                    }
                 }
-            },
+            ],
             {
                 table: "navigation",
                 extra: global.extras.navigation
             },
-            {
-                table: "images",
-                query: {$limit: 6},
-                extra: global.extras.images
-            },
+            [
+                {
+                    table: "imagecat",
+                    extra: global.extras.c_catList
+                },
+                {
+                    table: "images",
+                    extra : function(res){
+                        var ret = {};
+                        res.forEach(function(val, index){
+                            var cat = data.imagecat[val.categoryID].title;
+                            if(!ret[cat]) ret[cat] = [];
+                            ret[cat].push(val);
+                        });
+                        return ret;
+                    }
+                }
+            ],
             {
                 table: "contents",
-                query: { $or: [{content: "subbanner", branch: "blog"}, {content: "subfooter"}]},
+                query: { $or: [{content: "subbanner", branch: "news"}, {content: "subfooter"}]},
                 extra: function(res){
                     var ret = global.extras.contents(res);
-                    ret.subbanner = ret.subbanner.blog;
+                    ret.subbanner = ret.subbanner.news;
                     return ret;
-                }
-            },
-            {
-                table: "essaycat",
-                extra: function(res){
-                    var ret = {};
-                    res.forEach(function(val){
-                        ret[val.id] = val;
-                    });
-                    // console.log(ret);
-                    data.ecarr = ret;
-                    return res;
                 }
             }
         ]
         
-        var divideByCat = function(table, cat){
-            var ret = {};
-            data[table].forEach(function(val){
-                var catobj = data[cat][val.categoryID];
-                if(!ret[catobj.title]) ret[catobj.title] = [];
-                ret[catobj.title].push(val);
-            });
-            // console.log(ret);
-            data[table] = ret;
-        }
+        //Create async fuctions by the params in tables & queries
+        global.callAsyncAll(callsets,data).then(function(results){
+            //Send them bitchslaps
+            if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
+            else {
+                req.breadcrumbs("Tüm Bloglar");
+                data.breadcrumbs = req.breadcrumbs();
+                // console.log("Data with all async calls completed", data);
+                res.render('pages/post',data);
+            }
+        }).catch(function(error){
+            console.log("Hata var hocam", error);
+            res.send(error);
+        });
+    });
+    
+    //tagged acilcak
+    
+    app.get("/content/tagged/:tag/:page",function(req,res){
+        var data = {};
+        data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
+        //Database calling parameters
+        var callsets = [
+            {
+                table: "settings",
+                extra: global.extras.settings
+            },
+            [
+                {
+                    table: "essaycat",
+                    extra: function(res){
+                        var ret = {};
+                        res.forEach(function(val){
+                            ret[val.title] = val;
+                        })
+                        data.categories = ret;
+                        return ret;
+                    }
+                },
+                {
+                    table: "essays",
+                    // query: {categoryID: data.essayCatList.Blog.id , $sort: { timeStamp: -1 } },
+                    extra: function(res){
+                        data.allTags = global.getAllTags(res);
+                        if(req.params.tag) res = global.sortByTag(res, req.params.tag);
+                        res = global.paginate(res, data);
+                        data.subfooter.blog = [res[0]];
+                        res.forEach(function(val){
+                            val.body = striptags(val.body).subword(0,200);
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
+                        });
+                        return res; 
+                    }
+                }
+            ],
+            {
+                table: "navigation",
+                extra: global.extras.navigation
+            },
+            [
+                {
+                    table: "imagecat",
+                    extra: global.extras.c_catList
+                },
+                {
+                    table: "images",
+                    extra : function(res){
+                        var ret = {};
+                        res.forEach(function(val, index){
+                            var cat = data.imagecat[val.categoryID].title;
+                            if(!ret[cat]) ret[cat] = [];
+                            ret[cat].push(val);
+                        });
+                        return ret;
+                    }
+                }
+            ],
+            {
+                table: "contents",
+                query: { $or: [{content: "subbanner", branch: "news"}, {content: "subfooter"}]},
+                extra: function(res){
+                    var ret = global.extras.contents(res);
+                    ret.subbanner = ret.subbanner.news;
+                    return ret;
+                }
+            }
+        ]
         
         //Create async fuctions by the params in tables & queries
         global.callAsyncAll(callsets,data).then(function(results){
             //Send them bitchslaps
-            divideByCat("essays","ecarr");
-            data.essays = data.essays.Duyurular;
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
             else {
                 req.breadcrumbs("Tüm Bloglar");
@@ -385,7 +449,7 @@ var Routes = function(app,dpd,express,Q){
     });
     
     //Blog Detail Route
-    app.get("/blog/details/:id",function(req,res){
+    app.get("/content/details/:id",function(req,res){
         var data = {};
         data.isListing = false, data.subfooter = {};
         
@@ -402,9 +466,11 @@ var Routes = function(app,dpd,express,Q){
                     res.some(function(val){
                         if (val.id == req.params.id){
                             res = val;
+                            val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
                             return val;
                         }
                     });
+                    
                     return res;
                 }
             },
@@ -447,6 +513,7 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
+    
     app.get("/practising/:page", function(req,res){
         var data = {}; 
         data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
@@ -462,13 +529,14 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "services",
-                query: { categoryID: "952ee4cd940ea884"},
+                query: { categoryID: "952ee4cd940ea884", $sort: {order : 1}},
                 extra: function(res){
                     data.allTags = global.getAllTags(res);
                     res = global.paginate(res, data);
                     res.forEach(function(val){
                         val.body = striptags(val.body).subword(0,200);
                     });
+                    data.practising = true;
                     return res;
                 }
             },
@@ -508,7 +576,7 @@ var Routes = function(app,dpd,express,Q){
             //Send them bitchslaps
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
             else {
-                req.breadcrumbs("Tüm Kurslar");
+                // req.breadcrumbs("Tüm Kurslar");
                 data.breadcrumbs = req.breadcrumbs();
                 // console.log("Data with all async calls completed", data);
                 res.render('pages/post',data);
@@ -584,7 +652,7 @@ var Routes = function(app,dpd,express,Q){
             //Send them bitchslaps
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
             else {
-                req.breadcrumbs("Tüm Kurslar");
+                // req.breadcrumbs("Tüm Kurslar");
                 data.breadcrumbs = req.breadcrumbs();
                 // console.log("Data with all async calls completed", data);
                 res.render('pages/post',data);
@@ -597,7 +665,7 @@ var Routes = function(app,dpd,express,Q){
     });
 
     //Couse Listing Route
-    app.get("/course/:page",function(req,res){
+    app.get("/courses/:page",function(req,res){
         var data = {}; 
         data.pageSize = 3, data.page = req.params.page, data.isListing = true, data.subfooter = {};
         //Database calling parameters
@@ -615,7 +683,7 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "services",
-                query: { categoryID: "5c7d031753309898"},
+                query: { categoryID: "5c7d031753309898", $sort: {order : 1}},
                 extra: function(res){
                     data.allTags = global.getAllTags(res);
                     res = global.paginate(res, data);
@@ -661,7 +729,7 @@ var Routes = function(app,dpd,express,Q){
             //Send them bitchslaps
             if(data.page < 1 || data.page > data.lastPage) res.redirect("/");
             else {
-                req.breadcrumbs("Tüm Kurslar");
+                // req.breadcrumbs("Tüm Kurslar");
                 data.breadcrumbs = req.breadcrumbs();
                 // console.log("Data with all async calls completed", data);
                 res.render('pages/post',data);
@@ -699,10 +767,10 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { $or: [{content: "subbanner", branch: "coursesdetails"}, {content: "subfooter"}]},
+                query: { $or: [{content: "subbanner", branch: "servicedetails"}, {content: "subfooter"}]},
                 extra: function(res){
                     var ret = global.extras.contents(res);
-                    ret.subbanner = ret.subbanner.coursesdetails;
+                    ret.subbanner = ret.subbanner.servicedetails;
                     return ret;
                 }
             },
@@ -776,7 +844,7 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "contents",
-                query: { content: {$in: ["home", "subfooter", req.params.content]}},
+                query: { content: {$in: ["home", "subfooter", req.params.content, "subbanner"]}},
                 extra: function(res){
                     var ret = global.extras.contents(res);
                     ret.subbanner = ret[req.params.content].main,

@@ -13,23 +13,23 @@ $(document).ready(function(){
 	        slidesPerView: 1,
 	        paginationClickable: true,
 	        loop: true,
-	        autoplay: 3000,
+	        autoplay: 15000,
 	        autoplayDisableOnInteraction: false,
 	        onInit: function(swiper){
         $('.gt_banner_text h2, .gt_banner_text h3, .gt_banner_text a,.gt_banner_text .btn-left,.gt_banner_text .btn-right').css('visibility','hidden');
-			$(' .gt_banner_text h2 ').delay(800).queue(function(next) {
+			$(' .gt_banner_text h2 ').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInUp ').css('visibility','visible');
 			  next();
 			  });
-			  $('.gt_banner_text h3').delay(800).queue(function(next) {
+			  $('.gt_banner_text h3').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInUp').css('visibility','visible');
 			  next();
 			});
-			 $('.gt_banner_text .btn-left').delay(800).queue(function(next) {
+			 $('.gt_banner_text .btn-left').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInLeft').css('visibility','visible');
 			  next();
 			});
-			 $('.gt_banner_text .btn-right').delay(800).queue(function(next) {
+			 $('.gt_banner_text .btn-right').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInRight').css('visibility','visible');
 			  next();
 			});
@@ -37,19 +37,19 @@ $(document).ready(function(){
 			       },
 			       onSlideChangeStart: function(swiper){
 			        $('.gt_banner_text h2, .gt_banner_text h3,.gt_banner_text .btn-left,.gt_banner_text .btn-right').css('visibility','hidden');
-			$(' .gt_banner_text h2 ').delay(800).queue(function(next) {
+			$(' .gt_banner_text h2 ').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInUp').css('visibility','visible');
 			  next();
 			  });
-			  $('.gt_banner_text h3').delay(800).queue(function(next) {
+			  $('.gt_banner_text h3').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInUp').css('visibility','visible');
 			  next();
 			});
-			 $('.gt_banner_text .btn-left').delay(800).queue(function(next) {
+			 $('.gt_banner_text .btn-left').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInLeft').css('visibility','visible');
 			  next();
 			});
-			 $('.gt_banner_text .btn-right').delay(800).queue(function(next) {
+			 $('.gt_banner_text .btn-right').delay(1600).queue(function(next) {
 			  $(this).addClass('animated fadeInRight').css('visibility','visible');
 			  next();
 			});
@@ -93,7 +93,7 @@ $(document).ready(function(){
 		$('#popup-swipe-container').owlCarousel({
 			autoplay: true,
 			autoPlay: 4000,
-			slideSpeed : 800,
+			slideSpeed : 400,
 			autoplayHoverPause:true,
 			loop:true,
 			items:5,

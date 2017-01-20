@@ -46,7 +46,7 @@
                     </figure>
                     <div class="gt_latest_course_des default_width">
                         <h5><a href="/service/details/{{{id}}}">{{{title}}}</a></h5>
-                        <p> {{{body}}}... </p>
+                        <p>{{{body}}}...<a href="/service/details/{{{id}}}">Devamını Oku</a> </p>
                         {{!--<div class="gt_latest_course_author">--}}
                         {{!--    {{#getInstructor this.instructorID}}--}}
                         {{!--    <figure>--}}
@@ -58,10 +58,12 @@
                         {{!--    </div>--}}
                         {{!--    {{/getInstructor}}--}}
                         {{!--</div>--}}
+                        {{#if this.apply}}
                         <div class="gt_course_apply">
                             {{!--<a data-toggle="modal" data-target="#apply_form" href="#">Başvur</a>--}}
                             <a href="/service/details/{{{id}}}">Başvur</a>
                         </div>
+                        {{/if}}
                     </div> 
                 </div>
             </div>

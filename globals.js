@@ -45,7 +45,7 @@ var global = function(dpd,Q){
                 })
                 return papas;
             },
-            slider: function(res){
+            images: function(res){
                 var banner = [], gallery = []; 
                 res.forEach(function(val){
                     if(val.isBanner) banner.push(val);
@@ -68,6 +68,18 @@ var global = function(dpd,Q){
                     else left.push(val);
                 })
                 return {left: left, right: right};
+            },
+            c_catList: function(res){
+                var ret = {};
+                res.forEach(function(val){
+                    if(!ret[val.id]) ret[val.id] = val;
+                });
+                return ret;
+            },
+            c_catSort: function(val, catList, ret){
+                var cat = catList[val.categoryID].title;
+                if(!ret[cat]) ret[cat] = [];
+                ret[cat].push(val);
             }
         },
         sortByTag: function(res, cat){
@@ -108,10 +120,10 @@ var global = function(dpd,Q){
                 if (call.constructor == Array) funcToInject = self.callAsyncAll(call, data, true).then(function(success){
                     // console.log("Sync Call cevaplari", success);
                     call.forEach(function(c, index){
-                        data[c.table] = c.extra(success[index])        
+                        if(c.extra) data[c.table] = c.extra(success[index])        
                     })
                 }).catch(function(error){
-                    // console.log("Sync Call\'da Error", error);
+                    console.log("Sync Call\'da Error", error);
                 });
                 else funcToInject = self.callAsync(call, data, sync);
                 prep.push(funcToInject);
@@ -136,35 +148,11 @@ var global = function(dpd,Q){
         },
         thumbnailByHeight : function(height, image){
             return "https://process.filestackapi.com/resize=height:"+height+",fit:clip/"+image.getImageID();
+        },
+        changeTimeFormat: function(date){
+            var obj = new Date(date);
+            return obj.getDate() + "/" + obj.getMonth() + "/" + obj.getYear();
         }
-        // callAsyncAll : function(callsets, data){
-        //     var self = this, prep = [];
-        //     //Create async fuctions by the params in tables & queries
-        //     callsets.forEach(function(call){
-        //         var query = call.query || self.queries[call.table] || {};
-        //         query.active = true;
-        //         if(call.extras.constructor == Array){
-        //             var syncfunc;
-        //             call.extras.forEach(function(extra){
-        //                 if(!typeof syncfunc == function) syncfunc =  
-        //             })
-        //         }
-        //         var deferred = Q.defer();
-        //         prep.push( 
-        //             dpd[call.table].get(query).then(function(results){
-        //                 if(call.extra) results = call.extra(results);
-        //                 data[call.table] = results;
-        //                 deferred.resolve(results);
-        //                 return deferred.promise;
-        //             }, function(error){
-        //                 deferred.reject(error);
-        //                 return deferred.promise;
-        //             })
-        //         );
-        //     });
-        //     return Q.all(prep);
-        // },
-        
     };
 }
 module.exports = global;

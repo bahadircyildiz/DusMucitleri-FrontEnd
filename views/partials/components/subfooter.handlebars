@@ -1,90 +1,104 @@
 <footer>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <!--NewsLetter Wrap Start-->
-    <div class="gt_newsltr_bg default_width">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-9">
-                    <div class="gt_newsltr_wrap">
-                        <form id="subscribe">
-                            <input type="text" id="email" name="email" placeholder="E-mail">
-                            <input class="button_style_1 btn_lg" type="submit" value="Abone ol!">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{!--<div class="gt_newsltr_bg default_width">--}}
+    {{!--    <div class="container">--}}
+    {{!--        <div class="row">--}}
+    {{!--            <div class="col-md-3"></div>--}}
+    {{!--            <div class="col-md-9">--}}
+    {{!--                <div class="gt_newsltr_wrap">--}}
+    {{!--                    <form id="subscribe">--}}
+    {{!--                        <input type="text" id="email" name="email" placeholder="E-mail">--}}
+    {{!--                        <input class="button_style_1 btn_lg" type="submit" value="Abone ol!">--}}
+    {{!--                    </form>--}}
+    {{!--                </div>--}}
+    {{!--            </div>--}}
+    {{!--        </div>--}}
+    {{!--    </div>--}}
+    {{!--</div>--}}
     <!--NewsLetter Wrap End-->
     <!--Footer Wrap Start-->
     <div class="gt_footer_bg default_width">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="gt_office_wrap default_width">
-                        <div class="gt_office_time widget">
-                            <h5>Açılış Saatleri</h5>
-                            <ul>
-                                {{#each settings.hours}}
-                                <li>
-                                    {{{days}}}
-                                    <span>{{{hours}}}</span>
-                                </li>
-                                {{/each}}
-                            </ul>
-                        </div>
-                        <div class="gt_foo_about widget">
-                            <h5>{{contents.subfooter.aboutus.title}}</h5>
-                            {{{contents.subfooter.aboutus.body}}}
-                            <ul>
-                                <li><a href="https://www.facebook.com/{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://www.instagram.com/{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {{!--<div class="col-md-3">--}}
+                {{!--    <div class="gt_office_wrap default_width">--}}
+                {{!--        <div class="gt_office_time widget">--}}
+                {{!--            <h5>Açılış Saatleri</h5>--}}
+                {{!--            <ul>--}}
+                {{!--                {{#each settings.hours}}--}}
+                {{!--                <li>--}}
+                {{!--                    {{{days}}}--}}
+                {{!--                    <span>{{{hours}}}</span>--}}
+                {{!--                </li>--}}
+                {{!--                {{/each}}--}}
+                {{!--            </ul>--}}
+                {{!--        </div>--}}
+                        {{!--<div class="gt_foo_about widget">--}}
+                        {{!--    <h5>{{contents.subfooter.aboutus.title}}</h5>--}}
+                        {{!--    {{{contents.subfooter.aboutus.body}}}--}}
+                        {{!--    <ul>--}}
+                        {{!--        <li><a href="https://www.facebook.com/{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>--}}
+                        {{!--        <li><a href="https://www.instagram.com/{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>--}}
+                        {{!--    </ul>--}}
+                        {{!--</div>--}}
+                {{!--    </div>--}}
+                {{!--</div>--}}
     
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="foo_col_outer_wrap default_width">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-8 col-sm-12">
                                 <div class="gt_foo_news widget">
-                                    <h5>En Yeni Blogumuz</h5>
+                                    <h5>Facebook Akışımız</h5>
                                     <ul>
-                                        {{#if subfooter.blog}}
-                                        <li>
-                                            <figure>
-                                                <img src="{{{image}}}" alt="{{{title}}}">
-                                            </figure>
-                                            <div class="foo_news_content">
-                                                <a href="#">{{{title}}}</a>
-                                                <ul>
-                                                    <li>
-                                                        <i class="fa fa-calendar"></i>
-                                                        <span>{{{date}}}</span>
-                                                    </li>
+                                        {{!--{{#if essays.subfooter}}--}}
+                                        {{!--<li>--}}
+                                        {{!--    <figure>--}}
+                                        {{!--        <img src="{{essays.subfooter.image}}" alt="{{essays.subfooter.title}}">--}}
+                                        {{!--    </figure>--}}
+                                        {{!--    <div class="foo_news_content">--}}
+                                        {{!--        <a href="#">{{essays.subfooter.title}}</a>--}}
+                                        {{!--        <ul>--}}
+                                        {{!--            <li>--}}
+                                        {{!--                <i class="fa fa-calendar"></i>--}}
+                                        {{!--                <span>{{essays.subfooter.date}}</span>--}}
+                                        {{!--            </li>--}}
                                                     {{!--<li>--}}
                                                     {{!--    <i class="fa fa-comments-o"></i>--}}
                                                     {{!--    <span>20</span>--}}
                                                     {{!--</li>--}}
-                                                </ul>
-                                            </div>
+                                        {{!--        </ul>--}}
+                                        {{!--    </div>--}}
+                                        {{!--</li>--}}
+                                        {{!--{{/if}}--}}
+                                        <li>
+                                            <div class="fb-page" data-href="https://www.facebook.com/dusmucitleri/" data-tabs="timeline" data-width="500" data-height="400" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/dusmucitleri/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/dusmucitleri/">Düş Mucitleri Science and IPC School</a></blockquote></div>
                                         </li>
-                                        {{/if}}
                                     </ul>
                                 </div>
                             </div>
     
-                            <div class="col-md-4 col-sm-6">
-                                <div class="gt_foo_recent_projects widget">
-                                    <h5>Galerimiz</h5>
-                                    <ul>
-                                        {{#each images.subfooter}}
-                                        <li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>
-                                        {{/each}}
-                                    </ul>
-                                </div>
-                            </div>
+                            {{!--<div class="col-md-4 col-sm-6">--}}
+                            {{!--    <div class="gt_foo_recent_projects widget">--}}
+                            {{!--        <h5>Instagram Akışımız</h5>--}}
+                            {{!--        <ul>--}}
+                                        {{!--{{#each images.Gallery}}--}}
+                                        {{!--<li><a href="#"><img src="{{{image}}}" alt="{{{title}}}"></a></li>--}}
+                                        {{!--{{/each}}--}}
+                            {{!--            <li>--}}
+                                            
+                            {{!--            </li>--}}
+                            {{!--        </ul>--}}
+                            {{!--    </div>--}}
+                            {{!--</div>--}}
     
                             <div class="col-md-4 col-sm-6">
                                 <div class="widget">
