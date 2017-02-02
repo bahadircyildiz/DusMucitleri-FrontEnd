@@ -27,6 +27,7 @@ var Routes = function(app,dpd,express,Q){
     var global = require("./globals.js")(dpd, Q);
     
     // Serve static files
+    app.use('/uploads', express.static('./uploads'));
     app.use('/static', express.static('./static'));
     app.use('/dist', express.static('./dist'));
     app.use('/micro',require('./microservices/upload.js'));
