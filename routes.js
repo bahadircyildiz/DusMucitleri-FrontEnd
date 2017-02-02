@@ -12,8 +12,7 @@ String.prototype.getImageID = function(){
 //HTML stripping tool
 var striptags = require("striptags");
 // Multer file uploads
-var multer  = require('multer');
-var upload = multer({ dest: 'uploads/' });
+
 var bodyParser = require('body-parser');
 var breadcrumbs = require('express-breadcrumbs');
 
@@ -30,7 +29,7 @@ var Routes = function(app,dpd,express,Q){
     // Serve static files
     app.use('/static', express.static('./static'));
     app.use('/dist', express.static('./dist'));
-    
+    app.use('/micro',require('./microservices/upload.js'));
     
     //Homepage Route
     app.get('/', function (req, res) {
@@ -870,10 +869,6 @@ var Routes = function(app,dpd,express,Q){
         
     });
     
-    //Image Uploading API
-    app.post('/upload', upload.single('file'), function (req, res, next) {
-        res.send({status:true,message:'Uploaded'});
-    });
     //Subscribe API
     app.post('/subscribe', function (req, res, next) {
         var status;
