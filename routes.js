@@ -55,7 +55,6 @@ var Routes = function(app,dpd,express,Q){
                         var ret = {};
                         res.forEach(function(val){
                             val.body = striptags(val.body).subword(0, 100);
-                            val.image ? val.image = global.thumbnailByHeight(250, val.image) : null;
                             val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
                             console.log(val.categoryID);
                             var cat = data.essaycat[val.categoryID].title;
@@ -86,7 +85,6 @@ var Routes = function(app,dpd,express,Q){
                         var ret = {};
                         res.forEach(function(val){
                             val.body = striptags(val.body).subword(0, 100);
-                            val.image ? val.image = global.thumbnailByHeight(150, val.image) : null;
                             val.timeStamp ? val.timeStamp = global.changeTimeFormat(val.timeStamp): null;
                             var cat = data.serviceCatList[val.categoryID].title;
                             if(cat == "Yetenek Geliştirme") val.apply = false;
@@ -97,23 +95,6 @@ var Routes = function(app,dpd,express,Q){
                     }
                 }
             ],
-            // {  
-            //     table: "services",
-            //     extra: function(res){
-            //         res.forEach(function(val){
-            //             val.body = striptags(val.body).subword(0,100);
-            //             val.image ? val.image = global.thumbnailByHeight(150, val.image) : null;
-            //         })
-            //         return res;
-            //     }
-            // },
-            // {
-            //     table: "servicecat"
-            //     // extra: function(res){
-            //     //     data.serviceCatList = global.extras.c_catList;
-            //     //     return res;
-            //     // }
-            // },
             {
                 table: "navigation",
                 extra: global.extras.navigation
@@ -124,7 +105,7 @@ var Routes = function(app,dpd,express,Q){
             [
                 {
                     table: "imagecat",
-                    extra: global.extras.c_catList
+                    extra: global.extras.c_catList 
                 },
                 {
                     table: "images",
@@ -150,6 +131,9 @@ var Routes = function(app,dpd,express,Q){
             },
             {
                 table: "sponsors"   
+            },
+            {
+                table: "testimonials"   
             }
         ];
         //Create async fuctions by the params in tables & queries

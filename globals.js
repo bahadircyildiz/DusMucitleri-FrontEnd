@@ -12,7 +12,7 @@ var global = function(dpd,Q){
             navigation: {$sort: {order : 1}},
             settings: { $limit: 1},
             essays: {$sort: {timeStamp : -1}},
-            slider: {$sort: {order : 1}},
+            images: {$sort: {order : 1}},
             services: {$sort: {order : 1}}
         },
         extras: {

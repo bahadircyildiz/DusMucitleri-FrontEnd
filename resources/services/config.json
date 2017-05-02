@@ -51,8 +51,8 @@
 		},
 		"specs": {
 			"name": "specs",
-			"type": "object",
-			"typeLabel": "object",
+			"type": "array",
+			"typeLabel": "array",
 			"required": false,
 			"id": "specs",
 			"order": 6
