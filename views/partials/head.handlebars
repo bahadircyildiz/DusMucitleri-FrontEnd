@@ -1,12 +1,30 @@
 <head>
+    <html itemscope itemtype="http://schema.org/Article">
+    <title>{{settings.siteTitle}} - {{settings.siteSubtitle}}</title>
+    
+    <meta itemprop="name" content="{{settings.siteTitle}}">
+    <meta itemprop="description" content="{{settings.siteDesc}}">
+    <meta itemprop="image" content="http://dusmucitleri.com.tr/{{settings.logo}}">
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{settings.siteDesc}}">
     <meta name="keywords" content="{{settings.siteKeywords}}">
     <meta name="author" content="Bahadir Can Yildiz">
+    
+    <meta name="yandex-verification" content="babe4bedd1e07ed4" />
+    <meta name="google-site-verification" content="ycvrtyOEWn4gmr9uTr_I_FgoJDILtYAHj8tSPV3VhB4" />
 
-    <title>{{settings.siteTitle}} - {{settings.siteSubtitle}}</title>
+    <meta property="og:title" content="{{settings.siteTitle}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.dusmucitleri.com.tr/" />
+    <meta property="og:description" content="{{settings.siteDesc}}" />
+    <meta property="og:site_name" content="{{settings.siteTitle}}" />
+    <meta property="og:image" content="http://dusmucitleri.com.tr/{{settings.logo}}">
+    
+    <meta property="article:author" content="bahadir.c.yildiz" />
+    
     <!-- Swiper Slider CSS -->
     <link href="/static/css/swiper.css" rel="stylesheet">
 	<!-- Custom Main StyleSheet CSS -->
@@ -15,6 +33,9 @@
     <link href="/static/css/color.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="/static/css/responsive.css" rel="stylesheet">
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
     <style>
     
@@ -22,24 +43,25 @@
             height: 100px;
         }
         
+        
         /*Linear Gradient gives background color*/
         {{#if contents.home.facts}}
         .fact_figure_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url({{contents.home.facts.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)), url(/{{contents.home.facts.bgimage}});
             background-size: cover;
         }
         {{/if}}
         
         {{#if contents.home.testimonials}}
         .gt_testimonial_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.home.testimonials.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url(/{{contents.home.testimonials.bgimage}});
             background-size: cover;
         }
         {{/if}}
         
         {{#if contents.home.testimonials}}
         .gt_testimonial_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.home.testimonials.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url(/{{contents.home.testimonials.bgimage}});
             background-size: cover;
         }
         {{/if}}
@@ -49,21 +71,21 @@
             background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7));
         }
         .gt_gallery_bg{
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url({{contents.home.gallery.bgimage}});
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),url(/{{contents.home.gallery.bgimage}});
             background-size: cover;
         }
         {{/if}}
         
         {{#if contents.subfooter.aboutus}}
         .gt_footer_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.subfooter.aboutus.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url(/{{contents.subfooter.aboutus.bgimage}});
             background-size: cover;
         }
         {{/if}}
         
         {{#if contents.subbanner}}
         .gt_sub_banner_bg:before{
-            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url({{contents.subbanner.bgimage}});
+            background: linear-gradient(rgba(0, 162, 150, 0.7), rgba(0, 162, 150, 0.7)),url(/{{contents.subbanner.bgimage}});
             background-size: cover;
         }
         {{/if}}

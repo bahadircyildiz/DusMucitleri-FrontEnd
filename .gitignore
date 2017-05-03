@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-node_modules
+uploads
+
 .dpd
-=======
 # Logs
 logs
 *.log
@@ -39,4 +38,4 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
->>>>>>> 2304e93294ebd43237211c5b6b47c6f309dc932e
+
