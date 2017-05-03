@@ -45605,7 +45605,7 @@
 
 	var storage = multer.diskStorage({
 	    destination: function (req, file, cb) {
-	        cb(null, 'uploads/')
+	        cb(null, '../../media.dusmucitleri.com.tr/')
 	      },
 	    filename: function (req, file, cb) {
 	        var fileName = file.originalname;
